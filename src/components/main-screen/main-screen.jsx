@@ -1,6 +1,6 @@
 import React from 'react';
 import MovieScreen from '../movie-screen/movie-screen';
-import MovieList from '../movie-list/movie-list';
+import MovieBoard from '../movie-board/movie-board';
 
 const MainScreen = (props) => {
   const {cardsCount, movieTitle, movieGenre, movieYear} = props;
@@ -12,7 +12,7 @@ const MainScreen = (props) => {
       movieYear={movieYear}
     />
 
-    <MovieList cardsCount={cardsCount} />
+    <MovieBoard cardsCount={cardsCount} />
   </React.Fragment>;
 };
 

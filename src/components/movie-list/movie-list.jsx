@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MovieCard from '../movie-card/movie-card';
 import {generateCard} from '/src/mock/card';
 
@@ -11,6 +12,10 @@ const MovieList = (props) => {
       {cards.map((card) => <MovieCard key={card.id} movieTitle={card.name} />)}
     </div>
   );
+};
+
+MovieList.propTypes = {
+  cardsCount: PropTypes.number.isRequired,
 };
 
 export default MovieList;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MovieList from '../movie-list/movie-list';
 import Footer from '../footer/footer';
 
@@ -53,6 +54,10 @@ const MovieBoard = (props) => {
       <Footer />
     </div>
   );
+};
+
+MovieBoard.propTypes = {
+  cardsCount: PropTypes.number.isRequired,
 };
 
 export default MovieBoard;

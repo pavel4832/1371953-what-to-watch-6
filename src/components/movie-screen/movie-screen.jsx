@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Header from '../header/header';
 
 const MovieScreen = (props) => {
@@ -46,6 +47,12 @@ const MovieScreen = (props) => {
       </div>
     </section>
   );
+};
+
+MovieScreen.propTypes = {
+  movieTitle: PropTypes.string.isRequired,
+  movieGenre: PropTypes.string.isRequired,
+  movieYear: PropTypes.string.isRequired,
 };
 
 export default MovieScreen;

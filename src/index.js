@@ -6,7 +6,8 @@ const Setting = {
   CARDS_COUNT: 20,
   MOVIE_TITLE: `The Grand Budapest Hotel`,
   MOVIE_GENRE: `Drama`,
-  MOVIE_YEAR: `2014`
+  MOVIE_YEAR: `2014`,
+  IS_LOGIN: false
 };
 
 ReactDOM.render(
@@ -15,6 +16,7 @@ ReactDOM.render(
       movieTitle={Setting.MOVIE_TITLE}
       movieGenre={Setting.MOVIE_GENRE}
       movieYear={Setting.MOVIE_YEAR}
+      isLogin={Setting.IS_LOGIN}
     />,
     document.querySelector(`#root`)
 );

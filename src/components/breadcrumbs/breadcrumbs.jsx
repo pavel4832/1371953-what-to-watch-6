@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 const Breadcrumbs = (props) => {
   const {isReview} = props;
@@ -12,7 +13,7 @@ const Breadcrumbs = (props) => {
             <a href="movie-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
           </li>
           <li className="breadcrumbs__item">
-            <a className="breadcrumbs__link">Add review</a>
+            <Link to="/films/:id/review" className="breadcrumbs__link">Add review</Link>
           </li>
         </ul>
       </nav>

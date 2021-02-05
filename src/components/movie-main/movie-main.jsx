@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../header/header';
+import {Link} from "react-router-dom";
 
 const MovieMain = (props) => {
   const {movieTitle, movieGenre, movieYear, isLogin} = props;
@@ -40,12 +41,12 @@ const MovieMain = (props) => {
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
+              <Link to="/mylist" className="btn btn--list movie-card__button">
                 <svg viewBox="0 0 19 20" width="19" height="20">
                   <use xlinkHref="#add"></use>
                 </svg>
                 <span>My list</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

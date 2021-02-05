@@ -12,12 +12,13 @@ const ErrorScreen = (props) => {
 
     <Header
       isLogin={isLogin}
-      headerTitle={`Error`}
+      headerTitle={``}
       isReview={false}
+      pageType={``}
     />
 
-    <section className="user-page__head">
-      <h1 className="user-page__title">404. Page not found</h1>
+    <section className="page-header" style={{flexDirection: `column`}}>
+      <h1>404. Page not found</h1>
       <Link to="/">Вернуться на главную</Link>
     </section>
 

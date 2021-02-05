@@ -17,6 +17,7 @@ const MovieMain = (props) => {
         isLogin={isLogin}
         headerTitle={``}
         isReview={false}
+        pageType={``}
       />
 
       <div className="movie-card__wrap">

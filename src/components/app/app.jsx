@@ -10,8 +10,8 @@ import PlayerScreen from "../player-screen/player-screen";
 import ErrorScreen from "../error-screen/error-screen";
 
 const CountCard = {
-  MY_LIST: 4,
-  SAME: 5
+  MY_LIST: 9,
+  SAME: 4
 };
 
 const App = (props) => {

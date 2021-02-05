@@ -19,6 +19,7 @@ const AddReviewScreen = (props) => {
           isLogin={isLogin}
           headerTitle={``}
           isReview={isReview}
+          pageType={``}
         />
 
         <div className="movie-card__poster movie-card__poster--small">

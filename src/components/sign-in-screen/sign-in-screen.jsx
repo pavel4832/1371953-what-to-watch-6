@@ -12,6 +12,7 @@ const SingInScreen = (props) => {
         isLogin={isLogin}
         headerTitle={`Sign in`}
         isReview={false}
+        pageType={`login`}
       />
 
       <div className="sign-in user-page__content">

@@ -13,6 +13,7 @@ const MyListScreen = (props) => {
         isLogin={isLogin}
         headerTitle={`My list`}
         isReview={false}
+        pageType={`user`}
       />
 
       <section className="catalog">

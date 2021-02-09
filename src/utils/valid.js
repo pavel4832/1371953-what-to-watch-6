@@ -21,6 +21,12 @@ export const MOVIES_PROP = {
 };
 
 export const COMMENTS_PROP = {
+  id: PropTypes.number.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired,
   rating: PropTypes.number.isRequired,
-  comment: PropTypes.string.isRequired
+  commentText: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired
 };

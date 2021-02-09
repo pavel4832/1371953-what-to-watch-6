@@ -1,12 +1,18 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import MovieCard from '../movie-card/movie-card';
-import moviesProp from "../../utils/valid";
+import {MOVIES_PROP} from "../../utils/valid";
 
 const MovieList = (props) => {
   const [activeMovie, setActiveMovie] = useState({});
   const {movies, moviesIndex} = props;
-  const moviesInList = [...movies.slice(0, moviesIndex), ...movies.slice(moviesIndex + 1)];
+  let moviesInList = [];
+
+  if (moviesIndex !== -1) {
+    moviesInList = [...movies.slice(0, moviesIndex), ...movies.slice(moviesIndex + 1)];
+  } else {
+    moviesInList = movies.slice();
+  }
 
   return (
     <div className="catalog__movies-list">
@@ -23,8 +29,8 @@ const MovieList = (props) => {
 };
 
 MovieList.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape(moviesProp)).isRequired,
-  moviesIndex: PropTypes.number.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape(MOVIES_PROP)).isRequired,
+  moviesIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
 };
 
 export default MovieList;

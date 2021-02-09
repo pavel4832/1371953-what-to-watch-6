@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieList from '../movie-list/movie-list';
 import Footer from '../footer/footer';
-import moviesProp from "../../utils/valid";
+import {MOVIES_PROP} from "../../utils/valid";
 
 const MovieBoard = (props) => {
   const {movies, moviesIndex} = props;
@@ -61,7 +61,7 @@ const MovieBoard = (props) => {
 };
 
 MovieBoard.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape(moviesProp)).isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape(MOVIES_PROP)).isRequired,
   moviesIndex: PropTypes.number.isRequired,
 };
 

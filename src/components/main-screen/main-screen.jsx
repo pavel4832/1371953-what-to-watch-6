@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieMain from '../movie-main/movie-main';
 import MovieBoard from '../movie-board/movie-board';
-import moviesProp from "/src/utils/valid";
+import {MOVIES_PROP} from "/src/utils/valid";
 
 const MainScreen = (props) => {
   const {movies, isLogin} = props;
@@ -23,7 +23,7 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape(moviesProp)).isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape(MOVIES_PROP)).isRequired,
   isLogin: PropTypes.bool.isRequired,
 };
 

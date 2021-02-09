@@ -2,16 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieList from '../movie-list/movie-list';
 import Footer from '../footer/footer';
+import {MOVIES_PROP} from "../../utils/valid";
 
 const MovieSame = (props) => {
-  const {cardsCount} = props;
+  const {movies, moviesIndex} = props;
 
   return (
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
 
-        <MovieList cardsCount={cardsCount} />
+        <MovieList
+          movies={movies}
+          moviesIndex={moviesIndex}
+        />
       </section>
 
       <Footer />
@@ -20,7 +24,8 @@ const MovieSame = (props) => {
 };
 
 MovieSame.propTypes = {
-  cardsCount: PropTypes.number.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape(MOVIES_PROP)).isRequired,
+  moviesIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
 };
 
 export default MovieSame;

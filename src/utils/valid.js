@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export default {
+export const MOVIES_PROP = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   posterImage: PropTypes.string.isRequired,
@@ -18,4 +18,9 @@ export default {
   genre: PropTypes.string.isRequired,
   released: PropTypes.number.isRequired,
   isFavorite: PropTypes.bool.isRequired
+};
+
+export const COMMENTS_PROP = {
+  rating: PropTypes.number.isRequired,
+  comment: PropTypes.string.isRequired
 };

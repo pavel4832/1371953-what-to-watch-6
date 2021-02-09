@@ -1,4 +1,4 @@
-const adaptToApp = (movie) => {
+export const adaptMoviesToApp = (movie) => {
   const adaptedMovie = Object.assign(
       {},
       movie,
@@ -28,4 +28,16 @@ const adaptToApp = (movie) => {
   return adaptedMovie;
 };
 
-export default adaptToApp;
+export const adaptCommentToApp = (comment) => {
+  const adaptedComment = Object.assign(
+      {},
+      comment,
+      {
+        commentText: comment.comment
+      }
+  );
+
+  delete adaptedComment.comment;
+
+  return adaptedComment;
+};

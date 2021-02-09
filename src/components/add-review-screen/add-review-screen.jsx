@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from "../header/header";
+import Header from '../header/header';
+import {COMMENTS_PROP} from "../../utils/valid";
 
 const AddReviewScreen = (props) => {
-  const {isLogin} = props;
+  const {comment, isLogin} = props;
+  const {commentText} = comment;
   const isReview = true;
 
   return (
@@ -64,7 +66,7 @@ const AddReviewScreen = (props) => {
           </div>
 
           <div className="add-review__text">
-            <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
+            <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text">{commentText}</textarea>
             <div className="add-review__submit">
               <button className="add-review__btn" type="submit">Post</button>
             </div>
@@ -77,6 +79,7 @@ const AddReviewScreen = (props) => {
 };
 
 AddReviewScreen.propTypes = {
+  comment: PropTypes.shape(COMMENTS_PROP).isRequired,
   isLogin: PropTypes.bool.isRequired,
 };
 

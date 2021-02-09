@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moviesProp from "../../utils/valid";
+import {MOVIES_PROP} from "../../utils/valid";
 
 const MovieCard = (props) => {
   const {onActive, movie} = props;
@@ -23,7 +23,7 @@ const MovieCard = (props) => {
 
 MovieCard.propTypes = {
   onActive: PropTypes.func.isRequired,
-  movie: PropTypes.shape(moviesProp).isRequired,
+  movie: PropTypes.shape(MOVIES_PROP).isRequired,
 };
 
 export default MovieCard;

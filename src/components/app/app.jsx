@@ -8,6 +8,7 @@ import MovieScreen from "../movie-screen/movie-screen";
 import AddReviewScreen from "../add-review-screen/add-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
 import ErrorScreen from "../error-screen/error-screen";
+import moviesProp from "/src/utils/valid";
 
 const CountCard = {
   MY_LIST: 9,
@@ -56,7 +57,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  movies: PropTypes.array.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape(moviesProp)).isRequired,
   isLogin: PropTypes.bool.isRequired,
 };
 

@@ -4,7 +4,7 @@ import MovieCard from '../movie-card/movie-card';
 import {MOVIES_PROP} from "../../utils/valid";
 
 const MovieList = (props) => {
-  const [activeMovie, setActiveMovie] = useState({});
+  const [{}, setActiveMovie] = useState({});
   const {movies, moviesIndex} = props;
   let moviesInList = [];
 

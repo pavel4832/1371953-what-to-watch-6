@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../header/header';
-import AddReviewForm from '../add-review-form/add-review-form'
+import AddReviewForm from '../add-review-form/add-review-form';
 import {COMMENTS_PROP} from "../../utils/valid";
 
 const AddReviewScreen = (props) => {

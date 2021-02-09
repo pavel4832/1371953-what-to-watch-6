@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../header/header';
 import AddReviewForm from '../add-review-form/add-review-form';
-import {COMMENTS_PROP} from "../../utils/valid";
 
 const AddReviewScreen = (props) => {
-  const {comment, isLogin} = props;
+  const {isLogin} = props;
   const isReview = true;
 
   return (
@@ -29,13 +28,14 @@ const AddReviewScreen = (props) => {
         </div>
       </div>
 
-      <AddReviewForm comment={comment}/>
+      <AddReviewForm
+        onPost={() => {}}
+      />
     </section>
   );
 };
 
 AddReviewScreen.propTypes = {
-  comment: PropTypes.shape(COMMENTS_PROP).isRequired,
   isLogin: PropTypes.bool.isRequired,
 };
 

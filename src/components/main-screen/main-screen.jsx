@@ -6,15 +6,19 @@ import moviesProp from "/src/utils/valid";
 
 const MainScreen = (props) => {
   const {movies, isLogin} = props;
-  const MOVIE_MAIN = movies[0];
+  const MOVIE_MAIN = 0;
 
   return <React.Fragment>
     <MovieMain
-      movie={MOVIE_MAIN}
+      movies={movies}
+      moviesIndex={MOVIE_MAIN}
       isLogin={isLogin}
     />
 
-    <MovieBoard movies={movies} />
+    <MovieBoard
+      movies={movies}
+      moviesIndex={MOVIE_MAIN}
+    />
   </React.Fragment>;
 };
 

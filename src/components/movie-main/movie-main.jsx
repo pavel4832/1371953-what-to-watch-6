@@ -4,13 +4,14 @@ import Header from '../header/header';
 import moviesProp from "/src/utils/valid";
 
 const MovieMain = (props) => {
-  const {movie, isLogin} = props;
-  const {name, previewImage, posterImage, genre, released} = movie;
+  const {movies, moviesIndex, isLogin} = props;
+  const movie = movies[moviesIndex];
+  const {name, posterImage, backgroundImage, genre, released} = movie;
 
   return (
     <section className="movie-card">
       <div className="movie-card__bg">
-        <img src={previewImage} alt={name}/>
+        <img src={backgroundImage} alt={name}/>
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
@@ -57,7 +58,8 @@ const MovieMain = (props) => {
 };
 
 MovieMain.propTypes = {
-  movie: PropTypes.shape(moviesProp).isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape(moviesProp)).isRequired,
+  moviesIndex: PropTypes.number.isRequired,
   isLogin: PropTypes.bool.isRequired,
 };
 

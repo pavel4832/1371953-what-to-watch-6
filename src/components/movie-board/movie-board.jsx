@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieList from '../movie-list/movie-list';
 import Footer from '../footer/footer';
+import moviesProp from "../../utils/valid";
 
 const MovieBoard = (props) => {
-  const {cardsCount} = props;
+  const {movies, moviesIndex} = props;
 
   return (
     <div className="page-content">
@@ -44,7 +45,10 @@ const MovieBoard = (props) => {
           </li>
         </ul>
 
-        <MovieList cardsCount={cardsCount} />
+        <MovieList
+          movies={movies}
+          moviesIndex={moviesIndex}
+        />
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -57,7 +61,8 @@ const MovieBoard = (props) => {
 };
 
 MovieBoard.propTypes = {
-  cardsCount: PropTypes.number.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape(moviesProp)).isRequired,
+  moviesIndex: PropTypes.number.isRequired,
 };
 
 export default MovieBoard;

@@ -40,35 +40,47 @@ const App = (props) => {
             cardsCount={CountCard.MY_LIST}
           />
         </Route>
-        <Route exact path="/films/:id">
-          <MovieScreen
-            movies={movies}
-            comments={comments}
-            movieIndex={CountCard.ACTIVE}
-            isLogin={isLogin}
-            cardsCount={CountCard.SAME}
-            contentType={CONTENT_TYPE.OVERVIEW}
-          />
+        <Route
+          exact
+          path="/films/:id"
+          render={({match}) => (
+            <MovieScreen
+              movies={movies}
+              comments={comments}
+              isLogin={isLogin}
+              cardsCount={CountCard.SAME}
+              contentType={CONTENT_TYPE.OVERVIEW}
+              id={Number(match.params.id)}
+            />
+          )}>
         </Route>
-        <Route exact path="/films/:id/details">
-          <MovieScreen
-            movies={movies}
-            comments={comments}
-            movieIndex={CountCard.ACTIVE}
-            isLogin={isLogin}
-            cardsCount={CountCard.SAME}
-            contentType={CONTENT_TYPE.DETAILS}
-          />
+        <Route
+          exact
+          path="/films/:id/details"
+          render={({match}) => (
+            <MovieScreen
+              movies={movies}
+              comments={comments}
+              isLogin={isLogin}
+              cardsCount={CountCard.SAME}
+              contentType={CONTENT_TYPE.DETAILS}
+              id={Number(match.params.id)}
+            />
+          )}>
         </Route>
-        <Route exact path="/films/:id/reviews">
-          <MovieScreen
-            movies={movies}
-            comments={comments}
-            movieIndex={CountCard.ACTIVE}
-            isLogin={isLogin}
-            cardsCount={CountCard.SAME}
-            contentType={CONTENT_TYPE.REVIEWS}
-          />
+        <Route
+          exact
+          path="/films/:id/reviews"
+          render={({match}) => (
+            <MovieScreen
+              movies={movies}
+              comments={comments}
+              isLogin={isLogin}
+              cardsCount={CountCard.SAME}
+              contentType={CONTENT_TYPE.REVIEWS}
+              id={Number(match.params.id)}
+            />
+          )}>
         </Route>
         <Route exact path="/films/:id/review">
           <AddReviewScreen

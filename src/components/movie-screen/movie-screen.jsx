@@ -1,13 +1,14 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import MovieFull from "../movie-full/movie-full";
-import MovieSame from "../movie-same/movie-same";
-import {COMMENTS_PROP, MOVIES_PROP} from "../../utils/valid";
+import PropTypes from 'prop-types';
+import MovieFull from '../movie-full/movie-full';
+import MovieSame from '../movie-same/movie-same';
+import {COMMENTS_PROP, MOVIES_PROP} from '../../utils/valid';
+import {getMovieById} from '../../utils/utils';
 
 const MovieScreen = (props) => {
-  const {movies, comments, movieIndex, isLogin, cardsCount, contentType} = props;
+  const {movies, comments, isLogin, cardsCount, contentType, id} = props;
   const sameListMovies = movies.slice(0, cardsCount);
-  const activeMovie = movies[movieIndex];
+  const activeMovie = getMovieById(movies, id);
 
   return <React.Fragment>
     <MovieFull
@@ -27,10 +28,10 @@ const MovieScreen = (props) => {
 MovieScreen.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.shape(MOVIES_PROP)).isRequired,
   comments: PropTypes.arrayOf(PropTypes.shape(COMMENTS_PROP)).isRequired,
-  movieIndex: PropTypes.number.isRequired,
   isLogin: PropTypes.bool.isRequired,
   cardsCount: PropTypes.number.isRequired,
   contentType: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default MovieScreen;

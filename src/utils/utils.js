@@ -4,3 +4,7 @@ export const getTimeFromMins = (mins) => {
 
   return hours + `h ` + minutes + `m`;
 };
+
+export const getMovieById = (movies, id) => {
+  return movies.find((movie) => movie.id === id);
+};

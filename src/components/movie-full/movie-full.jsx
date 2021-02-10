@@ -4,7 +4,7 @@ import Header from '../header/header';
 import MovieContentOverview from '../movie-content-overview/movie-content-overview';
 import MovieContentDetails from '../movie-content-details/movie-content-details';
 import MovieContentReviews from '../movie-content-reviews/movie-content-reviews';
-import {Link, useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {COMMENTS_PROP, MOVIES_PROP} from '../../utils/valid';
 import {CONTENT_TYPE} from '/src/const';
 
@@ -13,7 +13,6 @@ const MovieFull = (props) => {
   const {name, posterImage, backgroundImage, genre, released} = movie;
 
   const [activeLink, setActiveLink] = useState(contentType);
-  const history = useHistory();
 
   let overviewActiveLink = ``;
   let detailsActiveLink = ``;
@@ -109,27 +108,18 @@ const MovieFull = (props) => {
             <nav className="movie-nav movie-card__nav">
               <ul className="movie-nav__list">
                 <li className={`movie-nav__item ${overviewActiveLink}`}>
-                  <Link to="/films/:id" className="movie-nav__link"
-                    onClick={() => {
-                      history.push(`/films/:id`);
-                      setActiveLink(CONTENT_TYPE.OVERVIEW);
-                    }}
+                  <Link to={`/films/${movie.id}`} className="movie-nav__link"
+                    onClick={() => setActiveLink(CONTENT_TYPE.OVERVIEW)}
                   >Overview</Link>
                 </li>
                 <li className={`movie-nav__item ${detailsActiveLink}`}>
-                  <Link to="/films/:id/details" className="movie-nav__link"
-                    onClick={() => {
-                      history.push(`/films/:id/details`);
-                      setActiveLink(CONTENT_TYPE.DETAILS);
-                    }}
+                  <Link to={`/films/${movie.id}/details`} className="movie-nav__link"
+                    onClick={() => setActiveLink(CONTENT_TYPE.DETAILS)}
                   >Details</Link>
                 </li>
                 <li className={`movie-nav__item ${reviewsActiveLink}`}>
-                  <Link to="/films/:id/reviews" className="movie-nav__link"
-                    onClick={() => {
-                      history.push(`/films/:id/reviews`);
-                      setActiveLink(CONTENT_TYPE.REVIEWS);
-                    }}
+                  <Link to={`/films/${movie.id}/reviews`} className="movie-nav__link"
+                    onClick={() => setActiveLink(CONTENT_TYPE.REVIEWS)}
                   >Reviews</Link>
                 </li>
               </ul>

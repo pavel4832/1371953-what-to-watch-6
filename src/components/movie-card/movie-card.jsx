@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {MOVIES_PROP} from "../../utils/valid";
-import {Link, useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const MovieCard = (props) => {
   const {onActive, movie} = props;
   const {name, previewImage} = movie;
-
-  const history = useHistory();
 
   return (
     <article className="small-movie-card catalog__movies-card"
@@ -18,11 +16,7 @@ const MovieCard = (props) => {
         <img src={previewImage} alt={name} width="280" height="175"/>
       </div>
       <h3 className="small-movie-card__title">
-        <Link to="/films/:id" className="small-movie-card__link"
-          onClick={() => {
-            history.push(`/films/:id`);
-          }}
-        >{name}</Link>
+        <Link to={`/films/${movie.id}`} className="small-movie-card__link">{name}</Link>
       </h3>
     </article>
   );

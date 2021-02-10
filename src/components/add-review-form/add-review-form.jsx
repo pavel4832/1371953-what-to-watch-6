@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const AddReviewForm = (props) => {
   const {onPost} = props;
   const [userFormText, setUserFormText] = React.useState(``);
-  const [userFormRating, setUserFormRating] = React.useState([false, false, false, false, false, false, false, false, false, false]);
+  const [userFormRating, setUserFormRating] = React.useState(10);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -17,12 +17,6 @@ const AddReviewForm = (props) => {
     setUserFormText(value);
   };
 
-  const handleRatingChange = (index) => (evt) => {
-    evt.target.checked = true;
-    const value = evt.target.checked;
-    setUserFormRating([...userFormRating.fill(true, 0, index).slice(0, index), value, ...userFormRating.fill(false, index + 1).slice(index + 1)]);
-  };
-
   return (
     <div className="add-review">
       <form action="#" className="add-review__form" onSubmit={handleSubmit}>
@@ -30,7 +24,11 @@ const AddReviewForm = (props) => {
           <div className="rating__stars">
             {RATING_STARS.map((rating, index) => (
               <React.Fragment key={`Rating-${index}`}>
-                <input className="rating__input" id={`star-${rating}`} type="checkbox" name="rating" value={rating} onChange={handleRatingChange(index)} checked={userFormRating[index]}/>
+                <input className="rating__input" id={`star-${rating}`} type="radio" name="rating" value={rating}
+                  checked={userFormRating === index + 1}
+                  onChange={() => {
+                    setUserFormRating(index + 1);
+                  }}/>
                 <label className="rating__label" htmlFor={`star-${rating}`}>Rating {rating}</label>
               </React.Fragment>
             ))}

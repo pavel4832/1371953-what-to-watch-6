@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../header/header';
-import {Link} from "react-router-dom";
-import {MOVIES_PROP} from "../../utils/valid";
+import MovieContentOverview from '../movie-content-overview/movie-content-overview';
+import MovieContentDetails from '../movie-content-details/movie-content-details';
+import MovieContentReviews from '../movie-content-reviews/movie-content-reviews';
+import {Link} from 'react-router-dom';
+import {COMMENTS_PROP, MOVIES_PROP} from '../../utils/valid';
 
 const MovieFull = (props) => {
-  const {movie, isLogin} = props;
-  const {description, director, name, posterImage, backgroundImage, genre, released, rating, scoresCount, starring} = movie;
+  const {movie, comments, isLogin} = props;
+  const {name, posterImage, backgroundImage, genre, released} = movie;
 
   return (
     <section className="movie-card movie-card--full">
@@ -72,21 +75,7 @@ const MovieFull = (props) => {
               </ul>
             </nav>
 
-            <div className="movie-rating">
-              <div className="movie-rating__score">{rating}</div>
-              <p className="movie-rating__meta">
-                <span className="movie-rating__level">Very good</span>
-                <span className="movie-rating__count">{scoresCount} ratings</span>
-              </p>
-            </div>
-
-            <div className="movie-card__text">
-              <p>{description}</p>
-
-              <p className="movie-card__director"><strong>Director: {director}</strong></p>
-
-              <p className="movie-card__starring"><strong>Starring: {starring.join(`, `)}</strong></p>
-            </div>
+            <MovieContentOverview movie={movie} />
           </div>
         </div>
       </div>
@@ -97,6 +86,7 @@ const MovieFull = (props) => {
 MovieFull.propTypes = {
   isLogin: PropTypes.bool.isRequired,
   movie: PropTypes.shape(MOVIES_PROP).isRequired,
+  comments: PropTypes.arrayOf(PropTypes.shape(COMMENTS_PROP)).isRequired,
 };
 
 export default MovieFull;

@@ -19,7 +19,6 @@ const CountCard = {
 const App = (props) => {
   const {movies, comments, isLogin} = props;
   const activeMovie = movies[CountCard.ACTIVE];
-  const comment = comments[0];
 
   return (
     <BrowserRouter>
@@ -43,6 +42,7 @@ const App = (props) => {
         <Route exact path="/films/:id">
           <MovieScreen
             movies={movies}
+            comments={comments}
             movieIndex={CountCard.ACTIVE}
             isLogin={isLogin}
             cardsCount={CountCard.SAME}
@@ -50,7 +50,6 @@ const App = (props) => {
         </Route>
         <Route exact path="/films/:id/review">
           <AddReviewScreen
-            comment={comment}
             isLogin={isLogin}
           />
         </Route>

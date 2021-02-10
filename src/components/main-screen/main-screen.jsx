@@ -2,27 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieMain from '../movie-main/movie-main';
 import MovieBoard from '../movie-board/movie-board';
+import {MOVIES_PROP} from "/src/utils/valid";
 
 const MainScreen = (props) => {
-  const {cardsCount, movieTitle, movieGenre, movieYear, isLogin} = props;
+  const {movies, isLogin} = props;
+  const MOVIE_MAIN = 0;
 
   return <React.Fragment>
     <MovieMain
-      movieTitle={movieTitle}
-      movieGenre={movieGenre}
-      movieYear={movieYear}
+      movies={movies}
+      moviesIndex={MOVIE_MAIN}
       isLogin={isLogin}
     />
 
-    <MovieBoard cardsCount={cardsCount} />
+    <MovieBoard
+      movies={movies}
+      moviesIndex={MOVIE_MAIN}
+    />
   </React.Fragment>;
 };
 
 MainScreen.propTypes = {
-  cardsCount: PropTypes.number.isRequired,
-  movieTitle: PropTypes.string.isRequired,
-  movieGenre: PropTypes.string.isRequired,
-  movieYear: PropTypes.string.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape(MOVIES_PROP)).isRequired,
   isLogin: PropTypes.bool.isRequired,
 };
 

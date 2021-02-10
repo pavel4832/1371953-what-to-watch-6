@@ -9,6 +9,7 @@ import AddReviewScreen from '../add-review-screen/add-review-screen';
 import PlayerScreen from '../player-screen/player-screen';
 import ErrorScreen from '../error-screen/error-screen';
 import {MOVIES_PROP, COMMENTS_PROP} from '/src/utils/valid';
+import {CONTENT_TYPE} from '/src/const';
 
 const CountCard = {
   MY_LIST: 5,
@@ -46,6 +47,27 @@ const App = (props) => {
             movieIndex={CountCard.ACTIVE}
             isLogin={isLogin}
             cardsCount={CountCard.SAME}
+            contentType={CONTENT_TYPE.OVERVIEW}
+          />
+        </Route>
+        <Route exact path="/films/:id/details">
+          <MovieScreen
+            movies={movies}
+            comments={comments}
+            movieIndex={CountCard.ACTIVE}
+            isLogin={isLogin}
+            cardsCount={CountCard.SAME}
+            contentType={CONTENT_TYPE.DETAILS}
+          />
+        </Route>
+        <Route exact path="/films/:id/reviews">
+          <MovieScreen
+            movies={movies}
+            comments={comments}
+            movieIndex={CountCard.ACTIVE}
+            isLogin={isLogin}
+            cardsCount={CountCard.SAME}
+            contentType={CONTENT_TYPE.REVIEWS}
           />
         </Route>
         <Route exact path="/films/:id/review">

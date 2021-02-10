@@ -5,7 +5,7 @@ import MovieSame from "../movie-same/movie-same";
 import {COMMENTS_PROP, MOVIES_PROP} from "../../utils/valid";
 
 const MovieScreen = (props) => {
-  const {movies, comments, movieIndex, isLogin, cardsCount} = props;
+  const {movies, comments, movieIndex, isLogin, cardsCount, contentType} = props;
   const sameListMovies = movies.slice(0, cardsCount);
   const activeMovie = movies[movieIndex];
 
@@ -14,6 +14,7 @@ const MovieScreen = (props) => {
       movie={activeMovie}
       isLogin={isLogin}
       comments={comments}
+      contentType={contentType}
     />
 
     <MovieSame
@@ -29,6 +30,7 @@ MovieScreen.propTypes = {
   movieIndex: PropTypes.number.isRequired,
   isLogin: PropTypes.bool.isRequired,
   cardsCount: PropTypes.number.isRequired,
+  contentType: PropTypes.string.isRequired,
 };
 
 export default MovieScreen;

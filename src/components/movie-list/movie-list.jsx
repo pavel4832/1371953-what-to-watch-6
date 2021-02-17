@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import MovieCard from '../movie-card/movie-card';
 import {moviesProp} from "../../utils/valid-props";
 
 const MovieList = (props) => {
-  const [{}, setActiveMovie] = useState({});
   const {movies, moviesIndex} = props;
   let moviesInList;
 
@@ -20,9 +19,7 @@ const MovieList = (props) => {
         <MovieCard
           key={card.id}
           movie={card}
-          onActive={(movie) => {
-            setActiveMovie(movie);
-          }}/>
+        />
       ))}
     </div>
   );

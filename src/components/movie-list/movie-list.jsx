@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MovieCard from '../movie-card/movie-card';
+import withVideoPlayer from '../../hocs/with-video-player/with-video-player';
 import {moviesProp} from "../../utils/valid-props";
+
+const MovieCardWrapped = withVideoPlayer(MovieCard);
 
 const MovieList = (props) => {
   const {movies, moviesIndex} = props;
@@ -16,7 +19,7 @@ const MovieList = (props) => {
   return (
     <div className="catalog__movies-list">
       {moviesInList.map((card) => (
-        <MovieCard
+        <MovieCardWrapped
           key={card.id}
           movie={card}
         />

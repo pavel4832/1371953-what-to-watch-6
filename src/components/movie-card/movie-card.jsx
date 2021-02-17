@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import {moviesProp} from "../../utils/valid-props";
 import {Link} from 'react-router-dom';
-import VideoPlayer from '../video-player/video-player';
-import {POSTER_SIZE} from '/src/const';
 
 const MovieCard = (props) => {
   const [isPlay, setIsPlay] = useState(false);
-  const {movie} = props;
+  const {movie, renderPlayer} = props;
   const {name} = movie;
 
   return (
@@ -18,14 +17,7 @@ const MovieCard = (props) => {
         setIsPlay(false);
       }}>
 
-      <VideoPlayer
-        isPlaying={isPlay}
-        src={movie.previewVideoLink}
-        poster={movie.posterImage}
-        isMuted={true}
-        width={POSTER_SIZE.WIDTH}
-        height={POSTER_SIZE.HEIGHT}
-      />
+      {renderPlayer(movie, isPlay)}
 
       <h3 className="small-movie-card__title">
         <Link to={`/films/${movie.id}`} className="small-movie-card__link">{name}</Link>
@@ -36,6 +28,7 @@ const MovieCard = (props) => {
 
 MovieCard.propTypes = {
   movie: moviesProp,
+  renderPlayer: PropTypes.func.isRequired,
 };
 
 export default MovieCard;

@@ -6,7 +6,7 @@ import {moviesProp} from "../../utils/valid-props";
 const MovieList = (props) => {
   const [{}, setActiveMovie] = useState({});
   const {movies, moviesIndex} = props;
-  let moviesInList = [];
+  let moviesInList;
 
   if (moviesIndex !== -1) {
     moviesInList = [...movies.slice(0, moviesIndex), ...movies.slice(moviesIndex + 1)];

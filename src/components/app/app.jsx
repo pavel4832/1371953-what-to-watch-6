@@ -8,7 +8,7 @@ import MovieScreen from '../movie-screen/movie-screen';
 import AddReviewScreen from '../add-review-screen/add-review-screen';
 import PlayerScreen from '../player-screen/player-screen';
 import ErrorScreen from '../error-screen/error-screen';
-import {MOVIES_PROP, COMMENTS_PROP} from '/src/utils/valid';
+import {moviesProp, commentsProp} from '/src/utils/valid';
 import {CONTENT_TYPE} from '/src/const';
 
 const CountCard = {
@@ -99,8 +99,8 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape(MOVIES_PROP)).isRequired,
-  comments: PropTypes.arrayOf(PropTypes.shape(COMMENTS_PROP)).isRequired,
+  movies: PropTypes.arrayOf(moviesProp).isRequired,
+  comments: PropTypes.arrayOf(commentsProp).isRequired,
   isLogin: PropTypes.bool.isRequired,
 };
 

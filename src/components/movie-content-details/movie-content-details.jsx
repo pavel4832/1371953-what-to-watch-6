@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {MOVIES_PROP} from '../../utils/valid';
+import {moviesProp} from '../../utils/valid';
 import {getTimeFromMins} from '../../utils/utils';
 
 const MovieContentDetails = (props) => {
@@ -41,7 +40,7 @@ const MovieContentDetails = (props) => {
 };
 
 MovieContentDetails.propTypes = {
-  movie: PropTypes.shape(MOVIES_PROP).isRequired,
+  movie: moviesProp,
 };
 
 export default MovieContentDetails;

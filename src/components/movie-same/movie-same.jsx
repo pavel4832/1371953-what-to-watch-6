@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieList from '../movie-list/movie-list';
 import Footer from '../footer/footer';
-import {MOVIES_PROP} from "../../utils/valid";
+import {moviesProp} from "../../utils/valid";
 
 const MovieSame = (props) => {
   const {movies, moviesIndex} = props;
@@ -24,7 +24,7 @@ const MovieSame = (props) => {
 };
 
 MovieSame.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape(MOVIES_PROP)).isRequired,
+  movies: PropTypes.arrayOf(moviesProp).isRequired,
   moviesIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
 };
 

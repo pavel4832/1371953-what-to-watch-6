@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import {MOVIES_PROP} from "../../utils/valid";
+import {moviesProp} from "../../utils/valid";
 
 const PlayerScreen = (props) => {
   const {movie} = props;
@@ -43,7 +42,7 @@ const PlayerScreen = (props) => {
 };
 
 PlayerScreen.propTypes = {
-  movie: PropTypes.shape(MOVIES_PROP).isRequired,
+  movie: moviesProp,
 };
 
 export default PlayerScreen;

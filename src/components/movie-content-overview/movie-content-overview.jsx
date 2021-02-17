@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import {MOVIES_PROP} from "../../utils/valid";
+import {moviesProp} from "../../utils/valid";
 
 const MovieContentOverview = (props) => {
   const {movie} = props;
@@ -39,7 +38,7 @@ const MovieContentOverview = (props) => {
 };
 
 MovieContentOverview.propTypes = {
-  movie: PropTypes.shape(MOVIES_PROP).isRequired,
+  movie: moviesProp,
 };
 
 export default MovieContentOverview;

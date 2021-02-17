@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {MOVIES_PROP} from "../../utils/valid";
+import {moviesProp} from "../../utils/valid";
 import {Link} from 'react-router-dom';
 
 const MovieCard = (props) => {
@@ -24,7 +24,7 @@ const MovieCard = (props) => {
 
 MovieCard.propTypes = {
   onActive: PropTypes.func.isRequired,
-  movie: PropTypes.shape(MOVIES_PROP).isRequired,
+  movie: moviesProp,
 };
 
 export default MovieCard;

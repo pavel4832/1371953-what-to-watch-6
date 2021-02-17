@@ -5,7 +5,7 @@ import MovieContentOverview from '../movie-content-overview/movie-content-overvi
 import MovieContentDetails from '../movie-content-details/movie-content-details';
 import MovieContentReviews from '../movie-content-reviews/movie-content-reviews';
 import {Link} from 'react-router-dom';
-import {COMMENTS_PROP, MOVIES_PROP} from '../../utils/valid';
+import {commentsProp, moviesProp} from '../../utils/valid';
 import {CONTENT_TYPE} from '/src/const';
 
 const MovieFull = (props) => {
@@ -135,8 +135,8 @@ const MovieFull = (props) => {
 
 MovieFull.propTypes = {
   isLogin: PropTypes.bool.isRequired,
-  movie: PropTypes.shape(MOVIES_PROP).isRequired,
-  comments: PropTypes.arrayOf(PropTypes.shape(COMMENTS_PROP)).isRequired,
+  movie: moviesProp,
+  comments: PropTypes.arrayOf(commentsProp).isRequired,
   contentType: PropTypes.string.isRequired,
 };
 

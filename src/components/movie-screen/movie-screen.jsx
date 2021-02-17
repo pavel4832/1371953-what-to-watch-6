@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieFull from '../movie-full/movie-full';
 import MovieSame from '../movie-same/movie-same';
-import {COMMENTS_PROP, MOVIES_PROP} from '../../utils/valid';
+import {commentsProp, moviesProp} from '../../utils/valid';
 import {getMovieById} from '../../utils/utils';
 
 const MovieScreen = (props) => {
@@ -26,8 +26,8 @@ const MovieScreen = (props) => {
 };
 
 MovieScreen.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape(MOVIES_PROP)).isRequired,
-  comments: PropTypes.arrayOf(PropTypes.shape(COMMENTS_PROP)).isRequired,
+  movies: PropTypes.arrayOf(moviesProp).isRequired,
+  comments: PropTypes.arrayOf(commentsProp).isRequired,
   isLogin: PropTypes.bool.isRequired,
   cardsCount: PropTypes.number.isRequired,
   contentType: PropTypes.string.isRequired,

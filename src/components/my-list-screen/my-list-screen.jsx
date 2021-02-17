@@ -3,7 +3,7 @@ import Header from "../header/header";
 import Footer from "../footer/footer";
 import PropTypes from "prop-types";
 import MovieList from "../movie-list/movie-list";
-import {MOVIES_PROP} from "../../utils/valid";
+import {moviesProp} from "../../utils/valid";
 
 const MyListScreen = (props) => {
   const {movies, isLogin, cardsCount} = props;
@@ -33,7 +33,7 @@ const MyListScreen = (props) => {
 };
 
 MyListScreen.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape(MOVIES_PROP)).isRequired,
+  movies: PropTypes.arrayOf(moviesProp).isRequired,
   isLogin: PropTypes.bool.isRequired,
   cardsCount: PropTypes.number.isRequired,
 };

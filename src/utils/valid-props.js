@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export const MOVIES_PROP = {
+export const moviesProp = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   posterImage: PropTypes.string.isRequired,
@@ -18,9 +18,9 @@ export const MOVIES_PROP = {
   genre: PropTypes.string.isRequired,
   released: PropTypes.number.isRequired,
   isFavorite: PropTypes.bool.isRequired
-};
+}).isRequired;
 
-export const COMMENTS_PROP = {
+export const commentsProp = PropTypes.shape({
   id: PropTypes.number.isRequired,
   user: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -29,4 +29,4 @@ export const COMMENTS_PROP = {
   rating: PropTypes.number.isRequired,
   commentText: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired
-};
+}).isRequired;

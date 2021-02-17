@@ -9,3 +9,8 @@ export const CONTENT_TYPE = {
   DETAILS: `details`,
   REVIEWS: `reviews`
 };
+
+export const POSTER_SIZE = {
+  WIDTH: `280`,
+  HEIGHT: `175`
+};

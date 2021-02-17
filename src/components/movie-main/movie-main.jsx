@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../header/header';
-import {MOVIES_PROP} from "/src/utils/valid";
+import {moviesProp} from "/src/utils/valid-props";
 
 const MovieMain = (props) => {
   const {movies, moviesIndex, isLogin} = props;
@@ -58,7 +58,7 @@ const MovieMain = (props) => {
 };
 
 MovieMain.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape(MOVIES_PROP)).isRequired,
+  movies: PropTypes.arrayOf(moviesProp).isRequired,
   moviesIndex: PropTypes.number.isRequired,
   isLogin: PropTypes.bool.isRequired,
 };

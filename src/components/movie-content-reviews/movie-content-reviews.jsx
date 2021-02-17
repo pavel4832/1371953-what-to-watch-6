@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
-import {COMMENTS_PROP} from '../../utils/valid';
+import {commentsProp} from '../../utils/valid-props';
 import {COLUMN_QUANTITY, PRECISION_RATING} from '/src/const';
 
 export const MovieContentReviews = (props) => {
@@ -54,7 +54,7 @@ export const MovieContentReviews = (props) => {
 };
 
 MovieContentReviews.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.shape(COMMENTS_PROP)).isRequired,
+  comments: PropTypes.arrayOf(commentsProp).isRequired,
 };
 
 export default MovieContentReviews;

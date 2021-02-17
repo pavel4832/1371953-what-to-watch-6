@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../header/header';
-import {moviesProp} from "/src/utils/valid";
+import {moviesProp} from "/src/utils/valid-props";
 
 const MovieMain = (props) => {
   const {movies, moviesIndex, isLogin} = props;

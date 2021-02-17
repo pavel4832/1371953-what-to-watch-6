@@ -3,7 +3,7 @@ import Header from "../header/header";
 import Footer from "../footer/footer";
 import PropTypes from "prop-types";
 import MovieList from "../movie-list/movie-list";
-import {moviesProp} from "../../utils/valid";
+import {moviesProp} from "../../utils/valid-props";
 
 const MyListScreen = (props) => {
   const {movies, isLogin, cardsCount} = props;

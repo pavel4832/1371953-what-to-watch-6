@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieFull from '../movie-full/movie-full';
 import MovieSame from '../movie-same/movie-same';
-import {commentsProp, moviesProp} from '../../utils/valid';
+import {commentsProp, moviesProp} from '../../utils/valid-props';
 import {getMovieById} from '../../utils/utils';
 
 const MovieScreen = (props) => {

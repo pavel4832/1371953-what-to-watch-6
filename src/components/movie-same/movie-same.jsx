@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieList from '../movie-list/movie-list';
 import Footer from '../footer/footer';
-import {moviesProp} from "../../utils/valid";
+import {moviesProp} from "../../utils/valid-props";
 
 const MovieSame = (props) => {
   const {movies, moviesIndex} = props;

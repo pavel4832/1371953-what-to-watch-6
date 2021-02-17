@@ -1,5 +1,5 @@
 import React from 'react';
-import {moviesProp} from "../../utils/valid";
+import {moviesProp} from "../../utils/valid-props";
 
 const MovieContentOverview = (props) => {
   const {movie} = props;

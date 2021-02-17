@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieMain from '../movie-main/movie-main';
 import MovieBoard from '../movie-board/movie-board';
-import {moviesProp} from "/src/utils/valid";
+import {moviesProp} from "/src/utils/valid-props";
 
 const MainScreen = (props) => {
   const {movies, isLogin} = props;

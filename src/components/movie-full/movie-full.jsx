@@ -5,7 +5,7 @@ import MovieContentOverview from '../movie-content-overview/movie-content-overvi
 import MovieContentDetails from '../movie-content-details/movie-content-details';
 import MovieContentReviews from '../movie-content-reviews/movie-content-reviews';
 import {Link} from 'react-router-dom';
-import {commentsProp, moviesProp} from '../../utils/valid';
+import {commentsProp, moviesProp} from '../../utils/valid-props';
 import {CONTENT_TYPE} from '/src/const';
 
 const MovieFull = (props) => {

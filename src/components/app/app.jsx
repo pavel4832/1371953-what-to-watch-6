@@ -8,7 +8,7 @@ import MovieScreen from '../movie-screen/movie-screen';
 import AddReviewScreen from '../add-review-screen/add-review-screen';
 import PlayerScreen from '../player-screen/player-screen';
 import ErrorScreen from '../error-screen/error-screen';
-import {moviesProp, commentsProp} from '/src/utils/valid';
+import {moviesProp, commentsProp} from '/src/utils/valid-props';
 import {CONTENT_TYPE} from '/src/const';
 
 const CountCard = {

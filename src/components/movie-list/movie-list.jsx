@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import MovieCard from '../movie-card/movie-card';
-import {moviesProp} from "../../utils/valid";
+import {moviesProp} from "../../utils/valid-props";
 
 const MovieList = (props) => {
   const [{}, setActiveMovie] = useState({});

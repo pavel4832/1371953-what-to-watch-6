@@ -9,17 +9,11 @@ import AddReviewScreen from '../add-review-screen/add-review-screen';
 import PlayerScreen from '../player-screen/player-screen';
 import ErrorScreen from '../error-screen/error-screen';
 import {moviesProp, commentsProp} from '/src/utils/valid-props';
-import {CONTENT_TYPE} from '/src/const';
-
-const CountCard = {
-  MY_LIST: 5,
-  SAME: 4,
-  ACTIVE: 0
-};
+import {CONTENT_TYPE, COUNT_CARD} from '/src/const';
 
 const App = (props) => {
   const {movies, comments, isLogin} = props;
-  const activeMovie = movies[CountCard.ACTIVE];
+  const activeMovie = movies[COUNT_CARD.ACTIVE];
 
   return (
     <BrowserRouter>
@@ -37,7 +31,7 @@ const App = (props) => {
           <MyListScreen
             movies={movies}
             isLogin={isLogin}
-            cardsCount={CountCard.MY_LIST}
+            cardsCount={COUNT_CARD.MY_LIST}
           />
         </Route>
         <Route
@@ -48,7 +42,7 @@ const App = (props) => {
               movies={movies}
               comments={comments}
               isLogin={isLogin}
-              cardsCount={CountCard.SAME}
+              cardsCount={COUNT_CARD.SAME}
               contentType={CONTENT_TYPE.OVERVIEW}
               id={Number(match.params.id)}
             />
@@ -62,7 +56,7 @@ const App = (props) => {
               movies={movies}
               comments={comments}
               isLogin={isLogin}
-              cardsCount={CountCard.SAME}
+              cardsCount={COUNT_CARD.SAME}
               contentType={CONTENT_TYPE.DETAILS}
               id={Number(match.params.id)}
             />
@@ -76,7 +70,7 @@ const App = (props) => {
               movies={movies}
               comments={comments}
               isLogin={isLogin}
-              cardsCount={CountCard.SAME}
+              cardsCount={COUNT_CARD.SAME}
               contentType={CONTENT_TYPE.REVIEWS}
               id={Number(match.params.id)}
             />

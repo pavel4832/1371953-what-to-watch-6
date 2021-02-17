@@ -1,59 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../header/header';
-import MovieContentOverview from '../movie-content-overview/movie-content-overview';
-import MovieContentDetails from '../movie-content-details/movie-content-details';
-import MovieContentReviews from '../movie-content-reviews/movie-content-reviews';
+import MovieTabs from "../movie-tabs/movie-tabs";
 import {Link} from 'react-router-dom';
 import {commentsProp, moviesProp} from '../../utils/valid-props';
-import {CONTENT_TYPE} from '/src/const';
 
 const MovieFull = (props) => {
   const {movie, comments, isLogin, contentType} = props;
   const {name, posterImage, backgroundImage, genre, released} = movie;
-
-  const [activeLink, setActiveLink] = useState(contentType);
-
-  let overviewActiveLink = ``;
-  let detailsActiveLink = ``;
-  let reviewsActiveLink = ``;
-
-  switch (activeLink) {
-    case CONTENT_TYPE.OVERVIEW:
-      overviewActiveLink = `movie-nav__item--active`;
-      detailsActiveLink = ``;
-      reviewsActiveLink = ``;
-      break;
-    case CONTENT_TYPE.DETAILS:
-      overviewActiveLink = ``;
-      detailsActiveLink = `movie-nav__item--active`;
-      reviewsActiveLink = ``;
-      break;
-    case CONTENT_TYPE.REVIEWS:
-      overviewActiveLink = ``;
-      detailsActiveLink = ``;
-      reviewsActiveLink = `movie-nav__item--active`;
-      break;
-  }
-
-  const MovieContent = () => {
-    switch (contentType) {
-      case CONTENT_TYPE.OVERVIEW:
-        return (
-          <MovieContentOverview movie={movie} />
-        );
-      case CONTENT_TYPE.DETAILS:
-        return (
-          <MovieContentDetails movie={movie} />
-        );
-      case CONTENT_TYPE.REVIEWS:
-        return (
-          <MovieContentReviews comments={comments} />
-        );
-    }
-
-    return ``;
-  };
 
   return (
     <section className="movie-card movie-card--full">
@@ -104,29 +58,11 @@ const MovieFull = (props) => {
             <img src={posterImage} alt={`${name} poster`} width="218" height="327"/>
           </div>
 
-          <div className="movie-card__desc">
-            <nav className="movie-nav movie-card__nav">
-              <ul className="movie-nav__list">
-                <li className={`movie-nav__item ${overviewActiveLink}`}>
-                  <Link to={`/films/${movie.id}`} className="movie-nav__link"
-                    onClick={() => setActiveLink(CONTENT_TYPE.OVERVIEW)}
-                  >Overview</Link>
-                </li>
-                <li className={`movie-nav__item ${detailsActiveLink}`}>
-                  <Link to={`/films/${movie.id}/details`} className="movie-nav__link"
-                    onClick={() => setActiveLink(CONTENT_TYPE.DETAILS)}
-                  >Details</Link>
-                </li>
-                <li className={`movie-nav__item ${reviewsActiveLink}`}>
-                  <Link to={`/films/${movie.id}/reviews`} className="movie-nav__link"
-                    onClick={() => setActiveLink(CONTENT_TYPE.REVIEWS)}
-                  >Reviews</Link>
-                </li>
-              </ul>
-            </nav>
-
-            <MovieContent />
-          </div>
+          <MovieTabs
+            movie={movie}
+            comments={comments}
+            contentType={contentType}
+          />
         </div>
       </div>
     </section>

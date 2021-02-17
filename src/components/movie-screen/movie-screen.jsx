@@ -7,8 +7,12 @@ import {getMovieById} from '../../utils/utils';
 
 const MovieScreen = (props) => {
   const {movies, comments, isLogin, cardsCount, contentType, id} = props;
-  const sameListMovies = movies.slice(0, cardsCount);
   const activeMovie = getMovieById(movies, id);
+  let sameListMovies = movies.filter((movie) => movie.genre === activeMovie.genre);
+
+  if (sameListMovies.length > cardsCount) {
+    sameListMovies = sameListMovies.slice(0, cardsCount);
+  }
 
   return <React.Fragment>
     <MovieFull

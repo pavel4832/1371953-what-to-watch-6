@@ -14,3 +14,9 @@ export const POSTER_SIZE = {
   WIDTH: `280`,
   HEIGHT: `175`
 };
+
+export const COUNT_CARD = {
+  MY_LIST: 5,
+  SAME: 4,
+  ACTIVE: 0
+};

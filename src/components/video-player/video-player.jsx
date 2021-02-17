@@ -1,24 +1,8 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 
-const VideoPlayer = ({defaultIsPlaying, src, poster, isMuted, width, height}) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(defaultIsPlaying);
-
+const VideoPlayer = ({isPlaying, src, poster, isMuted, width, height}) => {
   const videoRef = useRef();
-
-  useEffect(() => {
-    videoRef.current.oncanplaythrough = () => setIsLoading(false);
-    videoRef.current.onplay = () => setIsPlaying(true);
-    videoRef.current.onpause = () => setIsPlaying(false);
-
-    return () => {
-      videoRef.current.oncanplaythrough = null;
-      videoRef.current.onplay = null;
-      videoRef.current.onpause = null;
-      videoRef.current = null;
-    };
-  }, [src]);
 
   useEffect(() => {
     if (isPlaying) {
@@ -27,17 +11,26 @@ const VideoPlayer = ({defaultIsPlaying, src, poster, isMuted, width, height}) =>
     }
 
     videoRef.current.pause();
+    videoRef.current.src = videoRef.current.src;
+    videoRef.current.currentTime = 0;
   }, [isPlaying]);
 
   return (
     <div className="small-movie-card__image">
-      <video src={src} ref={videoRef} muted={isMuted} poster={poster} width={width} height={height}/>
+      <video
+        src={src}
+        ref={videoRef}
+        muted={isMuted}
+        poster={poster}
+        width={width}
+        height={height}
+      />
     </div>
   );
 };
 
 VideoPlayer.propTypes = {
-  defaultIsPlaying: PropTypes.bool.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
   src: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   isMuted: PropTypes.bool.isRequired,

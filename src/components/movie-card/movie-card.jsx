@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {moviesProp} from "../../utils/valid-props";
 import {Link} from 'react-router-dom';
@@ -6,6 +6,7 @@ import VideoPlayer from '../video-player/video-player';
 import {POSTER_SIZE} from '/src/const';
 
 const MovieCard = (props) => {
+  const [isPlay, setIsPlay] = useState(false);
   const {onActive, movie} = props;
   const {name} = movie;
 
@@ -13,10 +14,14 @@ const MovieCard = (props) => {
     <article className="small-movie-card catalog__movies-card"
       onMouseOver={() => {
         onActive(movie);
+        setIsPlay(true);
+      }}
+      onMouseLeave={() => {
+        setIsPlay(false);
       }}>
 
       <VideoPlayer
-        defaultIsPlaying={false}
+        isPlaying={isPlay}
         src={movie.previewVideoLink}
         poster={movie.posterImage}
         isMuted={true}

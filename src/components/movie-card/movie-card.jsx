@@ -2,18 +2,23 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {moviesProp} from "../../utils/valid-props";
 import {Link} from 'react-router-dom';
+import {TIMEOUT_PREVIEW} from '/src/const';
 
 const MovieCard = (props) => {
   const [isPlay, setIsPlay] = useState(false);
   const {movie, renderPlayer} = props;
   const {name} = movie;
 
+  let timer;
+
   return (
     <article className="small-movie-card catalog__movies-card"
       onMouseOver={() => {
-        setIsPlay(true);
+        clearTimeout(timer);
+        timer = setTimeout(() => setIsPlay(true), TIMEOUT_PREVIEW);
       }}
       onMouseLeave={() => {
+        clearTimeout(timer);
         setIsPlay(false);
       }}>
 

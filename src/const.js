@@ -4,6 +4,8 @@ export const COLUMN_QUANTITY = 2;
 
 export const PRECISION_RATING = 2;
 
+export const TIMEOUT_PREVIEW = 1000;
+
 export const CONTENT_TYPE = {
   OVERVIEW: `overview`,
   DETAILS: `details`,
@@ -13,4 +15,10 @@ export const CONTENT_TYPE = {
 export const POSTER_SIZE = {
   WIDTH: `280`,
   HEIGHT: `175`
+};
+
+export const COUNT_CARD = {
+  MY_LIST: 5,
+  SAME: 4,
+  ACTIVE: 0
 };

@@ -6,7 +6,7 @@ const VideoPlayer = ({isPlaying, src, poster, isMuted, width, height}) => {
 
   useEffect(() => {
     if (isPlaying) {
-      setTimeout(videoRef.current.play(), 1000);
+      videoRef.current.play();
       return;
     }
 

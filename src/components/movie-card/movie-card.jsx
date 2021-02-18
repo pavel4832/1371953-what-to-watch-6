@@ -2,32 +2,27 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {moviesProp} from "../../utils/valid-props";
 import {Link} from 'react-router-dom';
-import VideoPlayer from '../video-player/video-player';
-import {POSTER_SIZE} from '/src/const';
+import {TIMEOUT_PREVIEW} from '/src/const';
 
 const MovieCard = (props) => {
   const [isPlay, setIsPlay] = useState(false);
-  const {onActive, movie} = props;
+  const {movie, renderPlayer} = props;
   const {name} = movie;
+
+  let timer;
 
   return (
     <article className="small-movie-card catalog__movies-card"
       onMouseOver={() => {
-        onActive(movie);
-        setIsPlay(true);
+        clearTimeout(timer);
+        timer = setTimeout(() => setIsPlay(true), TIMEOUT_PREVIEW);
       }}
       onMouseLeave={() => {
+        clearTimeout(timer);
         setIsPlay(false);
       }}>
 
-      <VideoPlayer
-        isPlaying={isPlay}
-        src={movie.previewVideoLink}
-        poster={movie.posterImage}
-        isMuted={true}
-        width={POSTER_SIZE.WIDTH}
-        height={POSTER_SIZE.HEIGHT}
-      />
+      {renderPlayer(movie, isPlay)}
 
       <h3 className="small-movie-card__title">
         <Link to={`/films/${movie.id}`} className="small-movie-card__link">{name}</Link>
@@ -37,8 +32,8 @@ const MovieCard = (props) => {
 };
 
 MovieCard.propTypes = {
-  onActive: PropTypes.func.isRequired,
   movie: moviesProp,
+  renderPlayer: PropTypes.func.isRequired,
 };
 
 export default MovieCard;

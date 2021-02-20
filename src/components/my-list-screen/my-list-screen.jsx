@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import PropTypes from "prop-types";
@@ -38,4 +39,11 @@ MyListScreen.propTypes = {
   cardsCount: PropTypes.number.isRequired,
 };
 
-export default MyListScreen;
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+  isLogin: state.isLogin,
+  cardsCount: state.myCard,
+});
+
+export {MyListScreen};
+export default connect(mapStateToProps, null)(MyListScreen);

@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../store/action';
 import PropTypes from 'prop-types';
 import MovieList from '../movie-list/movie-list';
 import Footer from '../footer/footer';
@@ -7,7 +9,7 @@ import FilterList from '../filter-list/filter-list';
 import {FILTER_TYPE} from '../../const';
 
 const MovieBoard = (props) => {
-  const {movies, moviesIndex} = props;
+  const {movies, moviesIndex, onFilterChoose} = props;
 
   return (
     <div className="page-content">
@@ -17,6 +19,7 @@ const MovieBoard = (props) => {
         <FilterList
           movies={movies}
           activeLink={FILTER_TYPE.ALL_GENRE}
+          setFilter={onFilterChoose}
         />
 
         <MovieList
@@ -37,6 +40,18 @@ const MovieBoard = (props) => {
 MovieBoard.propTypes = {
   movies: PropTypes.arrayOf(moviesProp).isRequired,
   moviesIndex: PropTypes.number.isRequired,
+  onFilterChoose: PropTypes.func.isRequired,
 };
 
-export default MovieBoard;
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onFilterChoose(genre) {
+    dispatch(ActionCreator.changeGenre(genre));
+  },
+});
+
+export {MovieBoard};
+export default connect(mapStateToProps, mapDispatchToProps)(MovieBoard);

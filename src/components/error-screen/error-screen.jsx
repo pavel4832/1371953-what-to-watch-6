@@ -3,6 +3,7 @@ import Header from "../header/header";
 import Footer from "../footer/footer";
 import {Link} from 'react-router-dom';
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
 const ErrorScreen = (props) => {
   const {isLogin} = props;
@@ -30,4 +31,9 @@ ErrorScreen.propTypes = {
   isLogin: PropTypes.bool.isRequired,
 };
 
-export default ErrorScreen;
+const mapStateToProps = (state) => ({
+  isLogin: state.isLogin,
+});
+
+export {ErrorScreen};
+export default connect(mapStateToProps, null)(ErrorScreen);

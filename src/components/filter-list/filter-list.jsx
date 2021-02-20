@@ -4,7 +4,7 @@ import {moviesProp} from "../../utils/valid-props";
 import {MAX_FILTERS} from "../../const";
 
 const FilterList = (props) => {
-  const {movies, activeLink} = props;
+  const {movies, activeLink, setFilter} = props;
   const filtersName = Array.from(new Set(movies.map((movie) => movie.genre)));
   filtersName.unshift(`All genre`);
   filtersName.sort();
@@ -26,7 +26,12 @@ const FilterList = (props) => {
             className={`catalog__genres-item ${getActiveLink(filter)}`}>
             <a
               href="#"
-              className="catalog__genres-link">
+              className="catalog__genres-link"
+              onClick={(evt) => {
+                evt.preventDefault();
+                setFilter(filter);
+              }}
+            >
               {filter}
             </a>
           </li>);
@@ -38,6 +43,7 @@ const FilterList = (props) => {
 FilterList.propTypes = {
   movies: PropTypes.arrayOf(moviesProp).isRequired,
   activeLink: PropTypes.string.isRequired,
+  setFilter: PropTypes.func.isRequired,
 };
 
 export default FilterList;

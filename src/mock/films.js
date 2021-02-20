@@ -14,7 +14,7 @@ export default [
     "director": `Wes Andreson`,
     "starring": [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     "run_time": 99,
-    "genre": `Drama`,
+    "genre": `Dramas`,
     "released": 2014,
     "is_favorite": false
   },
@@ -52,7 +52,7 @@ export default [
     "director": `Wes Andreson`,
     "starring": [`Bill Murray`, `Edward`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     "run_time": 99,
-    "genre": `Drama`,
+    "genre": `Dramas`,
     "released": 2014,
     "is_favorite": false
   },
@@ -71,7 +71,7 @@ export default [
     "director": `Wes Andreson`,
     "starring": [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     "run_time": 99,
-    "genre": `Drama`,
+    "genre": `Dramas`,
     "released": 2014,
     "is_favorite": false
   },
@@ -90,7 +90,7 @@ export default [
     "director": `Wes Andreson`,
     "starring": [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     "run_time": 99,
-    "genre": `Drama`,
+    "genre": `Dramas`,
     "released": 2014,
     "is_favorite": false
   },
@@ -109,7 +109,7 @@ export default [
     "director": `Wes Andreson`,
     "starring": [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     "run_time": 99,
-    "genre": `Drama`,
+    "genre": `Dramas`,
     "released": 2014,
     "is_favorite": false
   },

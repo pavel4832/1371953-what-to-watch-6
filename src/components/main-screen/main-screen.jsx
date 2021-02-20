@@ -16,10 +16,7 @@ const MainScreen = (props) => {
       isLogin={isLogin}
     />
 
-    <MovieBoard
-      movies={movies}
-      moviesIndex={MOVIE_MAIN}
-    />
+    <MovieBoard />
   </React.Fragment>;
 };
 

@@ -1,6 +1,8 @@
 export const ActionType = {
   CHANGE_GENRE: `films/changeGenre`,
   GET_MOVIES: `films/getMovies`,
+  ACTIVE_MOVIE: `films/activeMovie`,
+  RESET_APP: `films/reset`,
 };
 
 export const ActionCreator = {
@@ -11,5 +13,12 @@ export const ActionCreator = {
   getMovies: (genre) => ({
     type: ActionType.GET_MOVIES,
     payload: genre,
+  }),
+  setActiveMovie: (movie) => ({
+    type: ActionType.ACTIVE_MOVIE,
+    payload: movie,
+  }),
+  resetApp: () => ({
+    type: ActionType.RESET_APP,
   })
 };

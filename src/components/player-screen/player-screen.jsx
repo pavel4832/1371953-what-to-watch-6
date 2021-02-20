@@ -1,9 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {moviesProp} from "../../utils/valid-props";
+import PropTypes from "prop-types";
+import {getMovieById} from "../../utils/utils";
 
 const PlayerScreen = (props) => {
-  const {movie} = props;
-  const movieUrl = movie.videoLink;
+  const {movies, id} = props;
+  const movieUrl = getMovieById(movies, id).videoLink;
 
   return (
     <div className="player">
@@ -42,7 +45,13 @@ const PlayerScreen = (props) => {
 };
 
 PlayerScreen.propTypes = {
-  movie: moviesProp,
+  movies: PropTypes.arrayOf(moviesProp).isRequired,
+  id: PropTypes.number.isRequired,
 };
 
-export default PlayerScreen;
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+});
+
+export {PlayerScreen};
+export default connect(mapStateToProps, null)(PlayerScreen);

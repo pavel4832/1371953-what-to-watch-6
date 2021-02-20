@@ -12,11 +12,12 @@ const COMMENTS = comments.map(adaptCommentToApp);
 const initialState = {
   genre: FILTER_TYPE.ALL_GENRE,
   movies: MOVIES,
+  filteredMovies: MOVIES,
   comments: COMMENTS,
+  activeMovie: MOVIES[0],
   isLogin: false,
   activeCard: COUNT_CARD.ACTIVE,
   myCard: COUNT_CARD.MY_LIST,
-  sameCard: COUNT_CARD.SAME,
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,7 +31,18 @@ const reducer = (state = initialState, action) => {
     case ActionType.GET_MOVIES:
       return {
         ...state,
-        movies: getMoviesByGenre(MOVIES, action.payload),
+        filteredMovies: getMoviesByGenre(state.movies, action.payload),
+      };
+
+    case ActionType.ACTIVE_MOVIE:
+      return {
+        ...state,
+        activeMovie: action.payload,
+      };
+
+    case ActionType.RESET_APP:
+      return {
+        ...initialState
       };
   }
 

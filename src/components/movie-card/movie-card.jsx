@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {moviesProp} from "../../utils/valid-props";
 import {Link, useHistory} from 'react-router-dom';
 import {TIMEOUT_PREVIEW} from '/src/const';
+import {ActionCreator} from "../../store/action";
 
 const MovieCard = (props) => {
   const [isPlay, setIsPlay] = useState(false);
-  const {movie, renderPlayer} = props;
+  const {movie, renderPlayer, setFilter, getMoviesByFilter, setActiveMovie} = props;
   const {name} = movie;
 
   const history = useHistory();
@@ -23,7 +25,12 @@ const MovieCard = (props) => {
         clearTimeout(timer);
         setIsPlay(false);
       }}
-      onClick={() => history.push(`/films/${movie.id}`)}>
+      onClick={() => {
+        history.push(`/films/${movie.id}`);
+        setFilter(movie.genre);
+        getMoviesByFilter(movie.genre);
+        setActiveMovie(movie);
+      }}>
 
       {renderPlayer(movie, isPlay)}
 
@@ -37,6 +44,22 @@ const MovieCard = (props) => {
 MovieCard.propTypes = {
   movie: moviesProp,
   renderPlayer: PropTypes.func.isRequired,
+  setFilter: PropTypes.func.isRequired,
+  getMoviesByFilter: PropTypes.func.isRequired,
+  setActiveMovie: PropTypes.func.isRequired,
 };
 
-export default MovieCard;
+const mapDispatchToProps = (dispatch) => ({
+  setFilter(genre) {
+    dispatch(ActionCreator.changeGenre(genre));
+  },
+  getMoviesByFilter(genre) {
+    dispatch(ActionCreator.getMovies(genre));
+  },
+  setActiveMovie(movie) {
+    dispatch(ActionCreator.setActiveMovie(movie));
+  },
+});
+
+export {MovieCard};
+export default connect(null, mapDispatchToProps)(MovieCard);

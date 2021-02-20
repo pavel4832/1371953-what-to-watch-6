@@ -35,3 +35,5 @@ export const FILTER_TYPE = {
   SCI_FI: `Sci-Fi`,
   THRILLERS: `Thrillers`
 };
+
+export const MAX_FILTERS = 9;

@@ -2,7 +2,7 @@ import films from '../mock/films';
 import {FILTER_TYPE} from "../const";
 import {ActionType} from './action';
 import {adaptMoviesToApp} from '../utils/adaptor';
-import {isMovieInGenre} from '../utils/utils';
+import {getMoviesByGenre} from '../utils/utils';
 
 const MOVIES = films.map(adaptMoviesToApp);
 
@@ -22,7 +22,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.GET_MOVIES:
       return {
         ...state,
-        movies: MOVIES.filter((movie) => isMovieInGenre(movie, action.payload)),
+        movies: getMoviesByGenre(MOVIES, action.payload),
       };
   }
 

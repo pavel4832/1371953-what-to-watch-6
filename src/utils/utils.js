@@ -8,3 +8,7 @@ export const getTimeFromMins = (mins) => {
 export const getMovieById = (movies, id) => {
   return movies.find((movie) => movie.id === id);
 };
+
+export const isMovieInGenre = (movie, genre) => {
+  return movie.genre === genre;
+};

@@ -22,3 +22,18 @@ export const COUNT_CARD = {
   SAME: 4,
   ACTIVE: 0
 };
+
+export const FILTER_TYPE = {
+  ALL_GENRE: `All genre`,
+  COMEDIES: `Comedies`,
+  CRIME: `Crime`,
+  DOCUMENTARY: `Documentary`,
+  DRAMAS: `Dramas`,
+  HORROR: `Horror`,
+  KIDS_FAMILY: `kids & Family`,
+  ROMANCE: `Romance`,
+  SCI_FI: `Sci-Fi`,
+  THRILLERS: `Thrillers`
+};
+
+export const MAX_FILTERS = 9;

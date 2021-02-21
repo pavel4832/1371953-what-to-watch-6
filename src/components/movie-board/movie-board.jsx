@@ -1,54 +1,24 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../store/action';
 import PropTypes from 'prop-types';
 import MovieList from '../movie-list/movie-list';
 import Footer from '../footer/footer';
-import {moviesProp} from "../../utils/valid-props";
+import FilterList from '../filter-list/filter-list';
 
 const MovieBoard = (props) => {
-  const {movies, moviesIndex} = props;
+  const {onFilterChoose} = props;
 
   return (
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <ul className="catalog__genres-list">
-          <li className="catalog__genres-item catalog__genres-item--active">
-            <a href="#" className="catalog__genres-link">All genres</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Comedies</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Crime</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Documentary</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Dramas</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Horror</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Kids & Family</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Romance</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Sci-Fi</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Thrillers</a>
-          </li>
-        </ul>
-
-        <MovieList
-          movies={movies}
-          moviesIndex={moviesIndex}
+        <FilterList
+          setFilter={onFilterChoose}
         />
+
+        <MovieList isSame={false} />
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -61,8 +31,14 @@ const MovieBoard = (props) => {
 };
 
 MovieBoard.propTypes = {
-  movies: PropTypes.arrayOf(moviesProp).isRequired,
-  moviesIndex: PropTypes.number.isRequired,
+  onFilterChoose: PropTypes.func.isRequired,
 };
 
-export default MovieBoard;
+const mapDispatchToProps = (dispatch) => ({
+  onFilterChoose(genre) {
+    dispatch(ActionCreator.changeGenre(genre));
+  },
+});
+
+export {MovieBoard};
+export default connect(null, mapDispatchToProps)(MovieBoard);

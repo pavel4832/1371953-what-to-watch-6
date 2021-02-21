@@ -2,6 +2,7 @@ import React from 'react';
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import PropTypes from "prop-types";
+import {connect} from 'react-redux';
 
 const SingInScreen = (props) => {
   const {isLogin} = props;
@@ -42,4 +43,9 @@ SingInScreen.propTypes = {
   isLogin: PropTypes.bool.isRequired,
 };
 
-export default SingInScreen;
+const mapStateToProps = (state) => ({
+  isLogin: state.isLogin,
+});
+
+export {SingInScreen};
+export default connect(mapStateToProps, null)(SingInScreen);

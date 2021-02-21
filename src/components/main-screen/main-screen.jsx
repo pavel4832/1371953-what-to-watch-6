@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import MovieMain from '../movie-main/movie-main';
 import MovieBoard from '../movie-board/movie-board';
 import {moviesProp} from "/src/utils/valid-props";
@@ -15,10 +16,7 @@ const MainScreen = (props) => {
       isLogin={isLogin}
     />
 
-    <MovieBoard
-      movies={movies}
-      moviesIndex={MOVIE_MAIN}
-    />
+    <MovieBoard />
   </React.Fragment>;
 };
 
@@ -27,4 +25,10 @@ MainScreen.propTypes = {
   isLogin: PropTypes.bool.isRequired,
 };
 
-export default MainScreen;
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+  isLogin: state.isLogin,
+});
+
+export {MainScreen};
+export default connect(mapStateToProps, null)(MainScreen);

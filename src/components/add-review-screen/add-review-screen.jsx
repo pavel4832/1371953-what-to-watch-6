@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../header/header';
 import AddReviewForm from '../add-review-form/add-review-form';
@@ -39,4 +40,9 @@ AddReviewScreen.propTypes = {
   isLogin: PropTypes.bool.isRequired,
 };
 
-export default AddReviewScreen;
+const mapStateToProps = (state) => ({
+  isLogin: state.isLogin,
+});
+
+export {AddReviewScreen};
+export default connect(mapStateToProps, null)(AddReviewScreen);

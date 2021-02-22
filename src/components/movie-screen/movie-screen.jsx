@@ -7,7 +7,7 @@ import {commentsProp, moviesProp} from '../../utils/valid-props';
 import {getMovieById} from '../../utils/utils';
 
 const MovieScreen = (props) => {
-  const {movies, comments, isLogin, contentType, id} = props;
+  const {movies, comments, isLogin, id} = props;
   const activeMovie = getMovieById(movies, id);
 
 
@@ -16,7 +16,6 @@ const MovieScreen = (props) => {
       movie={activeMovie}
       isLogin={isLogin}
       comments={comments}
-      contentType={contentType}
     />
 
     <MovieSame />
@@ -27,7 +26,6 @@ MovieScreen.propTypes = {
   movies: PropTypes.arrayOf(moviesProp).isRequired,
   comments: PropTypes.arrayOf(commentsProp).isRequired,
   isLogin: PropTypes.bool.isRequired,
-  contentType: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
 };
 

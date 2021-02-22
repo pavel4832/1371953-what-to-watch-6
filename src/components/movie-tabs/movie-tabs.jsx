@@ -1,14 +1,15 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {Link} from "react-router-dom";
 import {CONTENT_TYPE} from "../../const";
 import {commentsProp, moviesProp} from "../../utils/valid-props";
 import MovieContentOverview from "../movie-content-overview/movie-content-overview";
 import MovieContentDetails from "../movie-content-details/movie-content-details";
 import MovieContentReviews from "../movie-content-reviews/movie-content-reviews";
+import {ActionCreator} from "../../store/action";
 
 const MovieTabs = (props) => {
-  const {movie, contentType, comments} = props;
+  const {movie, contentType, comments, changeContent} = props;
 
   let overviewActiveLink = ``;
   let detailsActiveLink = ``;
@@ -56,13 +57,37 @@ const MovieTabs = (props) => {
       <nav className="movie-nav movie-card__nav">
         <ul className="movie-nav__list">
           <li className={`movie-nav__item ${overviewActiveLink}`}>
-            <Link to={`/films/${movie.id}`} className="movie-nav__link">Overview</Link>
+            <a
+              href="#"
+              className="movie-nav__link"
+              onClick={(evt) => {
+                evt.preventDefault();
+                changeContent(CONTENT_TYPE.OVERVIEW);
+              }}
+            >
+              Overview</a>
           </li>
           <li className={`movie-nav__item ${detailsActiveLink}`}>
-            <Link to={`/films/${movie.id}/details`} className="movie-nav__link">Details</Link>
+            <a
+              href="#"
+              className="movie-nav__link"
+              onClick={(evt) => {
+                evt.preventDefault();
+                changeContent(CONTENT_TYPE.DETAILS);
+              }}
+            >
+              Details</a>
           </li>
           <li className={`movie-nav__item ${reviewsActiveLink}`}>
-            <Link to={`/films/${movie.id}/reviews`} className="movie-nav__link">Reviews</Link>
+            <a
+              href="#"
+              className="movie-nav__link"
+              onClick={(evt) => {
+                evt.preventDefault();
+                changeContent(CONTENT_TYPE.REVIEWS);
+              }}
+            >
+              Reviews</a>
           </li>
         </ul>
       </nav>
@@ -76,6 +101,19 @@ MovieTabs.propTypes = {
   movie: moviesProp,
   contentType: PropTypes.string.isRequired,
   comments: PropTypes.arrayOf(commentsProp).isRequired,
+  changeContent: PropTypes.func.isRequired,
 };
 
-export default MovieTabs;
+const mapStateToProps = (state) => ({
+  contentType: state.contentType,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  changeContent(type) {
+    dispatch(ActionCreator.changeContent(type));
+  },
+});
+
+export {MovieTabs};
+export default connect(mapStateToProps, mapDispatchToProps)(MovieTabs);
+

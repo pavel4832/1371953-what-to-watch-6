@@ -7,7 +7,6 @@ import MovieScreen from '../movie-screen/movie-screen';
 import AddReviewScreen from '../add-review-screen/add-review-screen';
 import PlayerScreen from '../player-screen/player-screen';
 import ErrorScreen from '../error-screen/error-screen';
-import {CONTENT_TYPE, COUNT_CARD} from '/src/const';
 
 const App = () => {
 
@@ -21,36 +20,13 @@ const App = () => {
           <SingInScreen />
         </Route>
         <Route exact path="/mylist">
-          <MyListScreen
-            cardsCount={COUNT_CARD.MY_LIST}
-          />
+          <MyListScreen />
         </Route>
         <Route
           exact
           path="/films/:id"
           render={({match}) => (
             <MovieScreen
-              contentType={CONTENT_TYPE.OVERVIEW}
-              id={Number(match.params.id)}
-            />
-          )}>
-        </Route>
-        <Route
-          exact
-          path="/films/:id/details"
-          render={({match}) => (
-            <MovieScreen
-              contentType={CONTENT_TYPE.DETAILS}
-              id={Number(match.params.id)}
-            />
-          )}>
-        </Route>
-        <Route
-          exact
-          path="/films/:id/reviews"
-          render={({match}) => (
-            <MovieScreen
-              contentType={CONTENT_TYPE.REVIEWS}
               id={Number(match.params.id)}
             />
           )}>

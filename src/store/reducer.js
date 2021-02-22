@@ -19,6 +19,7 @@ const initialState = {
   activeCard: COUNT_CARD.ACTIVE,
   myCard: COUNT_CARD.MY_LIST,
   contentType: CONTENT_TYPE.OVERVIEW,
+  renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
 };
 
 const reducer = (state = initialState, action) => {
@@ -50,6 +51,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         contentType: action.payload,
+      };
+
+    case ActionType.INCREMENT_STEP:
+      return {
+        ...state,
+        renderedMovieCount: state.renderedMovieCount + action.payload,
       };
   }
 

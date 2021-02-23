@@ -1,5 +1,5 @@
 import films from '../mock/films';
-import {FILTER_TYPE} from "../const";
+import {CONTENT_TYPE, FILTER_TYPE} from "../const";
 import {ActionType} from './action';
 import {adaptCommentToApp, adaptMoviesToApp} from '../utils/adaptor';
 import {getMoviesByGenre} from '../utils/utils';
@@ -18,6 +18,8 @@ const initialState = {
   isLogin: false,
   activeCard: COUNT_CARD.ACTIVE,
   myCard: COUNT_CARD.MY_LIST,
+  contentType: CONTENT_TYPE.OVERVIEW,
+  renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
 };
 
 const reducer = (state = initialState, action) => {
@@ -43,6 +45,18 @@ const reducer = (state = initialState, action) => {
     case ActionType.RESET_APP:
       return {
         ...initialState
+      };
+
+    case ActionType.CHANGE_CONTENT:
+      return {
+        ...state,
+        contentType: action.payload,
+      };
+
+    case ActionType.INCREMENT_STEP:
+      return {
+        ...state,
+        renderedMovieCount: state.renderedMovieCount + action.payload,
       };
   }
 

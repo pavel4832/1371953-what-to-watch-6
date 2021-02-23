@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import MovieList from '../movie-list/movie-list';
 import Footer from '../footer/footer';
 import FilterList from '../filter-list/filter-list';
+import LoadMoreButton from '../load-more-button/load-more-button';
 
 const MovieBoard = (props) => {
   const {onFilterChoose} = props;
@@ -20,9 +21,7 @@ const MovieBoard = (props) => {
 
         <MovieList isSame={false} />
 
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
+        <LoadMoreButton />
       </section>
 
       <Footer />

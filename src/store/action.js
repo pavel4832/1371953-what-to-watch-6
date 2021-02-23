@@ -1,8 +1,12 @@
+import {COUNT_CARD} from '/src/const';
+
 export const ActionType = {
   CHANGE_GENRE: `films/changeGenre`,
   GET_MOVIES: `films/getMovies`,
   ACTIVE_MOVIE: `films/activeMovie`,
   RESET_APP: `films/reset`,
+  CHANGE_CONTENT: `films/changeContent`,
+  INCREMENT_STEP: `films/incrementStep`
 };
 
 export const ActionCreator = {
@@ -20,5 +24,13 @@ export const ActionCreator = {
   }),
   resetApp: () => ({
     type: ActionType.RESET_APP,
+  }),
+  changeContent: (newContent) => ({
+    type: ActionType.CHANGE_CONTENT,
+    payload: newContent,
+  }),
+  incrementStep: () => ({
+    type: ActionType.INCREMENT_STEP,
+    payload: COUNT_CARD.MAIN_PER_STEP,
   })
 };

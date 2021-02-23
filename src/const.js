@@ -20,6 +20,7 @@ export const POSTER_SIZE = {
 export const COUNT_CARD = {
   MY_LIST: 5,
   SAME: 4,
+  MAIN_PER_STEP: 8,
   ACTIVE: 0
 };
 

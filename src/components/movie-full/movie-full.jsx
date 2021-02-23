@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import {commentsProp, moviesProp} from '../../utils/valid-props';
 
 const MovieFull = (props) => {
-  const {movie, comments, isLogin, contentType} = props;
+  const {movie, comments, isLogin} = props;
   const {name, posterImage, backgroundImage, genre, released} = movie;
 
   return (
@@ -61,7 +61,6 @@ const MovieFull = (props) => {
           <MovieTabs
             movie={movie}
             comments={comments}
-            contentType={contentType}
           />
         </div>
       </div>
@@ -73,7 +72,6 @@ MovieFull.propTypes = {
   isLogin: PropTypes.bool.isRequired,
   movie: moviesProp,
   comments: PropTypes.arrayOf(commentsProp).isRequired,
-  contentType: PropTypes.string.isRequired,
 };
 
 export default MovieFull;

@@ -38,3 +38,8 @@ export const FILTER_TYPE = {
 };
 
 export const MAX_FILTERS = 9;
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};

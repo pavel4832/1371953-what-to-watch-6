@@ -1,5 +1,5 @@
 import films from '../mock/films';
-import {CONTENT_TYPE, FILTER_TYPE} from "../const";
+import {CONTENT_TYPE, FILTER_TYPE, AuthorizationStatus} from "../const";
 import {ActionType} from './action';
 import {adaptCommentToApp, adaptMoviesToApp} from '../utils/adaptor';
 import {getMoviesByGenre} from '../utils/utils';
@@ -20,6 +20,7 @@ const initialState = {
   myCard: COUNT_CARD.MY_LIST,
   contentType: CONTENT_TYPE.OVERVIEW,
   renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
 };
 
 const reducer = (state = initialState, action) => {
@@ -62,6 +63,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         movies: action.payload,
+      };
+    case ActionType.REQUIRED_AUTHORIZATION:
+      return {
+        ...state,
+        authorizationStatus: action.payload,
       };
   }
 

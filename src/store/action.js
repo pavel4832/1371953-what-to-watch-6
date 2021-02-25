@@ -8,6 +8,7 @@ export const ActionType = {
   CHANGE_CONTENT: `films/changeContent`,
   INCREMENT_STEP: `films/incrementStep`,
   LOAD_MOVIES: `data/loadMovies`,
+  REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
 };
 
 export const ActionCreator = {
@@ -37,5 +38,9 @@ export const ActionCreator = {
   loadMovies: (movies) => ({
     type: ActionType.LOAD_MOVIES,
     payload: movies,
-  })
+  }),
+  requireAuthorization: (status) => ({
+    type: ActionType.REQUIRED_AUTHORIZATION,
+    payload: status,
+  }),
 };

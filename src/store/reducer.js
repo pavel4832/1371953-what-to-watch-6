@@ -12,13 +12,14 @@ const initialState = {
   movies: [],
   filteredMovies: [],
   comments: COMMENTS,
-  activeMovie: [],
+  activeMovie: {},
   isLogin: false,
   activeCard: COUNT_CARD.ACTIVE,
   myCard: COUNT_CARD.MY_LIST,
   contentType: CONTENT_TYPE.OVERVIEW,
   renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
+  isDataLoaded: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -61,6 +62,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         movies: action.payload.map(adaptMoviesToApp),
+        isDataLoaded: true,
+      };
+    case ActionType.LOAD_PROMO_MOVIE:
+      return {
+        ...state,
+        activeMovie: adaptMoviesToApp(action.payload),
+        isDataLoaded: true,
       };
     case ActionType.REQUIRED_AUTHORIZATION:
       return {

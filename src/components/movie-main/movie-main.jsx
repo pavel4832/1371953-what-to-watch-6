@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../header/header';
 import {moviesProp} from "/src/utils/valid-props";
+import {connect} from 'react-redux';
 
 const MovieMain = (props) => {
-  const {movies, moviesIndex, isLogin} = props;
-  const movie = movies[moviesIndex];
+  const {movie, isLogin} = props;
   const {name, posterImage, backgroundImage, genre, released} = movie;
 
   return (
@@ -58,9 +58,14 @@ const MovieMain = (props) => {
 };
 
 MovieMain.propTypes = {
-  movies: PropTypes.arrayOf(moviesProp).isRequired,
-  moviesIndex: PropTypes.number.isRequired,
+  movie: moviesProp,
   isLogin: PropTypes.bool.isRequired,
 };
 
-export default MovieMain;
+const mapStateToProps = (state) => ({
+  movie: state.activeMovie,
+  isLogin: state.isLogin,
+});
+
+export {MovieMain};
+export default connect(mapStateToProps, null)(MovieMain);

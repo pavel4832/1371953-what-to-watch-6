@@ -6,7 +6,8 @@ export const ActionType = {
   ACTIVE_MOVIE: `films/activeMovie`,
   RESET_APP: `films/reset`,
   CHANGE_CONTENT: `films/changeContent`,
-  INCREMENT_STEP: `films/incrementStep`
+  INCREMENT_STEP: `films/incrementStep`,
+  LOAD_MOVIES: `data/loadMovies`,
 };
 
 export const ActionCreator = {
@@ -32,5 +33,9 @@ export const ActionCreator = {
   incrementStep: () => ({
     type: ActionType.INCREMENT_STEP,
     payload: COUNT_CARD.MAIN_PER_STEP,
+  }),
+  loadMovies: (movies) => ({
+    type: ActionType.LOAD_MOVIES,
+    payload: movies,
   })
 };

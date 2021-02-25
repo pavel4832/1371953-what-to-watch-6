@@ -58,6 +58,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         renderedMovieCount: state.renderedMovieCount + action.payload,
       };
+    case ActionType.LOAD_MOVIES:
+      return {
+        ...state,
+        movies: action.payload,
+      };
   }
 
   return state;

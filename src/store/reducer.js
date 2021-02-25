@@ -2,16 +2,13 @@ import {CONTENT_TYPE, FILTER_TYPE, AuthorizationStatus} from "../const";
 import {ActionType} from './action';
 import {adaptCommentToApp, adaptMoviesToApp} from '../utils/adaptor';
 import {getMoviesByGenre} from '../utils/utils';
-import comments from "../mock/comment";
 import {COUNT_CARD} from '/src/const';
-
-const COMMENTS = comments.map(adaptCommentToApp);
 
 const initialState = {
   genre: FILTER_TYPE.ALL_GENRE,
   movies: [],
   filteredMovies: [],
-  comments: COMMENTS,
+  comments: [],
   activeMovie: {},
   isLogin: false,
   activeCard: COUNT_CARD.ACTIVE,
@@ -20,6 +17,7 @@ const initialState = {
   renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   isDataLoaded: false,
+  isCommentsLoaded: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -33,13 +31,14 @@ const reducer = (state = initialState, action) => {
     case ActionType.GET_MOVIES:
       return {
         ...state,
-        filteredMovies: getMoviesByGenre(state.movies, action.payload),
+        filteredMovies: getMoviesByGenre(state.movies, state.genre),
       };
 
     case ActionType.ACTIVE_MOVIE:
       return {
         ...state,
         activeMovie: action.payload,
+        isCommentsLoaded: false,
       };
 
     case ActionType.RESET_APP:
@@ -69,6 +68,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         activeMovie: adaptMoviesToApp(action.payload),
         isDataLoaded: true,
+      };
+    case ActionType.LOAD_COMMENTS:
+      return {
+        ...state,
+        comments: action.payload.map(adaptCommentToApp),
+        isCommentsLoaded: true,
       };
     case ActionType.REQUIRED_AUTHORIZATION:
       return {

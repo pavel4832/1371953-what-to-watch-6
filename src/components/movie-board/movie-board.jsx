@@ -15,9 +15,7 @@ const MovieBoard = (props) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <FilterList
-          setFilter={onFilterChoose}
-        />
+        <FilterList setFilter={onFilterChoose} />
 
         <MovieList isSame={false} />
 

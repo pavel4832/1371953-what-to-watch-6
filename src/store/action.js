@@ -9,6 +9,7 @@ export const ActionType = {
   INCREMENT_STEP: `films/incrementStep`,
   LOAD_MOVIES: `data/loadMovies`,
   LOAD_PROMO_MOVIE: `data/loadPromoMovie`,
+  LOAD_COMMENTS: `data/loadComments`,
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
 };
 
@@ -17,9 +18,8 @@ export const ActionCreator = {
     type: ActionType.CHANGE_GENRE,
     payload: genre,
   }),
-  getMovies: (genre) => ({
+  getMovies: () => ({
     type: ActionType.GET_MOVIES,
-    payload: genre,
   }),
   setActiveMovie: (movie) => ({
     type: ActionType.ACTIVE_MOVIE,
@@ -43,6 +43,10 @@ export const ActionCreator = {
   loadPromoMovie: (movie) => ({
     type: ActionType.LOAD_PROMO_MOVIE,
     payload: movie,
+  }),
+  loadComments: (comments) => ({
+    type: ActionType.LOAD_COMMENTS,
+    payload: comments,
   }),
   requireAuthorization: (status) => ({
     type: ActionType.REQUIRED_AUTHORIZATION,

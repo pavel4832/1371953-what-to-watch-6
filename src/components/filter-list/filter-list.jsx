@@ -8,8 +8,8 @@ import {ActionCreator} from "../../store/action";
 const FilterList = (props) => {
   const {movies, activeLink, setFilter, getMoviesByFilter} = props;
   const filtersName = Array.from(new Set(movies.map((movie) => movie.genre)));
-  filtersName.unshift(`All genre`);
   filtersName.sort();
+  filtersName.unshift(`All genre`);
 
   const getActiveLink = (filter) => {
     return (filter === activeLink) ? `catalog__genres-item--active` : ``;
@@ -59,8 +59,8 @@ const mapDispatchToProps = (dispatch) => ({
   setFilter(genre) {
     dispatch(ActionCreator.changeGenre(genre));
   },
-  getMoviesByFilter(genre) {
-    dispatch(ActionCreator.getMovies(genre));
+  getMoviesByFilter() {
+    dispatch(ActionCreator.getMovies());
   },
 });
 

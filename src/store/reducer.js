@@ -1,4 +1,3 @@
-import films from '../mock/films';
 import {CONTENT_TYPE, FILTER_TYPE, AuthorizationStatus} from "../const";
 import {ActionType} from './action';
 import {adaptCommentToApp, adaptMoviesToApp} from '../utils/adaptor';
@@ -6,15 +5,14 @@ import {getMoviesByGenre} from '../utils/utils';
 import comments from "../mock/comment";
 import {COUNT_CARD} from '/src/const';
 
-const MOVIES = films.map(adaptMoviesToApp);
 const COMMENTS = comments.map(adaptCommentToApp);
 
 const initialState = {
   genre: FILTER_TYPE.ALL_GENRE,
-  movies: MOVIES,
-  filteredMovies: MOVIES,
+  movies: [],
+  filteredMovies: [],
   comments: COMMENTS,
-  activeMovie: MOVIES[0],
+  activeMovie: [],
   isLogin: false,
   activeCard: COUNT_CARD.ACTIVE,
   myCard: COUNT_CARD.MY_LIST,
@@ -62,7 +60,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_MOVIES:
       return {
         ...state,
-        movies: action.payload,
+        movies: action.payload.map(adaptMoviesToApp),
       };
     case ActionType.REQUIRED_AUTHORIZATION:
       return {

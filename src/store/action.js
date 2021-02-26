@@ -7,6 +7,7 @@ export const ActionType = {
   RESET_APP: `films/reset`,
   CHANGE_CONTENT: `films/changeContent`,
   INCREMENT_STEP: `films/incrementStep`,
+  REDIRECT_TO_ROUTE: `films/redirectToRoute`,
   LOAD_MOVIES: `data/loadMovies`,
   LOAD_PROMO_MOVIE: `data/loadPromoMovie`,
   LOAD_COMMENTS: `data/loadComments`,
@@ -51,5 +52,9 @@ export const ActionCreator = {
   requireAuthorization: (status) => ({
     type: ActionType.REQUIRED_AUTHORIZATION,
     payload: status,
+  }),
+  redirectToRoute: (url) => ({
+    type: ActionType.REDIRECT_TO_ROUTE,
+    payload: url,
   }),
 };

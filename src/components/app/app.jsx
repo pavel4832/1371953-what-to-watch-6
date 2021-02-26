@@ -7,6 +7,7 @@ import MovieScreen from '../movie-screen/movie-screen';
 import AddReviewScreen from '../add-review-screen/add-review-screen';
 import PlayerScreen from '../player-screen/player-screen';
 import ErrorScreen from '../error-screen/error-screen';
+import PrivateRoute from '../private-route/private-route';
 
 const App = () => {
 
@@ -19,9 +20,11 @@ const App = () => {
         <Route exact path="/login">
           <SingInScreen />
         </Route>
-        <Route exact path="/mylist">
-          <MyListScreen />
-        </Route>
+        <PrivateRoute exact
+          path="/mylist"
+          render={() => <MyListScreen />}
+        >
+        </PrivateRoute>
         <Route
           exact
           path="/films/:id"
@@ -31,9 +34,11 @@ const App = () => {
             />
           )}>
         </Route>
-        <Route exact path="/films/:id/review">
-          <AddReviewScreen />
-        </Route>
+        <PrivateRoute exact
+          path="/films/:id/review"
+          render={() => <AddReviewScreen />}
+        >
+        </PrivateRoute>
         <Route
           exact
           path="/player/:id"

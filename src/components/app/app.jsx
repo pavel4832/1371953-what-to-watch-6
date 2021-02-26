@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import {Switch, Route, Router as BrowserRouter} from 'react-router-dom';
 import MainScreen from '../main-screen/main-screen';
 import SingInScreen from '../sign-in-screen/sign-in-screen';
 import MyListScreen from '../my-list-screen/my-list-screen';
@@ -8,11 +8,12 @@ import AddReviewScreen from '../add-review-screen/add-review-screen';
 import PlayerScreen from '../player-screen/player-screen';
 import ErrorScreen from '../error-screen/error-screen';
 import PrivateRoute from '../private-route/private-route';
+import browserHistory from '../../browser-history';
 
 const App = () => {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route exact path="/">
           <MainScreen />

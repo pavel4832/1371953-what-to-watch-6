@@ -7,7 +7,7 @@ import MovieList from "../movie-list/movie-list";
 import {moviesProp} from "../../utils/valid-props";
 
 const MyListScreen = (props) => {
-  const {movies, isLogin, cardsCount} = props;
+  const {movies, isLogin, cardsCount, onCardClick} = props;
   const myListMovies = movies.slice(0, cardsCount);
 
   return (
@@ -25,6 +25,7 @@ const MyListScreen = (props) => {
         <MovieList
           movies={myListMovies}
           moviesIndex={-1}
+          onCardClick={onCardClick}
         />
       </section>
 
@@ -37,6 +38,7 @@ MyListScreen.propTypes = {
   movies: PropTypes.arrayOf(moviesProp).isRequired,
   isLogin: PropTypes.bool.isRequired,
   cardsCount: PropTypes.number.isRequired,
+  onCardClick: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({

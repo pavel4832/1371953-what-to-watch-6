@@ -2,16 +2,14 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {moviesProp} from "../../utils/valid-props";
-import {Link, useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {TIMEOUT_PREVIEW} from '/src/const';
 import {ActionCreator} from "../../store/action";
 
 const MovieCard = (props) => {
   const [isPlay, setIsPlay] = useState(false);
-  const {movie, renderPlayer, setFilter, getMoviesByFilter, setActiveMovie} = props;
+  const {movie, renderPlayer, setFilter, getMoviesByFilter, setActiveMovie, onCardClick} = props;
   const {name} = movie;
-
-  const history = useHistory();
 
   let timer;
 
@@ -26,7 +24,7 @@ const MovieCard = (props) => {
         setIsPlay(false);
       }}
       onClick={() => {
-        history.push(`/films/${movie.id}`);
+        onCardClick(`/films/${movie.id}`);
         setFilter(movie.genre);
         getMoviesByFilter(movie.genre);
         setActiveMovie(movie);
@@ -47,6 +45,7 @@ MovieCard.propTypes = {
   setFilter: PropTypes.func.isRequired,
   getMoviesByFilter: PropTypes.func.isRequired,
   setActiveMovie: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

@@ -79,6 +79,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         authorizationStatus: action.payload,
+        isLogin: state.authorizationStatus === AuthorizationStatus.AUTH,
       };
   }
 

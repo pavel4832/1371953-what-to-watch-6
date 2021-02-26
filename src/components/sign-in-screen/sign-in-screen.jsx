@@ -3,15 +3,13 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import {ActionCreator} from '../../store/action';
 import {login} from '../../store/api-actions';
 
 const SingInScreen = (props) => {
-  const {isLogin, onSubmit} = props;
+  const {isLogin, onSubmit, onLoginButtonClick, reset} = props;
   const loginRef = useRef();
   const passwordRef = useRef();
-
-  const history = useHistory();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -63,7 +61,10 @@ const SingInScreen = (props) => {
           </div>
           <div className="sign-in__submit">
             <button
-              onClick={() => history.push(`/`)}
+              onClick={() => {
+                reset();
+                onLoginButtonClick();
+              }}
               className="sign-in__btn"
               type="submit"
             >
@@ -81,6 +82,8 @@ const SingInScreen = (props) => {
 SingInScreen.propTypes = {
   isLogin: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
+  onLoginButtonClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -90,7 +93,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(authData) {
     dispatch(login(authData));
-  }
+  },
+  reset() {
+    dispatch(ActionCreator.resetApp());
+  },
 });
 
 export {SingInScreen};

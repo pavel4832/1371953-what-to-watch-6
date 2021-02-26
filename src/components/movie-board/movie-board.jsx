@@ -8,7 +8,7 @@ import FilterList from '../filter-list/filter-list';
 import LoadMoreButton from '../load-more-button/load-more-button';
 
 const MovieBoard = (props) => {
-  const {onFilterChoose} = props;
+  const {onFilterChoose, onCardClick} = props;
 
   return (
     <div className="page-content">
@@ -17,7 +17,10 @@ const MovieBoard = (props) => {
 
         <FilterList setFilter={onFilterChoose} />
 
-        <MovieList isSame={false} />
+        <MovieList
+          isSame={false}
+          onCardClick={onCardClick}
+        />
 
         <LoadMoreButton />
       </section>
@@ -29,6 +32,7 @@ const MovieBoard = (props) => {
 
 MovieBoard.propTypes = {
   onFilterChoose: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

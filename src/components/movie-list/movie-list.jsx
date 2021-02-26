@@ -9,7 +9,7 @@ import {COUNT_CARD} from "../../const";
 const MovieCardWrapped = withVideoPlayer(MovieCard);
 
 const MovieList = (props) => {
-  const {movies, isSame, activeMovie, renderedMovieCount} = props;
+  const {movies, isSame, activeMovie, renderedMovieCount, onCardClick} = props;
 
   let moviesInList = movies.slice(0, renderedMovieCount + 1).filter((movie) => movie.id !== activeMovie.id);
 
@@ -23,6 +23,7 @@ const MovieList = (props) => {
         <MovieCardWrapped
           key={card.id}
           movie={card}
+          onCardClick={onCardClick}
         />
       ))}
     </div>
@@ -34,6 +35,7 @@ MovieList.propTypes = {
   activeMovie: moviesProp,
   isSame: PropTypes.bool.isRequired,
   renderedMovieCount: PropTypes.number.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

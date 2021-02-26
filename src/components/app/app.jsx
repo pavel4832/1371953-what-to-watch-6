@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Switch, Route, Router as BrowserRouter} from 'react-router-dom';
 import MainScreen from '../main-screen/main-screen';
 import SingInScreen from '../sign-in-screen/sign-in-screen';
@@ -9,37 +9,75 @@ import PlayerScreen from '../player-screen/player-screen';
 import ErrorScreen from '../error-screen/error-screen';
 import PrivateRoute from '../private-route/private-route';
 import browserHistory from '../../browser-history';
+import LoadingScreen from '../loading-screen/loading-screen';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import {fetchMovieList, fetchPromoMovie} from '../../store/api-actions';
 
-const App = () => {
+const App = (props) => {
+  const {isDataLoaded, onLoadMovies, onLoadPromoMovie} = props;
+
+  useEffect(() => {
+    if (!isDataLoaded) {
+      onLoadMovies();
+      onLoadPromoMovie();
+    }
+  }, [isDataLoaded]);
+
+  if (!isDataLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return (
     <BrowserRouter history={browserHistory}>
       <Switch>
-        <Route exact path="/">
-          <MainScreen />
-        </Route>
-        <Route exact path="/login">
-          <SingInScreen />
-        </Route>
-        <PrivateRoute exact
+        <Route
+          exact
+          path="/"
+          render={({history}) => (
+            <MainScreen
+              onCardClick={(path) => history.push(path)}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/login"
+          render={({history}) => (
+            <SingInScreen
+              onLoginButtonClick={() => history.push(`/`)}
+            />
+          )}
+        />
+
+        <PrivateRoute
+          exact
           path="/mylist"
-          render={() => <MyListScreen />}
-        >
-        </PrivateRoute>
+          render={({history}) => (
+            <MyListScreen
+              onCardClick={(path) => history.push(path)}
+            />
+          )}
+        />
+
         <Route
           exact
           path="/films/:id"
-          render={({match}) => (
+          render={({match, history}) => (
             <MovieScreen
               id={Number(match.params.id)}
+              onCardClick={(path) => history.push(path)}
             />
-          )}>
-        </Route>
+          )}/>
+
         <PrivateRoute exact
           path="/films/:id/review"
           render={() => <AddReviewScreen />}
-        >
-        </PrivateRoute>
+        />
+
         <Route
           exact
           path="/player/:id"
@@ -47,8 +85,8 @@ const App = () => {
             <PlayerScreen
               id={Number(match.params.id)}
             />
-          )}>
-        </Route>
+          )}/>
+
         <Route>
           <ErrorScreen />
         </Route>
@@ -57,6 +95,24 @@ const App = () => {
   );
 };
 
-App.propTypes = {};
+App.propTypes = {
+  isDataLoaded: PropTypes.bool.isRequired,
+  onLoadMovies: PropTypes.func.isRequired,
+  onLoadPromoMovie: PropTypes.func.isRequired,
+};
 
-export default App;
+const mapStateToProps = (state) => ({
+  isDataLoaded: state.isDataLoaded,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onLoadMovies() {
+    dispatch(fetchMovieList());
+  },
+  onLoadPromoMovie() {
+    dispatch(fetchPromoMovie());
+  },
+});
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

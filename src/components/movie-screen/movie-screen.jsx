@@ -8,7 +8,7 @@ import {getMovieById} from '../../utils/utils';
 import {fetchComments} from "../../store/api-actions";
 
 const MovieScreen = (props) => {
-  const {movies, comments, isLogin, id, getComments, isCommentsLoaded} = props;
+  const {movies, comments, isLogin, id, getComments, isCommentsLoaded, onCardClick} = props;
   const activeMovie = getMovieById(movies, id);
 
   useEffect(() => {
@@ -24,7 +24,9 @@ const MovieScreen = (props) => {
       comments={comments}
     />
 
-    <MovieSame />
+    <MovieSame
+      onCardClick={onCardClick}
+    />
   </React.Fragment>;
 };
 
@@ -34,7 +36,8 @@ MovieScreen.propTypes = {
   isLogin: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired,
   getComments: PropTypes.func.isRequired,
-  isCommentsLoaded: PropTypes.bool.isRequired
+  isCommentsLoaded: PropTypes.bool.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

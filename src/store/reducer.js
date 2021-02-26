@@ -68,12 +68,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         movies: action.payload.map(adaptMoviesToApp),
-        isDataLoaded: true,
       };
     case ActionType.LOAD_PROMO_MOVIE:
       return {
         ...state,
         activeMovie: adaptMoviesToApp(action.payload),
+      };
+    case ActionType.SET_DATA:
+      return {
+        ...state,
         isDataLoaded: true,
       };
     case ActionType.LOAD_COMMENTS:

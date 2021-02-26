@@ -1,16 +1,16 @@
 import {ActionCreator} from './action';
 import {AuthorizationStatus} from '../const';
 
-export const fetchMovieList = () => (dispatch, _getState, api) => (
-  api.get(`/films`)
-    .then(({data}) => dispatch(ActionCreator.loadMovies(data)))
+export const fetchData = () => (dispatch, _getState, api) => {
+  Promise.all([
+    api.get(`/films`)
+      .then(({data}) => dispatch(ActionCreator.loadMovies(data))),
+    api.get(`/films/promo`)
+    .then(({data}) => dispatch(ActionCreator.loadPromoMovie(data))),
+  ])
     .then(() => dispatch(ActionCreator.getMovies()))
-);
-
-export const fetchPromoMovie = () => (dispatch, _getState, api) => (
-  api.get(`/films/promo`)
-    .then(({data}) => dispatch(ActionCreator.loadPromoMovie(data)))
-);
+    .then(() => dispatch(ActionCreator.setData()));
+};
 
 export const fetchComments = (id) => (dispatch, _getState, api) => (
   api.get(`/comments/${id}`)

@@ -12,15 +12,14 @@ import browserHistory from '../../browser-history';
 import LoadingScreen from '../loading-screen/loading-screen';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {fetchMovieList, fetchPromoMovie} from '../../store/api-actions';
+import {fetchData} from '../../store/api-actions';
 
 const App = (props) => {
-  const {isDataLoaded, onLoadMovies, onLoadPromoMovie} = props;
+  const {isDataLoaded, onLoadData} = props;
 
   useEffect(() => {
     if (!isDataLoaded) {
-      onLoadMovies();
-      onLoadPromoMovie();
+      onLoadData();
     }
   }, [isDataLoaded]);
 
@@ -93,8 +92,7 @@ const App = (props) => {
 
 App.propTypes = {
   isDataLoaded: PropTypes.bool.isRequired,
-  onLoadMovies: PropTypes.func.isRequired,
-  onLoadPromoMovie: PropTypes.func.isRequired,
+  onLoadData: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -102,11 +100,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onLoadMovies() {
-    dispatch(fetchMovieList());
-  },
-  onLoadPromoMovie() {
-    dispatch(fetchPromoMovie());
+  onLoadData() {
+    dispatch(fetchData());
   },
 });
 

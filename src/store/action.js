@@ -11,6 +11,7 @@ export const ActionType = {
   LOAD_MOVIES: `data/loadMovies`,
   LOAD_PROMO_MOVIE: `data/loadPromoMovie`,
   LOAD_COMMENTS: `data/loadComments`,
+  SET_DATA: `data/setData`,
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
 };
 
@@ -48,6 +49,9 @@ export const ActionCreator = {
   loadComments: (comments) => ({
     type: ActionType.LOAD_COMMENTS,
     payload: comments,
+  }),
+  setData: () => ({
+    type: ActionType.SET_DATA,
   }),
   requireAuthorization: (status) => ({
     type: ActionType.REQUIRED_AUTHORIZATION,

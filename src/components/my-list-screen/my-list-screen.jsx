@@ -7,13 +7,12 @@ import MovieList from "../movie-list/movie-list";
 import {moviesProp} from "../../utils/valid-props";
 
 const MyListScreen = (props) => {
-  const {movies, isLogin, cardsCount, onCardClick} = props;
+  const {movies, cardsCount, onCardClick} = props;
   const myListMovies = movies.slice(0, cardsCount);
 
   return (
     <div className="user-page">
       <Header
-        isLogin={isLogin}
         headerTitle={`My list`}
         isReview={false}
         pageType={`user`}
@@ -36,14 +35,12 @@ const MyListScreen = (props) => {
 
 MyListScreen.propTypes = {
   movies: PropTypes.arrayOf(moviesProp).isRequired,
-  isLogin: PropTypes.bool.isRequired,
   cardsCount: PropTypes.number.isRequired,
   onCardClick: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   movies: state.movies,
-  isLogin: state.isLogin,
   cardsCount: state.myCard,
 });
 

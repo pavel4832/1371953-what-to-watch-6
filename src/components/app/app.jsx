@@ -46,11 +46,7 @@ const App = (props) => {
         <Route
           exact
           path="/login"
-          render={({history}) => (
-            <SingInScreen
-              onLoginButtonClick={() => history.push(`/`)}
-            />
-          )}
+          render={() => <SingInScreen />}
         />
 
         <PrivateRoute

@@ -10,8 +10,6 @@ const initialState = {
   filteredMovies: [],
   comments: [],
   activeMovie: {},
-  isLogin: false,
-  activeCard: COUNT_CARD.ACTIVE,
   myCard: COUNT_CARD.MY_LIST,
   contentType: CONTENT_TYPE.OVERVIEW,
   renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
@@ -43,7 +41,16 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.RESET_APP:
       return {
-        ...initialState
+        ...state,
+        genre: FILTER_TYPE.ALL_GENRE,
+        filteredMovies: [],
+        comments: [],
+        activeMovie: {},
+        myCard: COUNT_CARD.MY_LIST,
+        contentType: CONTENT_TYPE.OVERVIEW,
+        renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
+        isDataLoaded: false,
+        isCommentsLoaded: false,
       };
 
     case ActionType.CHANGE_CONTENT:
@@ -79,7 +86,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         authorizationStatus: action.payload,
-        isLogin: state.authorizationStatus === AuthorizationStatus.AUTH,
       };
   }
 

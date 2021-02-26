@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import MovieFull from '../movie-full/movie-full';
 import MovieSame from '../movie-same/movie-same';
-import {commentsProp, moviesProp} from '../../utils/valid-props';
+import {moviesProp} from '../../utils/valid-props';
 import {getMovieById} from '../../utils/utils';
 import {fetchComments} from "../../store/api-actions";
 
 const MovieScreen = (props) => {
-  const {movies, comments, isLogin, id, getComments, isCommentsLoaded, onCardClick} = props;
+  const {movies, id, getComments, isCommentsLoaded, onCardClick} = props;
   const activeMovie = getMovieById(movies, id);
 
   useEffect(() => {
@@ -20,8 +20,6 @@ const MovieScreen = (props) => {
   return <React.Fragment>
     <MovieFull
       movie={activeMovie}
-      isLogin={isLogin}
-      comments={comments}
     />
 
     <MovieSame
@@ -32,8 +30,6 @@ const MovieScreen = (props) => {
 
 MovieScreen.propTypes = {
   movies: PropTypes.arrayOf(moviesProp).isRequired,
-  comments: PropTypes.arrayOf(commentsProp).isRequired,
-  isLogin: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired,
   getComments: PropTypes.func.isRequired,
   isCommentsLoaded: PropTypes.bool.isRequired,
@@ -42,8 +38,6 @@ MovieScreen.propTypes = {
 
 const mapStateToProps = (state) => ({
   movies: state.movies,
-  comments: state.comments,
-  isLogin: state.isLogin,
   isCommentsLoaded: state.isCommentsLoaded,
 });
 

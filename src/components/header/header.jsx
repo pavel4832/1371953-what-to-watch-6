@@ -5,10 +5,11 @@ import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 import UserBlock from "../user-block/user-block";
 import {Link} from 'react-router-dom';
 import {ActionCreator} from "../../store/action";
+import {AuthorizationStatus} from "../../const";
 
 const Header = (props) => {
-  const {isLogin, headerTitle, isReview, pageType, reset} = props;
-  const loginClass = (isLogin) ? `movie-card__head` : ``;
+  const {authorizationStatus, headerTitle, isReview, pageType, reset} = props;
+  const loginClass = (authorizationStatus === AuthorizationStatus.AUTH) ? `movie-card__head` : ``;
   const titleClass = (headerTitle === ``) ? `none` : `block`;
   let headerClass = ``;
   let isSignInPage = false;
@@ -43,18 +44,22 @@ const Header = (props) => {
 
       <h1 className="page-title user-page__title" style={{display: `${titleClass}`}}>{headerTitle}</h1>
 
-      <UserBlock isLogin={isLogin} isSignInPage={isSignInPage} />
+      <UserBlock isSignInPage={isSignInPage} />
     </header>
   );
 };
 
 Header.propTypes = {
-  isLogin: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   headerTitle: PropTypes.string.isRequired,
   isReview: PropTypes.bool.isRequired,
   pageType: PropTypes.string.isRequired,
   reset: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  authorizationStatus: state.authorizationStatus,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   reset() {
@@ -63,4 +68,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {Header};
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

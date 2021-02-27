@@ -2,14 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {CONTENT_TYPE} from "../../const";
-import {commentsProp, moviesProp} from "../../utils/valid-props";
+import {moviesProp} from "../../utils/valid-props";
 import MovieContentOverview from "../movie-content-overview/movie-content-overview";
 import MovieContentDetails from "../movie-content-details/movie-content-details";
 import MovieContentReviews from "../movie-content-reviews/movie-content-reviews";
 import {ActionCreator} from "../../store/action";
 
 const MovieTabs = (props) => {
-  const {movie, contentType, comments, changeContent} = props;
+  const {movie, contentType, changeContent} = props;
 
   let overviewActiveLink = ``;
   let detailsActiveLink = ``;
@@ -45,7 +45,7 @@ const MovieTabs = (props) => {
         );
       case CONTENT_TYPE.REVIEWS:
         return (
-          <MovieContentReviews comments={comments} />
+          <MovieContentReviews />
         );
     }
 
@@ -100,7 +100,6 @@ const MovieTabs = (props) => {
 MovieTabs.propTypes = {
   movie: moviesProp,
   contentType: PropTypes.string.isRequired,
-  comments: PropTypes.arrayOf(commentsProp).isRequired,
   changeContent: PropTypes.func.isRequired,
 };
 

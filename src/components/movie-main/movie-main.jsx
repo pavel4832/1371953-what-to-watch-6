@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Header from '../header/header';
 import {moviesProp} from "/src/utils/valid-props";
 import {connect} from 'react-redux';
 
 const MovieMain = (props) => {
-  const {movie, isLogin} = props;
+  const {movie} = props;
   const {name, posterImage, backgroundImage, genre, released} = movie;
 
   return (
@@ -17,7 +16,6 @@ const MovieMain = (props) => {
       <h1 className="visually-hidden">WTW</h1>
 
       <Header
-        isLogin={isLogin}
         headerTitle={``}
         isReview={false}
         pageType={``}
@@ -59,12 +57,10 @@ const MovieMain = (props) => {
 
 MovieMain.propTypes = {
   movie: moviesProp,
-  isLogin: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  movie: state.activeMovie,
-  isLogin: state.isLogin,
+  movie: state.promoMovie,
 });
 
 export {MovieMain};

@@ -1,11 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 import Header from '../header/header';
 import AddReviewForm from '../add-review-form/add-review-form';
 
-const AddReviewScreen = (props) => {
-  const {isLogin} = props;
+const AddReviewScreen = () => {
   const isReview = true;
 
   return (
@@ -18,7 +15,6 @@ const AddReviewScreen = (props) => {
         <h1 className="visually-hidden">WTW</h1>
 
         <Header
-          isLogin={isLogin}
           headerTitle={``}
           isReview={isReview}
           pageType={``}
@@ -36,13 +32,4 @@ const AddReviewScreen = (props) => {
   );
 };
 
-AddReviewScreen.propTypes = {
-  isLogin: PropTypes.bool.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  isLogin: state.isLogin,
-});
-
-export {AddReviewScreen};
-export default connect(mapStateToProps, null)(AddReviewScreen);
+export default AddReviewScreen;

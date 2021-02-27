@@ -3,13 +3,16 @@ import {COUNT_CARD} from '/src/const';
 export const ActionType = {
   CHANGE_GENRE: `films/changeGenre`,
   GET_MOVIES: `films/getMovies`,
+  GET_MY_MOVIES: `films/getMyMovies`,
   ACTIVE_MOVIE: `films/activeMovie`,
   RESET_APP: `films/reset`,
   CHANGE_CONTENT: `films/changeContent`,
   INCREMENT_STEP: `films/incrementStep`,
+  REDIRECT_TO_ROUTE: `films/redirectToRoute`,
   LOAD_MOVIES: `data/loadMovies`,
   LOAD_PROMO_MOVIE: `data/loadPromoMovie`,
   LOAD_COMMENTS: `data/loadComments`,
+  SET_DATA: `data/setData`,
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
 };
 
@@ -20,6 +23,9 @@ export const ActionCreator = {
   }),
   getMovies: () => ({
     type: ActionType.GET_MOVIES,
+  }),
+  getMyMovies: () => ({
+    type: ActionType.GET_MY_MOVIES,
   }),
   setActiveMovie: (movie) => ({
     type: ActionType.ACTIVE_MOVIE,
@@ -48,8 +54,15 @@ export const ActionCreator = {
     type: ActionType.LOAD_COMMENTS,
     payload: comments,
   }),
+  setData: () => ({
+    type: ActionType.SET_DATA,
+  }),
   requireAuthorization: (status) => ({
     type: ActionType.REQUIRED_AUTHORIZATION,
     payload: status,
+  }),
+  redirectToRoute: (url) => ({
+    type: ActionType.REDIRECT_TO_ROUTE,
+    payload: url,
   }),
 };

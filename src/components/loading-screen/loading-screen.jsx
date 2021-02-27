@@ -2,7 +2,9 @@ import React from 'react';
 
 const LoadingScreen = () => {
   return (
-    <p>Loading ...</p>
+    <div id="page-preloader">
+      <span className="spinner"></span>
+    </div>
   );
 };
 

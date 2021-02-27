@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Header from '../header/header';
 import MovieTabs from "../movie-tabs/movie-tabs";
 import {Link} from 'react-router-dom';
-import {commentsProp, moviesProp} from '../../utils/valid-props';
+import {moviesProp} from '../../utils/valid-props';
 
 const MovieFull = (props) => {
-  const {movie, comments, isLogin} = props;
+  const {movie} = props;
   const {name, posterImage, backgroundImage, genre, released} = movie;
 
   return (
@@ -19,7 +18,6 @@ const MovieFull = (props) => {
         <h1 className="visually-hidden">WTW</h1>
 
         <Header
-          isLogin={isLogin}
           headerTitle={``}
           isReview={false}
           pageType={``}
@@ -60,7 +58,6 @@ const MovieFull = (props) => {
 
           <MovieTabs
             movie={movie}
-            comments={comments}
           />
         </div>
       </div>
@@ -69,9 +66,7 @@ const MovieFull = (props) => {
 };
 
 MovieFull.propTypes = {
-  isLogin: PropTypes.bool.isRequired,
   movie: moviesProp,
-  comments: PropTypes.arrayOf(commentsProp).isRequired,
 };
 
 export default MovieFull;

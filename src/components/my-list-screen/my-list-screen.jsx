@@ -1,19 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import PropTypes from "prop-types";
 import MovieList from "../movie-list/movie-list";
-import {moviesProp} from "../../utils/valid-props";
 
 const MyListScreen = (props) => {
-  const {movies, isLogin, cardsCount} = props;
-  const myListMovies = movies.slice(0, cardsCount);
+  const {onCardClick} = props;
 
   return (
     <div className="user-page">
       <Header
-        isLogin={isLogin}
         headerTitle={`My list`}
         isReview={false}
         pageType={`user`}
@@ -23,8 +19,9 @@ const MyListScreen = (props) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <MovieList
-          movies={myListMovies}
-          moviesIndex={-1}
+          onCardClick={onCardClick}
+          myList={true}
+          isSame={false}
         />
       </section>
 
@@ -34,16 +31,7 @@ const MyListScreen = (props) => {
 };
 
 MyListScreen.propTypes = {
-  movies: PropTypes.arrayOf(moviesProp).isRequired,
-  isLogin: PropTypes.bool.isRequired,
-  cardsCount: PropTypes.number.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  movies: state.movies,
-  isLogin: state.isLogin,
-  cardsCount: state.myCard,
-});
-
-export {MyListScreen};
-export default connect(mapStateToProps, null)(MyListScreen);
+export default MyListScreen;

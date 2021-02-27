@@ -1,12 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {AuthorizationStatus} from "../../const";
 
 const UserBlock = (props) => {
-  const {isLogin, isSignInPage} = props;
+  const {authorizationStatus, isSignInPage} = props;
 
   if (!isSignInPage) {
-    if (isLogin) {
+    if (authorizationStatus === AuthorizationStatus.AUTH) {
       return (
         <div className="user-block">
           <div className="user-block__avatar">
@@ -29,8 +31,13 @@ const UserBlock = (props) => {
 };
 
 UserBlock.propTypes = {
-  isLogin: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   isSignInPage: PropTypes.bool.isRequired,
 };
 
-export default UserBlock;
+const mapStateToProps = (state) => ({
+  authorizationStatus: state.authorizationStatus,
+});
+
+export {UserBlock};
+export default connect(mapStateToProps, null)(UserBlock);

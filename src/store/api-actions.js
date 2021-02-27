@@ -9,6 +9,7 @@ export const fetchData = () => (dispatch, _getState, api) => {
     .then(({data}) => dispatch(ActionCreator.loadPromoMovie(data))),
   ])
     .then(() => dispatch(ActionCreator.getMovies()))
+    .then(() => dispatch(ActionCreator.getMyMovies()))
     .then(() => dispatch(ActionCreator.setData()));
 };
 

@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
 const Footer = (props) => {
-  const {reset} = props;
+  const {reset, updateMovies} = props;
 
   return (
     <footer className="page-footer">
@@ -15,6 +15,7 @@ const Footer = (props) => {
           className="logo__link logo__link--light"
           onClick={() => {
             reset();
+            updateMovies();
           }}
         >
           <span className="logo__letter logo__letter--1">W</span>
@@ -32,11 +33,15 @@ const Footer = (props) => {
 
 Footer.propTypes = {
   reset: PropTypes.func.isRequired,
+  updateMovies: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   reset() {
     dispatch(ActionCreator.resetApp());
+  },
+  updateMovies() {
+    dispatch(ActionCreator.getMovies());
   },
 });
 

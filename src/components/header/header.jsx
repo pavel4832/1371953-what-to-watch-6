@@ -8,7 +8,7 @@ import {ActionCreator} from "../../store/action";
 import {AuthorizationStatus} from "../../const";
 
 const Header = (props) => {
-  const {authorizationStatus, headerTitle, isReview, pageType, reset} = props;
+  const {authorizationStatus, headerTitle, isReview, pageType, reset, updateMovies} = props;
   const loginClass = (authorizationStatus === AuthorizationStatus.AUTH) ? `movie-card__head` : ``;
   const titleClass = (headerTitle === ``) ? `none` : `block`;
   let headerClass = ``;
@@ -32,6 +32,7 @@ const Header = (props) => {
           className="logo__link"
           onClick={() => {
             reset();
+            updateMovies();
           }}
         >
           <span className="logo__letter logo__letter--1">W</span>
@@ -55,6 +56,7 @@ Header.propTypes = {
   isReview: PropTypes.bool.isRequired,
   pageType: PropTypes.string.isRequired,
   reset: PropTypes.func.isRequired,
+  updateMovies: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -64,6 +66,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   reset() {
     dispatch(ActionCreator.resetApp());
+  },
+  updateMovies() {
+    dispatch(ActionCreator.getMovies());
   },
 });
 

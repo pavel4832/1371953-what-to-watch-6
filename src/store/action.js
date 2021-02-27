@@ -3,6 +3,7 @@ import {COUNT_CARD} from '/src/const';
 export const ActionType = {
   CHANGE_GENRE: `films/changeGenre`,
   GET_MOVIES: `films/getMovies`,
+  GET_MY_MOVIES: `films/getMyMovies`,
   ACTIVE_MOVIE: `films/activeMovie`,
   RESET_APP: `films/reset`,
   CHANGE_CONTENT: `films/changeContent`,
@@ -22,6 +23,9 @@ export const ActionCreator = {
   }),
   getMovies: () => ({
     type: ActionType.GET_MOVIES,
+  }),
+  getMyMovies: () => ({
+    type: ActionType.GET_MY_MOVIES,
   }),
   setActiveMovie: (movie) => ({
     type: ActionType.ACTIVE_MOVIE,

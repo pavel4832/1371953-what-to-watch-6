@@ -60,7 +60,7 @@ MovieMain.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  movie: state.activeMovie,
+  movie: state.promoMovie,
 });
 
 export {MovieMain};

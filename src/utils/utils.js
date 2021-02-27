@@ -17,3 +17,7 @@ export const getMoviesByGenre = (movies, genre) => {
   }
   return movies.filter((movie) => movie.genre === genre);
 };
+
+export const getMyMovies = (movies) => {
+  return movies.filter((movie) => movie.isFavorite === true);
+};

@@ -15,6 +15,7 @@ const MovieSame = (props) => {
         <MovieList
           isSame={true}
           onCardClick={onCardClick}
+          myList={false}
         />
       </section>
 

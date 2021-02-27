@@ -20,6 +20,7 @@ const MovieBoard = (props) => {
         <MovieList
           isSame={false}
           onCardClick={onCardClick}
+          myList={false}
         />
 
         <LoadMoreButton />

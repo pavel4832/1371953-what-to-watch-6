@@ -1,8 +1,10 @@
 import React from 'react';
 import Header from '../header/header';
 import AddReviewForm from '../add-review-form/add-review-form';
+import PropTypes from 'prop-types';
 
-const AddReviewScreen = () => {
+const AddReviewScreen = (props) => {
+  const {id} = props;
   const isReview = true;
 
   return (
@@ -25,11 +27,13 @@ const AddReviewScreen = () => {
         </div>
       </div>
 
-      <AddReviewForm
-        onPost={() => {}}
-      />
+      <AddReviewForm id={id} />
     </section>
   );
+};
+
+AddReviewScreen.propTypes = {
+  id: PropTypes.number.isRequired,
 };
 
 export default AddReviewScreen;

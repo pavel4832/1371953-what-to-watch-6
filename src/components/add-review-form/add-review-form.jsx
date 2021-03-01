@@ -1,15 +1,22 @@
 import React from 'react';
 import {RATING_STARS} from '../../const';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import {postComment} from '../../store/api-actions';
+import {connect} from 'react-redux';
 
 const AddReviewForm = (props) => {
-  const {onPost} = props;
+  const {id, onPost} = props;
   const [userFormText, setUserFormText] = React.useState(``);
   const [userFormRating, setUserFormRating] = React.useState(10);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onPost(userFormRating, userFormText);
+    const commentData = {
+      rating: userFormRating,
+      comment: userFormText
+    };
+
+    onPost(id, commentData);
   };
 
   const handleTextChange = (evt) => {
@@ -48,7 +55,15 @@ const AddReviewForm = (props) => {
 };
 
 AddReviewForm.propTypes = {
+  id: PropTypes.number.isRequired,
   onPost: PropTypes.func.isRequired,
 };
 
-export default AddReviewForm;
+const mapDispatchToProps = (dispatch) => ({
+  onPost(id, commentData) {
+    dispatch(postComment(id, commentData));
+  },
+});
+
+export {AddReviewForm};
+export default connect(null, mapDispatchToProps)(AddReviewForm);

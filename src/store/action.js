@@ -1,6 +1,12 @@
 import {COUNT_CARD} from '/src/const';
 
 export const ActionType = {
+  LOAD_MOVIES: `data/loadMovies`,
+  LOAD_PROMO_MOVIE: `data/loadPromoMovie`,
+  LOAD_ACTIVE_MOVIE: `data/loadActiveMovie`,
+  LOAD_COMMENTS: `data/loadComments`,
+  SET_DATA: `data/setData`,
+  SET_ACTIVE: `data/setActive`,
   CHANGE_GENRE: `films/changeGenre`,
   GET_MOVIES: `films/getMovies`,
   GET_MY_MOVIES: `films/getMyMovies`,
@@ -9,12 +15,7 @@ export const ActionType = {
   CHANGE_CONTENT: `films/changeContent`,
   INCREMENT_STEP: `films/incrementStep`,
   REDIRECT_TO_ROUTE: `films/redirectToRoute`,
-  LOAD_MOVIES: `data/loadMovies`,
-  LOAD_PROMO_MOVIE: `data/loadPromoMovie`,
-  LOAD_ACTIVE_MOVIE: `films/loadActiveMovie`,
-  LOAD_COMMENTS: `data/loadComments`,
-  SET_DATA: `data/setData`,
-  SET_ACTIVE: `data/setActive`,
+  SET_CONTENT_REVIEW: `films/setContentReview`,
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
 };
 
@@ -64,6 +65,9 @@ export const ActionCreator = {
   }),
   setActive: () => ({
     type: ActionType.SET_ACTIVE,
+  }),
+  setContentReview: () => ({
+    type: ActionType.SET_CONTENT_REVIEW,
   }),
   requireAuthorization: (status) => ({
     type: ActionType.REQUIRED_AUTHORIZATION,

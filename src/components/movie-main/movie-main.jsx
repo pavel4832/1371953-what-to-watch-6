@@ -2,10 +2,12 @@ import React from 'react';
 import Header from '../header/header';
 import {moviesProp} from "/src/utils/valid-props";
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import {AppRoute} from "../../const";
 
 const MovieMain = (props) => {
-  const {movie} = props;
-  const {name, posterImage, backgroundImage, genre, released} = movie;
+  const {movie, onCardClick} = props;
+  const {id, name, posterImage, backgroundImage, genre, released} = movie;
 
   return (
     <section className="movie-card">
@@ -23,7 +25,11 @@ const MovieMain = (props) => {
 
       <div className="movie-card__wrap">
         <div className="movie-card__info">
-          <div className="movie-card__poster">
+          <div
+            className="movie-card__poster"
+            onClick={() => {
+              onCardClick(`${AppRoute.FILMS}/${id}`);
+            }}>
             <img src={posterImage} alt={`${name} poster`} width="218" height="327"/>
           </div>
 
@@ -57,6 +63,7 @@ const MovieMain = (props) => {
 
 MovieMain.propTypes = {
   movie: moviesProp,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

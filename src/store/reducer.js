@@ -111,6 +111,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         authorizationStatus: action.payload,
       };
+
+    case ActionType.SET_CONTENT_REVIEW:
+      return {
+        ...state,
+        contentType: CONTENT_TYPE.REVIEWS,
+      };
   }
 
   return state;

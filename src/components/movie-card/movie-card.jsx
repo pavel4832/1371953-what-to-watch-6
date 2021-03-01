@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {moviesProp} from "../../utils/valid-props";
+import {moviesProp} from '../../utils/valid-props';
 import {Link} from 'react-router-dom';
-import {TIMEOUT_PREVIEW} from '/src/const';
-import {ActionCreator} from "../../store/action";
+import {TIMEOUT_PREVIEW, AppRoute} from '/src/const';
+import {ActionCreator} from '../../store/action';
 
 const MovieCard = (props) => {
   const [isPlay, setIsPlay] = useState(false);
   const {movie, renderPlayer, setFilter, getMoviesByFilter, resetActiveMovie, onCardClick} = props;
-  const {name} = movie;
+  const {id, name, genre} = movie;
 
   let timer;
 
@@ -24,16 +24,16 @@ const MovieCard = (props) => {
         setIsPlay(false);
       }}
       onClick={() => {
-        onCardClick(`/films/${movie.id}`);
-        setFilter(movie.genre);
-        getMoviesByFilter(movie.genre);
+        onCardClick(`${AppRoute.FILMS}/${id}`);
+        setFilter(genre);
+        getMoviesByFilter(genre);
         resetActiveMovie();
       }}>
 
       {renderPlayer(movie, isPlay)}
 
       <h3 className="small-movie-card__title">
-        <Link to={`/films/${movie.id}`} className="small-movie-card__link">{name}</Link>
+        <Link to={`${AppRoute.FILMS}/${id}`} className="small-movie-card__link">{name}</Link>
       </h3>
     </article>
   );

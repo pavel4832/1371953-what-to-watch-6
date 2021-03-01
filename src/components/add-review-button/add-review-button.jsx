@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {AppRoute, AuthorizationStatus} from "../../const";
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
+import {AuthorizationStatus, AppRoute} from '../../const';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {moviesProp} from '../../utils/valid-props';
 
 const AddReviewButton = (props) => {
-  const {authorizationStatus} = props;
+  const {movie, authorizationStatus} = props;
+  const {id} = movie;
 
   if (authorizationStatus === AuthorizationStatus.AUTH) {
     return (
-      <Link to={AppRoute.REVIEW} className="btn movie-card__button">Add review</Link>
+      <Link to={`${AppRoute.FILMS}/${id}/review`} className="btn movie-card__button">Add review</Link>
     );
   } else {
     return (``);
@@ -17,10 +19,12 @@ const AddReviewButton = (props) => {
 };
 
 AddReviewButton.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired
+  movie: moviesProp,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
+  movie: state.activeMovie,
   authorizationStatus: state.authorizationStatus,
 });
 

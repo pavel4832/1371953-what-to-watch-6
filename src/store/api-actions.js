@@ -35,3 +35,10 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
     .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
     .then(() => dispatch(ActionCreator.redirectToRoute(AppRoute.ROOT)))
 );
+
+export const postComment = (id, {rating, comment}) => (dispatch, _getState, api) => (
+  api.post(`${APIRoute.COMMENTS}/${id}`, {rating, comment})
+    .then(() => dispatch(ActionCreator.resetActiveMovie()))
+    .then(() => dispatch(ActionCreator.setContentReview()))
+    .then(() => dispatch(ActionCreator.redirectToRoute(`${AppRoute.FILMS}/${id}`)))
+);

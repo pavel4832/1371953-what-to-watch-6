@@ -61,7 +61,7 @@ const App = (props) => {
 
         <Route
           exact
-          path={AppRoute.FILMS}
+          path={`${AppRoute.FILMS}/:id`}
           render={({match, history}) => (
             <MovieScreen
               id={Number(match.params.id)}
@@ -70,9 +70,12 @@ const App = (props) => {
           )}/>
 
         <PrivateRoute exact
-          path={AppRoute.REVIEW}
-          render={() => <AddReviewScreen />}
-        />
+          path={`${AppRoute.FILMS}/:id/review`}
+          render={({match}) => (
+            <AddReviewScreen
+              id={Number(match.params.id)}
+            />
+          )}/>
 
         <Route
           exact

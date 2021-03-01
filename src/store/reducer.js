@@ -16,7 +16,7 @@ const initialState = {
   renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   isDataLoaded: false,
-  isCommentsLoaded: false,
+  isActiveMovieLoaded: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -39,21 +39,22 @@ const reducer = (state = initialState, action) => {
         myMovieList: getMyMovies(state.movies),
       };
 
-    case ActionType.ACTIVE_MOVIE:
-      return {
-        ...state,
-        activeMovie: action.payload,
-        isCommentsLoaded: false,
-      };
-
     case ActionType.RESET_APP:
       return {
         ...state,
         genre: FILTER_TYPE.ALL_GENRE,
         filteredMovies: [],
         comments: [],
+        activeMovie: state.promoMovie,
         contentType: CONTENT_TYPE.OVERVIEW,
         renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
+        isActiveMovieLoaded: false,
+      };
+
+    case ActionType.RESET_ACTIVE_MOVIE:
+      return {
+        ...state,
+        isActiveMovieLoaded: false,
       };
 
     case ActionType.CHANGE_CONTENT:
@@ -81,17 +82,28 @@ const reducer = (state = initialState, action) => {
         activeMovie: adaptMoviesToApp(action.payload),
       };
 
-    case ActionType.SET_DATA:
+    case ActionType.LOAD_ACTIVE_MOVIE:
       return {
         ...state,
-        isDataLoaded: true,
+        activeMovie: adaptMoviesToApp(action.payload),
       };
 
     case ActionType.LOAD_COMMENTS:
       return {
         ...state,
         comments: action.payload.map(adaptCommentToApp),
-        isCommentsLoaded: true,
+      };
+
+    case ActionType.SET_DATA:
+      return {
+        ...state,
+        isDataLoaded: true,
+      };
+
+    case ActionType.SET_ACTIVE:
+      return {
+        ...state,
+        isActiveMovieLoaded: true,
       };
 
     case ActionType.REQUIRED_AUTHORIZATION:

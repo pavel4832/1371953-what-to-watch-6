@@ -42,3 +42,20 @@ export const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
 };
+
+export const AppRoute = {
+  ROOT: `/`,
+  LOGIN: `/login`,
+  MY_LIST: `/mylist`,
+  FILMS: `/films/:id`,
+  REVIEW: `/films/:id/review`,
+  PLAYER: `/player/:id`
+};
+
+export const APIRoute = {
+  FILMS: `/films`,
+  PROMO: `/films/promo`,
+  COMMENTS: `/comments`,
+  LOGIN: `/login`,
+  ERROR: `/error`
+};

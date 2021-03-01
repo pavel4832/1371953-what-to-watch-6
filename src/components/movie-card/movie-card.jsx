@@ -8,7 +8,7 @@ import {ActionCreator} from "../../store/action";
 
 const MovieCard = (props) => {
   const [isPlay, setIsPlay] = useState(false);
-  const {movie, renderPlayer, setFilter, getMoviesByFilter, setActiveMovie, onCardClick} = props;
+  const {movie, renderPlayer, setFilter, getMoviesByFilter, resetActiveMovie, onCardClick} = props;
   const {name} = movie;
 
   let timer;
@@ -27,7 +27,7 @@ const MovieCard = (props) => {
         onCardClick(`/films/${movie.id}`);
         setFilter(movie.genre);
         getMoviesByFilter(movie.genre);
-        setActiveMovie(movie);
+        resetActiveMovie();
       }}>
 
       {renderPlayer(movie, isPlay)}
@@ -44,7 +44,7 @@ MovieCard.propTypes = {
   renderPlayer: PropTypes.func.isRequired,
   setFilter: PropTypes.func.isRequired,
   getMoviesByFilter: PropTypes.func.isRequired,
-  setActiveMovie: PropTypes.func.isRequired,
+  resetActiveMovie: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
 };
 
@@ -55,8 +55,8 @@ const mapDispatchToProps = (dispatch) => ({
   getMoviesByFilter(genre) {
     dispatch(ActionCreator.getMovies(genre));
   },
-  setActiveMovie(movie) {
-    dispatch(ActionCreator.setActiveMovie(movie));
+  resetActiveMovie() {
+    dispatch(ActionCreator.resetActiveMovie());
   },
 });
 

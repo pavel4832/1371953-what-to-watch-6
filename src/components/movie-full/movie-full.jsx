@@ -3,6 +3,7 @@ import Header from '../header/header';
 import MovieTabs from "../movie-tabs/movie-tabs";
 import {Link} from 'react-router-dom';
 import {moviesProp} from '../../utils/valid-props';
+import {connect} from "react-redux";
 
 const MovieFull = (props) => {
   const {movie} = props;
@@ -56,9 +57,7 @@ const MovieFull = (props) => {
             <img src={posterImage} alt={`${name} poster`} width="218" height="327"/>
           </div>
 
-          <MovieTabs
-            movie={movie}
-          />
+          <MovieTabs />
         </div>
       </div>
     </section>
@@ -69,4 +68,9 @@ MovieFull.propTypes = {
   movie: moviesProp,
 };
 
-export default MovieFull;
+const mapStateToProps = (state) => ({
+  movie: state.activeMovie,
+});
+
+export {MovieFull};
+export default connect(mapStateToProps, null)(MovieFull);

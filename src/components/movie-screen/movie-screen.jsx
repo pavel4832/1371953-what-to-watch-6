@@ -3,24 +3,26 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import MovieFull from '../movie-full/movie-full';
 import MovieSame from '../movie-same/movie-same';
-import {moviesProp} from '../../utils/valid-props';
-import {getMovieById} from '../../utils/utils';
-import {fetchComments} from "../../store/api-actions";
+import {fetchMovieData} from '../../store/api-actions';
+import LoadingScreen from '../loading-screen/loading-screen';
 
 const MovieScreen = (props) => {
-  const {movies, id, getComments, isCommentsLoaded, onCardClick} = props;
-  const activeMovie = getMovieById(movies, id);
+  const {id, getActiveMovie, isActiveMovieLoaded, onCardClick} = props;
 
   useEffect(() => {
-    if (!isCommentsLoaded) {
-      getComments(id);
+    if (!isActiveMovieLoaded) {
+      getActiveMovie(id);
     }
-  }, [isCommentsLoaded]);
+  }, [isActiveMovieLoaded]);
+
+  if (!isActiveMovieLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return <React.Fragment>
-    <MovieFull
-      movie={activeMovie}
-    />
+    <MovieFull />
 
     <MovieSame
       onCardClick={onCardClick}
@@ -29,21 +31,19 @@ const MovieScreen = (props) => {
 };
 
 MovieScreen.propTypes = {
-  movies: PropTypes.arrayOf(moviesProp).isRequired,
   id: PropTypes.number.isRequired,
-  getComments: PropTypes.func.isRequired,
-  isCommentsLoaded: PropTypes.bool.isRequired,
+  getActiveMovie: PropTypes.func.isRequired,
+  isActiveMovieLoaded: PropTypes.bool.isRequired,
   onCardClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.movies,
-  isCommentsLoaded: state.isCommentsLoaded,
+  isActiveMovieLoaded: state.isActiveMovieLoaded,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getComments(id) {
-    dispatch(fetchComments(id));
+  getActiveMovie(id) {
+    dispatch(fetchMovieData(id));
   },
 });
 

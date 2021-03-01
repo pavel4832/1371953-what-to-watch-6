@@ -17,6 +17,7 @@ export const ActionType = {
   REDIRECT_TO_ROUTE: `films/redirectToRoute`,
   SET_CONTENT_REVIEW: `films/setContentReview`,
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
+  SET_LOGIN_ERROR: `user/setLoginError`,
 };
 
 export const ActionCreator = {
@@ -72,6 +73,9 @@ export const ActionCreator = {
   requireAuthorization: (status) => ({
     type: ActionType.REQUIRED_AUTHORIZATION,
     payload: status,
+  }),
+  setLoginError: () => ({
+    type: ActionType.SET_LOGIN_ERROR,
   }),
   redirectToRoute: (url) => ({
     type: ActionType.REDIRECT_TO_ROUTE,

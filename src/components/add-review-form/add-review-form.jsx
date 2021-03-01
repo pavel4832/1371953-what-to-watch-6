@@ -31,7 +31,11 @@ const AddReviewForm = (props) => {
           <div className="rating__stars">
             {RATING_STARS.map((rating, index) => (
               <React.Fragment key={`Rating-${index}`}>
-                <input className="rating__input" id={`star-${rating}`} type="radio" name="rating" value={rating}
+                <input
+                  className="rating__input"
+                  id={`star-${rating}`}
+                  type="radio" name="rating"
+                  value={rating}
                   checked={userFormRating === index + 1}
                   onChange={() => {
                     setUserFormRating(index + 1);
@@ -43,7 +47,17 @@ const AddReviewForm = (props) => {
         </div>
 
         <div className="add-review__text">
-          <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text" value={userFormText} onChange={handleTextChange}>{userFormText}</textarea>
+          <textarea
+            className="add-review__textarea"
+            name="review-text" id="review-text"
+            placeholder="Review text"
+            value={userFormText}
+            minLength="50"
+            maxLength="400"
+            onChange={handleTextChange}
+          >
+            {userFormText}
+          </textarea>
           <div className="add-review__submit">
             <button className="add-review__btn" type="submit">Post</button>
           </div>

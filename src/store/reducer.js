@@ -17,6 +17,7 @@ const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   isDataLoaded: false,
   isActiveMovieLoaded: false,
+  isLoginError: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -116,6 +117,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         contentType: CONTENT_TYPE.REVIEWS,
+      };
+
+    case ActionType.SET_LOGIN_ERROR:
+      return {
+        ...state,
+        isLoginError: true,
       };
   }
 

@@ -48,7 +48,7 @@ export const AppRoute = {
   LOGIN: `/login`,
   MY_LIST: `/mylist`,
   FILMS: `/films`,
-  PLAYER: `/player/:id`
+  PLAYER: `/player/:id`,
 };
 
 export const APIRoute = {
@@ -58,3 +58,5 @@ export const APIRoute = {
   LOGIN: `/login`,
   ERROR: `/error`
 };
+
+export const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;

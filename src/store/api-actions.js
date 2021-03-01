@@ -34,6 +34,10 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
   api.post(APIRoute.LOGIN, {email, password})
     .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
     .then(() => dispatch(ActionCreator.redirectToRoute(AppRoute.ROOT)))
+    .catch(() => {
+      dispatch(ActionCreator.setLoginError());
+      dispatch(ActionCreator.redirectToRoute(AppRoute.LOGIN));
+    })
 );
 
 export const postComment = (id, {rating, comment}) => (dispatch, _getState, api) => (

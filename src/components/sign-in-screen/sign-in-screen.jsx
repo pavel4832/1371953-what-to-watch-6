@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import SignInErrorMessage from '../sign-in-error-message/sign-in-error-message';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {login} from '../../store/api-actions';
@@ -33,6 +34,8 @@ const SingInScreen = (props) => {
           className="sign-in__form"
           onSubmit={handleSubmit}
         >
+          <SignInErrorMessage />
+
           <div className="sign-in__fields">
             <div className="sign-in__field">
               <input
@@ -58,12 +61,7 @@ const SingInScreen = (props) => {
             </div>
           </div>
           <div className="sign-in__submit">
-            <button
-              className="sign-in__btn"
-              type="submit"
-            >
-              Sign in
-            </button>
+            <button className="sign-in__btn" type="submit">Sign in</button>
           </div>
         </form>
       </div>

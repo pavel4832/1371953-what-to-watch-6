@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {RATING_STARS, COMMENT_LENGTH} from '../../const';
 import PropTypes from 'prop-types';
 import {postComment} from '../../store/api-actions';
@@ -6,8 +6,8 @@ import {connect} from 'react-redux';
 
 const AddReviewForm = (props) => {
   const {id, onPost} = props;
-  const [userFormText, setUserFormText] = React.useState(``);
-  const [userFormRating, setUserFormRating] = React.useState(10);
+  const [userFormText, setUserFormText] = useState(``);
+  const [userFormRating, setUserFormRating] = useState(10);
 
   const isDisabled = (userFormText.toString().length < COMMENT_LENGTH.MIN || userFormText.toString().length > COMMENT_LENGTH.MAX);
 

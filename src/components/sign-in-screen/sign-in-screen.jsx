@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import SignInErrorMessage from '../sign-in-error-message/sign-in-error-message';
@@ -10,6 +10,22 @@ const SingInScreen = (props) => {
   const {onSubmit} = props;
   const loginRef = useRef();
   const passwordRef = useRef();
+  const [isValidEmail, setValid] = useState(true);
+
+  const handleButtonSubmitClick = (evt) => {
+    let stopSubmit = false;
+
+    if (loginRef.current.checkValidity() === false) {
+      setValid(false);
+      stopSubmit = true;
+    } else {
+      setValid(true);
+    }
+
+    if (stopSubmit) {
+      evt.preventDefault();
+    }
+  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -34,7 +50,7 @@ const SingInScreen = (props) => {
           className="sign-in__form"
           onSubmit={handleSubmit}
         >
-          <SignInErrorMessage />
+          <SignInErrorMessage isValidEmail={isValidEmail} />
 
           <div className="sign-in__fields">
             <div className="sign-in__field">
@@ -61,7 +77,13 @@ const SingInScreen = (props) => {
             </div>
           </div>
           <div className="sign-in__submit">
-            <button className="sign-in__btn" type="submit">Sign in</button>
+            <button
+              className="sign-in__btn"
+              type="submit"
+              onClick={handleButtonSubmitClick}
+            >
+              Sign in
+            </button>
           </div>
         </form>
       </div>

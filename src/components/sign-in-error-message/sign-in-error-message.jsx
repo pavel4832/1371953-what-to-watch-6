@@ -3,11 +3,11 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 const SignInErrorMessage = (props) => {
-  const {isLoginError} = props;
+  const {isLoginError, isValidEmail} = props;
 
-  const messageText = `We can’t recognize this email\n and password combination. Please try again.`;
+  const messageText = (!isValidEmail) ? `Please enter a valid email address` : `We can’t recognize this email\n and password combination. Please try again.`;
 
-  if (isLoginError) {
+  if (isLoginError || !isValidEmail) {
     return (
       <div className="sign-in__message">
         <p style={{whiteSpace: `pre-line`}}>
@@ -22,6 +22,7 @@ const SignInErrorMessage = (props) => {
 
 SignInErrorMessage.propTypes = {
   isLoginError: PropTypes.bool.isRequired,
+  isValidEmail: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({

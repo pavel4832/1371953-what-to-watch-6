@@ -1,5 +1,5 @@
 import React from 'react';
-import {RATING_STARS} from '../../const';
+import {RATING_STARS, COMMENT_LENGTH} from '../../const';
 import PropTypes from 'prop-types';
 import {postComment} from '../../store/api-actions';
 import {connect} from 'react-redux';
@@ -8,6 +8,8 @@ const AddReviewForm = (props) => {
   const {id, onPost} = props;
   const [userFormText, setUserFormText] = React.useState(``);
   const [userFormRating, setUserFormRating] = React.useState(10);
+
+  const isDisabled = (userFormText.toString().length < COMMENT_LENGTH.MIN || userFormText.toString().length > COMMENT_LENGTH.MAX);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -59,7 +61,7 @@ const AddReviewForm = (props) => {
             {userFormText}
           </textarea>
           <div className="add-review__submit">
-            <button className="add-review__btn" type="submit">Post</button>
+            <button className="add-review__btn" type="submit" disabled={isDisabled}>Post</button>
           </div>
 
         </div>

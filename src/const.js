@@ -60,3 +60,8 @@ export const APIRoute = {
 };
 
 export const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
+export const COMMENT_LENGTH = {
+  MIN: 50,
+  MAX: 400
+};

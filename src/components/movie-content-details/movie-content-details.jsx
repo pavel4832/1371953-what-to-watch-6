@@ -1,6 +1,7 @@
 import React from 'react';
 import {moviesProp} from '../../utils/valid-props';
 import {getTimeFromMins} from '../../utils/utils';
+import {connect} from 'react-redux';
 
 const MovieContentDetails = (props) => {
   const {movie} = props;
@@ -43,4 +44,9 @@ MovieContentDetails.propTypes = {
   movie: moviesProp,
 };
 
-export default MovieContentDetails;
+const mapStateToProps = (state) => ({
+  movie: state.activeMovie,
+});
+
+export {MovieContentDetails};
+export default connect(mapStateToProps, null)(MovieContentDetails);

@@ -13,6 +13,7 @@ import LoadingScreen from '../loading-screen/loading-screen';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {fetchData} from '../../store/api-actions';
+import {APIRoute, AppRoute} from '../../const';
 
 const App = (props) => {
   const {isDataLoaded, onLoadData} = props;
@@ -34,7 +35,7 @@ const App = (props) => {
       <Switch>
         <Route
           exact
-          path="/"
+          path={AppRoute.ROOT}
           render={({history}) => (
             <MainScreen
               onCardClick={(path) => history.push(path)}
@@ -44,13 +45,13 @@ const App = (props) => {
 
         <Route
           exact
-          path="/login"
+          path={AppRoute.LOGIN}
           render={() => <SingInScreen />}
         />
 
         <PrivateRoute
           exact
-          path="/mylist"
+          path={AppRoute.MY_LIST}
           render={({history}) => (
             <MyListScreen
               onCardClick={(path) => history.push(path)}
@@ -60,7 +61,7 @@ const App = (props) => {
 
         <Route
           exact
-          path="/films/:id"
+          path={`${AppRoute.FILMS}/:id`}
           render={({match, history}) => (
             <MovieScreen
               id={Number(match.params.id)}
@@ -69,22 +70,27 @@ const App = (props) => {
           )}/>
 
         <PrivateRoute exact
-          path="/films/:id/review"
-          render={() => <AddReviewScreen />}
-        />
+          path={`${AppRoute.FILMS}/:id/review`}
+          render={({match}) => (
+            <AddReviewScreen
+              id={Number(match.params.id)}
+            />
+          )}/>
 
         <Route
           exact
-          path="/player/:id"
+          path={AppRoute.PLAYER}
           render={({match}) => (
             <PlayerScreen
               id={Number(match.params.id)}
             />
           )}/>
 
-        <Route>
-          <ErrorScreen />
-        </Route>
+        <Route
+          exact
+          path={APIRoute.ERROR}
+          render={() => <ErrorScreen />}
+        />
       </Switch>
     </BrowserRouter>
   );

@@ -2,14 +2,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {CONTENT_TYPE} from "../../const";
-import {moviesProp} from "../../utils/valid-props";
-import MovieContentOverview from "../movie-content-overview/movie-content-overview";
-import MovieContentDetails from "../movie-content-details/movie-content-details";
-import MovieContentReviews from "../movie-content-reviews/movie-content-reviews";
-import {ActionCreator} from "../../store/action";
+import MovieContentOverview from '../movie-content-overview/movie-content-overview';
+import MovieContentDetails from '../movie-content-details/movie-content-details';
+import MovieContentReviews from '../movie-content-reviews/movie-content-reviews';
+import {ActionCreator} from '../../store/action';
 
 const MovieTabs = (props) => {
-  const {movie, contentType, changeContent} = props;
+  const {contentType, changeContent} = props;
 
   let overviewActiveLink = ``;
   let detailsActiveLink = ``;
@@ -37,11 +36,11 @@ const MovieTabs = (props) => {
     switch (contentType) {
       case CONTENT_TYPE.OVERVIEW:
         return (
-          <MovieContentOverview movie={movie} />
+          <MovieContentOverview />
         );
       case CONTENT_TYPE.DETAILS:
         return (
-          <MovieContentDetails movie={movie} />
+          <MovieContentDetails />
         );
       case CONTENT_TYPE.REVIEWS:
         return (
@@ -98,7 +97,6 @@ const MovieTabs = (props) => {
 };
 
 MovieTabs.propTypes = {
-  movie: moviesProp,
   contentType: PropTypes.string.isRequired,
   changeContent: PropTypes.func.isRequired,
 };
@@ -115,4 +113,3 @@ const mapDispatchToProps = (dispatch) => ({
 
 export {MovieTabs};
 export default connect(mapStateToProps, mapDispatchToProps)(MovieTabs);
-

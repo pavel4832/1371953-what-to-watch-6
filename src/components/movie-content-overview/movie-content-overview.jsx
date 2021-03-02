@@ -1,5 +1,6 @@
 import React from 'react';
-import {moviesProp} from "../../utils/valid-props";
+import {moviesProp} from '../../utils/valid-props';
+import {connect} from 'react-redux';
 
 const MovieContentOverview = (props) => {
   const {movie} = props;
@@ -41,4 +42,9 @@ MovieContentOverview.propTypes = {
   movie: moviesProp,
 };
 
-export default MovieContentOverview;
+const mapStateToProps = (state) => ({
+  movie: state.activeMovie,
+});
+
+export {MovieContentOverview};
+export default connect(mapStateToProps, null)(MovieContentOverview);

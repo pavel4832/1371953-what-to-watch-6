@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import {commentsProp} from '../../utils/valid-props';
 import {COLUMN_QUANTITY, PRECISION_RATING} from '/src/const';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 
 const MovieContentReviews = (props) => {
   const {comments} = props;

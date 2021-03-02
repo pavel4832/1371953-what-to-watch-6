@@ -42,3 +42,26 @@ export const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
 };
+
+export const AppRoute = {
+  ROOT: `/`,
+  LOGIN: `/login`,
+  MY_LIST: `/mylist`,
+  FILMS: `/films`,
+  PLAYER: `/player/:id`,
+};
+
+export const APIRoute = {
+  FILMS: `/films`,
+  PROMO: `/films/promo`,
+  COMMENTS: `/comments`,
+  LOGIN: `/login`,
+  ERROR: `/error`
+};
+
+export const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
+export const COMMENT_LENGTH = {
+  MIN: 50,
+  MAX: 400
+};

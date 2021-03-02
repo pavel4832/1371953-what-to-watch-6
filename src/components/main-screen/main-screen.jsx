@@ -8,7 +8,7 @@ const MainScreen = (props) => {
   const {onCardClick} = props;
 
   return <React.Fragment>
-    <MovieMain />
+    <MovieMain onCardClick={onCardClick} />
 
     <MovieBoard onCardClick={onCardClick} />
   </React.Fragment>;

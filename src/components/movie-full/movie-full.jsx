@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from '../header/header';
-import MovieTabs from "../movie-tabs/movie-tabs";
-import {Link} from 'react-router-dom';
+import MovieTabs from '../movie-tabs/movie-tabs';
+import AddReviewButton from '../add-review-button/add-review-button';
 import {moviesProp} from '../../utils/valid-props';
+import {connect} from "react-redux";
 
 const MovieFull = (props) => {
   const {movie} = props;
@@ -44,7 +45,7 @@ const MovieFull = (props) => {
                 </svg>
                 <span>My list</span>
               </button>
-              <Link to="/films/:id/review" href="add-review.html" className="btn movie-card__button">Add review</Link>
+              <AddReviewButton />
             </div>
           </div>
         </div>
@@ -56,9 +57,7 @@ const MovieFull = (props) => {
             <img src={posterImage} alt={`${name} poster`} width="218" height="327"/>
           </div>
 
-          <MovieTabs
-            movie={movie}
-          />
+          <MovieTabs />
         </div>
       </div>
     </section>
@@ -69,4 +68,9 @@ MovieFull.propTypes = {
   movie: moviesProp,
 };
 
-export default MovieFull;
+const mapStateToProps = (state) => ({
+  movie: state.activeMovie,
+});
+
+export {MovieFull};
+export default connect(mapStateToProps, null)(MovieFull);

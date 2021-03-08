@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {moviesProp} from "../../utils/valid-props";
 import {MAX_FILTERS} from "../../const";
-import {ActionCreator} from "../../store/action";
+import {changeGenre, getMovies} from "../../store/action";
 
 const FilterList = (props) => {
   const {movies, activeLink, setFilter, getMoviesByFilter} = props;
@@ -57,10 +57,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setFilter(genre) {
-    dispatch(ActionCreator.changeGenre(genre));
+    dispatch(changeGenre(genre));
   },
   getMoviesByFilter() {
-    dispatch(ActionCreator.getMovies());
+    dispatch(getMovies());
   },
 });
 

@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 import UserBlock from "../user-block/user-block";
 import {Link} from 'react-router-dom';
-import {ActionCreator} from "../../store/action";
+import {getMovies, resetApp} from "../../store/action";
 import {AuthorizationStatus} from "../../const";
 
 const Header = (props) => {
-  const {authorizationStatus, headerTitle, isReview, pageType, reset, updateMovies} = props;
+  const {authorizationStatus, headerTitle, isReview, pageType, onResetApp, updateMovies} = props;
   const loginClass = (authorizationStatus === AuthorizationStatus.AUTH) ? `movie-card__head` : ``;
   const titleClass = (headerTitle === ``) ? `none` : `block`;
   let headerClass = ``;
@@ -31,7 +31,7 @@ const Header = (props) => {
           to="/"
           className="logo__link"
           onClick={() => {
-            reset();
+            onResetApp();
             updateMovies();
           }}
         >
@@ -55,7 +55,7 @@ Header.propTypes = {
   headerTitle: PropTypes.string.isRequired,
   isReview: PropTypes.bool.isRequired,
   pageType: PropTypes.string.isRequired,
-  reset: PropTypes.func.isRequired,
+  onResetApp: PropTypes.func.isRequired,
   updateMovies: PropTypes.func.isRequired,
 };
 
@@ -64,11 +64,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  reset() {
-    dispatch(ActionCreator.resetApp());
+  onResetApp() {
+    dispatch(resetApp());
   },
   updateMovies() {
-    dispatch(ActionCreator.getMovies());
+    dispatch(getMovies());
   },
 });
 

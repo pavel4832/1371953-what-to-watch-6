@@ -1,11 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {ActionCreator} from "../../store/action";
+import {getMovies, resetApp} from "../../store/action";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
 const Footer = (props) => {
-  const {reset, updateMovies} = props;
+  const {onResetApp, updateMovies} = props;
 
   return (
     <footer className="page-footer">
@@ -14,7 +14,7 @@ const Footer = (props) => {
           to="/"
           className="logo__link logo__link--light"
           onClick={() => {
-            reset();
+            onResetApp();
             updateMovies();
           }}
         >
@@ -32,16 +32,16 @@ const Footer = (props) => {
 };
 
 Footer.propTypes = {
-  reset: PropTypes.func.isRequired,
+  onResetApp: PropTypes.func.isRequired,
   updateMovies: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  reset() {
-    dispatch(ActionCreator.resetApp());
+  onResetApp() {
+    dispatch(resetApp());
   },
   updateMovies() {
-    dispatch(ActionCreator.getMovies());
+    dispatch(getMovies());
   },
 });
 

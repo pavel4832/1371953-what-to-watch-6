@@ -1,19 +1,20 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import {moviesProp} from "../../utils/valid-props";
+import {useSelector, useDispatch} from 'react-redux';
 import {MAX_FILTERS} from "../../const";
-import {changeGenre} from "../../store/action";
-import {getMovies, getGenre} from '../../store/movies-data/selectors';
+import {changeGenre, getMovies} from "../../store/action";
 
-const FilterList = (props) => {
-  const {movies, activeLink, setFilter, getMoviesByFilter} = props;
+
+const FilterList = () => {
+  const {movies, genre} = useSelector((state) => state.DATA);
   const filtersName = Array.from(new Set(movies.map((movie) => movie.genre)));
   filtersName.sort();
   filtersName.unshift(`All genre`);
 
+  const dispatch = useDispatch();
+
+
   const getActiveLink = (filter) => {
-    return (filter === activeLink) ? `catalog__genres-item--active` : ``;
+    return (filter === genre) ? `catalog__genres-item--active` : ``;
   };
 
   if (filtersName.length > MAX_FILTERS + 1) {
@@ -32,8 +33,8 @@ const FilterList = (props) => {
               className="catalog__genres-link"
               onClick={(evt) => {
                 evt.preventDefault();
-                setFilter(filter);
-                getMoviesByFilter(filter);
+                dispatch(changeGenre(filter));
+                dispatch(getMovies(filter));
               }}
             >
               {filter}
@@ -44,26 +45,4 @@ const FilterList = (props) => {
   );
 };
 
-FilterList.propTypes = {
-  movies: PropTypes.arrayOf(moviesProp).isRequired,
-  activeLink: PropTypes.string.isRequired,
-  setFilter: PropTypes.func.isRequired,
-  getMoviesByFilter: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  movies: getMovies(state),
-  activeLink: getGenre(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setFilter(genre) {
-    dispatch(changeGenre(genre));
-  },
-  getMoviesByFilter() {
-    dispatch(getMovies());
-  },
-});
-
-export {FilterList};
-export default connect(mapStateToProps, mapDispatchToProps)(FilterList);
+export default FilterList;

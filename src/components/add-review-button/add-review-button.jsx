@@ -1,14 +1,11 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import {moviesProp} from '../../utils/valid-props';
 import {AuthorizationStatus, AppRoute} from '../../const';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {getActiveMovie} from '../../store/movies-data/selectors';
-import {getAuthorizationStatus} from '../../store/user/selectors';
 
-const AddReviewButton = (props) => {
-  const {movie, authorizationStatus} = props;
+const AddReviewButton = () => {
+  const {movie} = useSelector((state) => state.DATA);
+  const {authorizationStatus} = useSelector((state) => state.USER);
   const {id} = movie;
 
   if (authorizationStatus === AuthorizationStatus.AUTH) {
@@ -20,15 +17,4 @@ const AddReviewButton = (props) => {
   }
 };
 
-AddReviewButton.propTypes = {
-  movie: moviesProp,
-  authorizationStatus: PropTypes.string.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  movie: getActiveMovie(state),
-  authorizationStatus: getAuthorizationStatus(state),
-});
-
-export {AddReviewButton};
-export default connect(mapStateToProps, null)(AddReviewButton);
+export default AddReviewButton;

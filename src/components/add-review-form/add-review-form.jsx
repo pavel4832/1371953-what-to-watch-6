@@ -2,12 +2,14 @@ import React, {useState} from 'react';
 import {RATING_STARS, COMMENT_LENGTH} from '../../const';
 import PropTypes from 'prop-types';
 import {postComment} from '../../store/api-actions';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 const AddReviewForm = (props) => {
-  const {id, onPost} = props;
+  const {id} = props;
   const [userFormText, setUserFormText] = useState(``);
   const [userFormRating, setUserFormRating] = useState(10);
+
+  const dispatch = useDispatch();
 
   const isDisabled = (userFormText.toString().length < COMMENT_LENGTH.MIN || userFormText.toString().length > COMMENT_LENGTH.MAX);
 
@@ -18,7 +20,7 @@ const AddReviewForm = (props) => {
       comment: userFormText
     };
 
-    onPost(id, commentData);
+    dispatch(postComment(id, commentData));
   };
 
   const handleTextChange = (evt) => {
@@ -72,14 +74,6 @@ const AddReviewForm = (props) => {
 
 AddReviewForm.propTypes = {
   id: PropTypes.number.isRequired,
-  onPost: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onPost(id, commentData) {
-    dispatch(postComment(id, commentData));
-  },
-});
-
-export {AddReviewForm};
-export default connect(null, mapDispatchToProps)(AddReviewForm);
+export default AddReviewForm;

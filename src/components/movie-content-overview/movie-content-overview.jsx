@@ -1,6 +1,7 @@
 import React from 'react';
 import {moviesProp} from '../../utils/valid-props';
 import {connect} from 'react-redux';
+import {getActiveMovie} from '../../store/movies-data/selectors';
 
 const MovieContentOverview = (props) => {
   const {movie} = props;
@@ -42,8 +43,8 @@ MovieContentOverview.propTypes = {
   movie: moviesProp,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  movie: DATA.activeMovie,
+const mapStateToProps = (state) => ({
+  movie: getActiveMovie(state),
 });
 
 export {MovieContentOverview};

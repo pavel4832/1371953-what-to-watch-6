@@ -5,6 +5,7 @@ import MovieFull from '../movie-full/movie-full';
 import MovieSame from '../movie-same/movie-same';
 import {fetchMovieData} from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
+import {getActiveMovieLoadStatus} from '../../store/movies-data/selectors';
 
 const MovieScreen = (props) => {
   const {id, getActiveMovie, isActiveMovieLoaded, onCardClick} = props;
@@ -37,8 +38,8 @@ MovieScreen.propTypes = {
   onCardClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  isActiveMovieLoaded: DATA.isActiveMovieLoaded,
+const mapStateToProps = (state) => ({
+  isActiveMovieLoaded: getActiveMovieLoadStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

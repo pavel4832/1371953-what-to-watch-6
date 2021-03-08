@@ -6,6 +6,7 @@ import UserBlock from "../user-block/user-block";
 import {Link} from 'react-router-dom';
 import {getMovies, resetApp} from "../../store/action";
 import {AuthorizationStatus} from "../../const";
+import {getAuthorizationStatus} from '../../store/user/selectors';
 
 const Header = (props) => {
   const {authorizationStatus, headerTitle, isReview, pageType, onResetApp, updateMovies} = props;
@@ -59,8 +60,8 @@ Header.propTypes = {
   updateMovies: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({USER}) => ({
-  authorizationStatus: USER.authorizationStatus,
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

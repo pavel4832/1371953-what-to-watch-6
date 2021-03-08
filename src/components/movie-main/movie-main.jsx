@@ -3,7 +3,8 @@ import Header from '../header/header';
 import {moviesProp} from "/src/utils/valid-props";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {AppRoute} from "../../const";
+import {AppRoute} from '../../const';
+import {getPromoMovie} from '../../store/movies-data/selectors';
 
 const MovieMain = (props) => {
   const {movie, onCardClick} = props;
@@ -66,8 +67,8 @@ MovieMain.propTypes = {
   onCardClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  movie: DATA.promoMovie,
+const mapStateToProps = (state) => ({
+  movie: getPromoMovie(state),
 });
 
 export {MovieMain};

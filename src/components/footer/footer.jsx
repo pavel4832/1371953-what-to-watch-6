@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {getMovies, resetApp} from "../../store/action";
-import {connect} from "react-redux";
-import PropTypes from "prop-types";
+import {getMovies, resetApp} from '../../store/action';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 const Footer = (props) => {
   const {onResetApp, updateMovies} = props;

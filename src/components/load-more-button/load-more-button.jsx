@@ -1,8 +1,9 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import {incrementStep} from '../../store/action';
-import {moviesProp} from "../../utils/valid-props";
-import {connect} from "react-redux";
+import {moviesProp} from '../../utils/valid-props';
+import {connect} from 'react-redux';
+import {getFilteredMovies, getRenderedMovieCount} from '../../store/movies-data/selectors';
 
 const LoadMoreButton = (props) => {
   const {movies, renderedMovieCount, setNewStep} = props;
@@ -29,12 +30,12 @@ const LoadMoreButton = (props) => {
 LoadMoreButton.propTypes = {
   movies: PropTypes.arrayOf(moviesProp).isRequired,
   renderedMovieCount: PropTypes.number.isRequired,
+  setNewStep: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  movies: DATA.filteredMovies,
-  renderedMovieCount: DATA.renderedMovieCount,
-  setNewStep: PropTypes.func.isRequired,
+const mapStateToProps = (state) => ({
+  movies: getFilteredMovies(state),
+  renderedMovieCount: getRenderedMovieCount(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

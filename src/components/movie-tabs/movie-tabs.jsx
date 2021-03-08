@@ -6,6 +6,7 @@ import MovieContentOverview from '../movie-content-overview/movie-content-overvi
 import MovieContentDetails from '../movie-content-details/movie-content-details';
 import MovieContentReviews from '../movie-content-reviews/movie-content-reviews';
 import {changeContent} from '../../store/action';
+import {getContentType} from '../../store/movies-data/selectors';
 
 const MovieTabs = (props) => {
   const {contentType, onChangeContent} = props;
@@ -101,8 +102,8 @@ MovieTabs.propTypes = {
   onChangeContent: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  contentType: DATA.contentType,
+const mapStateToProps = (state) => ({
+  contentType: getContentType(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

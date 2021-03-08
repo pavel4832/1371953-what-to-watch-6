@@ -5,12 +5,12 @@ import {getMoviesByGenre, getMyMovies} from '../../utils/utils';
 
 const initialState = {
   movies: [],
+  filteredMovies: [],
+  myMovieList: [],
   comments: [],
   activeMovie: {},
   promoMovie: {},
   genre: FILTER_TYPE.ALL_GENRE,
-  filteredMovies: [],
-  myMovieList: [],
   contentType: CONTENT_TYPE.OVERVIEW,
   renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
   isDataLoaded: false,

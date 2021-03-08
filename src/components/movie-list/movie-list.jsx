@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import MovieCard from '../movie-card/movie-card';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player';
-import {moviesProp} from "../../utils/valid-props";
-import {COUNT_CARD} from "../../const";
+import {moviesProp} from '../../utils/valid-props';
+import {COUNT_CARD} from '../../const';
+import {getFilteredMovies, getMyMovieList, getActiveMovie, getPromoMovie, getRenderedMovieCount} from '../../store/movies-data/selectors';
 
 const MovieCardWrapped = withVideoPlayer(MovieCard);
 
@@ -48,12 +49,12 @@ MovieList.propTypes = {
   onCardClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  movies: DATA.filteredMovies,
-  myMovies: DATA.myMovieList,
-  activeMovie: DATA.activeMovie,
-  promoMovie: DATA.promoMovie,
-  renderedMovieCount: DATA.renderedMovieCount,
+const mapStateToProps = (state) => ({
+  movies: getFilteredMovies(state),
+  myMovies: getMyMovieList(state),
+  activeMovie: getActiveMovie(state),
+  promoMovie: getPromoMovie(state),
+  renderedMovieCount: getRenderedMovieCount(state),
 });
 
 export {MovieList};

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {AuthorizationStatus} from '../../const';
+import {getAuthorizationStatus} from '../../store/user/selectors';
 
 const UserBlock = (props) => {
   const {authorizationStatus, isSignInPage} = props;
@@ -35,8 +36,8 @@ UserBlock.propTypes = {
   isSignInPage: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({USER}) => ({
-  authorizationStatus: USER.authorizationStatus,
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 export {UserBlock};

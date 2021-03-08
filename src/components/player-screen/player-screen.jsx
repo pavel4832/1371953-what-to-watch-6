@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {moviesProp} from "../../utils/valid-props";
-import PropTypes from "prop-types";
-import {getMovieById} from "../../utils/utils";
+import {moviesProp} from '../../utils/valid-props';
+import PropTypes from 'prop-types';
+import {getMovieById} from '../../utils/utils';
+import {getMovies} from '../../store/movies-data/selectors';
 
 const PlayerScreen = (props) => {
   const {movies, id} = props;
@@ -49,8 +50,8 @@ PlayerScreen.propTypes = {
   id: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  movies: DATA.movies,
+const mapStateToProps = (state) => ({
+  movies: getMovies(state),
 });
 
 export {PlayerScreen};

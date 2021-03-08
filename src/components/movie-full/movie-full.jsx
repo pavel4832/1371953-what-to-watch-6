@@ -4,6 +4,7 @@ import MovieTabs from '../movie-tabs/movie-tabs';
 import AddReviewButton from '../add-review-button/add-review-button';
 import {moviesProp} from '../../utils/valid-props';
 import {connect} from "react-redux";
+import {getActiveMovie} from '../../store/movies-data/selectors';
 
 const MovieFull = (props) => {
   const {movie} = props;
@@ -68,8 +69,8 @@ MovieFull.propTypes = {
   movie: moviesProp,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  movie: DATA.activeMovie,
+const mapStateToProps = (state) => ({
+  movie: getActiveMovie(state),
 });
 
 export {MovieFull};

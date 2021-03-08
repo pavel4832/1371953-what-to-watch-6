@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 import {commentsProp} from '../../utils/valid-props';
 import {COLUMN_QUANTITY, PRECISION_RATING} from '/src/const';
 import {connect} from 'react-redux';
+import {getComments} from '../../store/movies-data/selectors';
 
 const MovieContentReviews = (props) => {
   const {comments} = props;
@@ -58,8 +59,8 @@ MovieContentReviews.propTypes = {
   comments: PropTypes.arrayOf(commentsProp).isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  comments: DATA.comments,
+const mapStateToProps = (state) => ({
+  comments: getComments(state),
 });
 
 export {MovieContentReviews};

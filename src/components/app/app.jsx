@@ -14,6 +14,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {fetchData} from '../../store/api-actions';
 import {APIRoute, AppRoute} from '../../const';
+import {getLoadedDataStatus} from '../../store/movies-data/selectors';
 
 const App = (props) => {
   const {isDataLoaded, onLoadData} = props;
@@ -101,8 +102,8 @@ App.propTypes = {
   onLoadData: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  isDataLoaded: DATA.isDataLoaded,
+const mapStateToProps = (state) => ({
+  isDataLoaded: getLoadedDataStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

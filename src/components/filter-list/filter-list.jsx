@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {moviesProp} from "../../utils/valid-props";
 import {MAX_FILTERS} from "../../const";
-import {changeGenre, getMovies} from "../../store/action";
+import {changeGenre} from "../../store/action";
+import {getMovies, getGenre} from '../../store/movies-data/selectors';
 
 const FilterList = (props) => {
   const {movies, activeLink, setFilter, getMoviesByFilter} = props;
@@ -50,9 +51,9 @@ FilterList.propTypes = {
   getMoviesByFilter: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  movies: DATA.movies,
-  activeLink: DATA.genre,
+const mapStateToProps = (state) => ({
+  movies: getMovies(state),
+  activeLink: getGenre(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

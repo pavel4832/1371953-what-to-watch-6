@@ -2,6 +2,7 @@ import React from 'react';
 import {moviesProp} from '../../utils/valid-props';
 import {getTimeFromMins} from '../../utils/utils';
 import {connect} from 'react-redux';
+import {getActiveMovie} from '../../store/movies-data/selectors';
 
 const MovieContentDetails = (props) => {
   const {movie} = props;
@@ -44,8 +45,8 @@ MovieContentDetails.propTypes = {
   movie: moviesProp,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  movie: DATA.activeMovie,
+const mapStateToProps = (state) => ({
+  movie: getActiveMovie(state),
 });
 
 export {MovieContentDetails};

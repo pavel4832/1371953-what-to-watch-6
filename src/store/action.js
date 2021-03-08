@@ -20,65 +20,79 @@ export const ActionType = {
   SET_LOGIN_ERROR: `user/setLoginError`,
 };
 
-export const ActionCreator = {
-  changeGenre: (genre) => ({
-    type: ActionType.CHANGE_GENRE,
-    payload: genre,
-  }),
-  getMovies: () => ({
-    type: ActionType.GET_MOVIES,
-  }),
-  getMyMovies: () => ({
-    type: ActionType.GET_MY_MOVIES,
-  }),
-  resetApp: () => ({
-    type: ActionType.RESET_APP,
-  }),
-  resetActiveMovie: () => ({
-    type: ActionType.RESET_ACTIVE_MOVIE
-  }),
-  changeContent: (newContent) => ({
-    type: ActionType.CHANGE_CONTENT,
-    payload: newContent,
-  }),
-  incrementStep: () => ({
-    type: ActionType.INCREMENT_STEP,
-    payload: COUNT_CARD.MAIN_PER_STEP,
-  }),
-  loadMovies: (movies) => ({
-    type: ActionType.LOAD_MOVIES,
-    payload: movies,
-  }),
-  loadPromoMovie: (movie) => ({
-    type: ActionType.LOAD_PROMO_MOVIE,
-    payload: movie,
-  }),
-  loadActiveMovie: (movie) => ({
-    type: ActionType.LOAD_ACTIVE_MOVIE,
-    payload: movie,
-  }),
-  loadComments: (comments) => ({
-    type: ActionType.LOAD_COMMENTS,
-    payload: comments,
-  }),
-  setData: () => ({
-    type: ActionType.SET_DATA,
-  }),
-  setActive: () => ({
-    type: ActionType.SET_ACTIVE,
-  }),
-  setContentReview: () => ({
-    type: ActionType.SET_CONTENT_REVIEW,
-  }),
-  requireAuthorization: (status) => ({
-    type: ActionType.REQUIRED_AUTHORIZATION,
-    payload: status,
-  }),
-  setLoginError: () => ({
-    type: ActionType.SET_LOGIN_ERROR,
-  }),
-  redirectToRoute: (url) => ({
-    type: ActionType.REDIRECT_TO_ROUTE,
-    payload: url,
-  }),
-};
+export const changeGenre = (genre) => ({
+  type: ActionType.CHANGE_GENRE,
+  payload: genre,
+});
+
+export const getMovies = () => ({
+  type: ActionType.GET_MOVIES,
+});
+
+export const getMyMovies = () => ({
+  type: ActionType.GET_MY_MOVIES,
+});
+
+export const resetApp = () => ({
+  type: ActionType.RESET_APP,
+});
+
+export const resetActiveMovie = () => ({
+  type: ActionType.RESET_ACTIVE_MOVIE
+});
+
+export const constchangeContent = (newContent) => ({
+  type: ActionType.CHANGE_CONTENT,
+  payload: newContent,
+});
+
+export const incrementStep = () => ({
+  type: ActionType.INCREMENT_STEP,
+  payload: COUNT_CARD.MAIN_PER_STEP,
+});
+
+export const loadMovies = (movies) => ({
+  type: ActionType.LOAD_MOVIES,
+  payload: movies,
+});
+
+export const loadPromoMovie = (movie) => ({
+  type: ActionType.LOAD_PROMO_MOVIE,
+  payload: movie,
+});
+
+export const loadActiveMovie = (movie) => ({
+  type: ActionType.LOAD_ACTIVE_MOVIE,
+  payload: movie,
+});
+
+export const loadComments = (comments) => ({
+  type: ActionType.LOAD_COMMENTS,
+  payload: comments,
+});
+
+export const setData = () => ({
+  type: ActionType.SET_DATA,
+});
+
+export const setActive = () => ({
+  type: ActionType.SET_ACTIVE,
+});
+
+export const setContentReview = () => ({
+  type: ActionType.SET_CONTENT_REVIEW,
+});
+
+export const requireAuthorization = (status) => ({
+  type: ActionType.REQUIRED_AUTHORIZATION,
+  payload: status,
+});
+
+export const setLoginError = () => ({
+  type: ActionType.SET_LOGIN_ERROR,
+});
+
+export const redirectToRoute = (url) => ({
+  type: ActionType.REDIRECT_TO_ROUTE,
+  payload: url,
+});

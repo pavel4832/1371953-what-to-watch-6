@@ -23,9 +23,9 @@ AddReviewButton.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  movie: state.activeMovie,
-  authorizationStatus: state.authorizationStatus,
+const mapStateToProps = ({DATA, USER}) => ({
+  movie: DATA.activeMovie,
+  authorizationStatus: USER.authorizationStatus,
 });
 
 export {AddReviewButton};

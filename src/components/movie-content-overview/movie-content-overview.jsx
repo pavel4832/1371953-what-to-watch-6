@@ -42,8 +42,8 @@ MovieContentOverview.propTypes = {
   movie: moviesProp,
 };
 
-const mapStateToProps = (state) => ({
-  movie: state.activeMovie,
+const mapStateToProps = ({DATA}) => ({
+  movie: DATA.activeMovie,
 });
 
 export {MovieContentOverview};

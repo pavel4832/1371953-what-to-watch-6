@@ -5,10 +5,10 @@ import {CONTENT_TYPE} from "../../const";
 import MovieContentOverview from '../movie-content-overview/movie-content-overview';
 import MovieContentDetails from '../movie-content-details/movie-content-details';
 import MovieContentReviews from '../movie-content-reviews/movie-content-reviews';
-import {ActionCreator} from '../../store/action';
+import {changeContent} from '../../store/action';
 
 const MovieTabs = (props) => {
-  const {contentType, changeContent} = props;
+  const {contentType, onChangeContent} = props;
 
   let overviewActiveLink = ``;
   let detailsActiveLink = ``;
@@ -61,7 +61,7 @@ const MovieTabs = (props) => {
               className="movie-nav__link"
               onClick={(evt) => {
                 evt.preventDefault();
-                changeContent(CONTENT_TYPE.OVERVIEW);
+                onChangeContent(CONTENT_TYPE.OVERVIEW);
               }}
             >
               Overview</a>
@@ -72,7 +72,7 @@ const MovieTabs = (props) => {
               className="movie-nav__link"
               onClick={(evt) => {
                 evt.preventDefault();
-                changeContent(CONTENT_TYPE.DETAILS);
+                onChangeContent(CONTENT_TYPE.DETAILS);
               }}
             >
               Details</a>
@@ -83,7 +83,7 @@ const MovieTabs = (props) => {
               className="movie-nav__link"
               onClick={(evt) => {
                 evt.preventDefault();
-                changeContent(CONTENT_TYPE.REVIEWS);
+                onChangeContent(CONTENT_TYPE.REVIEWS);
               }}
             >
               Reviews</a>
@@ -98,16 +98,16 @@ const MovieTabs = (props) => {
 
 MovieTabs.propTypes = {
   contentType: PropTypes.string.isRequired,
-  changeContent: PropTypes.func.isRequired,
+  onChangeContent: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  contentType: state.contentType,
+const mapStateToProps = ({DATA}) => ({
+  contentType: DATA.contentType,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeContent(type) {
-    dispatch(ActionCreator.changeContent(type));
+  onChangeContent(type) {
+    dispatch(changeContent(type));
   },
 });
 

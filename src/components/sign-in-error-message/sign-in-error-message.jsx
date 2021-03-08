@@ -25,8 +25,8 @@ SignInErrorMessage.propTypes = {
   isValidEmail: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  isLoginError: state.isLoginError,
+const mapStateToProps = ({USER}) => ({
+  isLoginError: USER.isLoginError,
 });
 
 export {SignInErrorMessage};

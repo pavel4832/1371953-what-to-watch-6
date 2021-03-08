@@ -66,8 +66,8 @@ MovieMain.propTypes = {
   onCardClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  movie: state.promoMovie,
+const mapStateToProps = ({DATA}) => ({
+  movie: DATA.promoMovie,
 });
 
 export {MovieMain};

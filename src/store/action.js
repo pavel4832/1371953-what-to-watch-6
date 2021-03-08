@@ -41,7 +41,7 @@ export const resetActiveMovie = () => ({
   type: ActionType.RESET_ACTIVE_MOVIE
 });
 
-export const constchangeContent = (newContent) => ({
+export const changeContent = (newContent) => ({
   type: ActionType.CHANGE_CONTENT,
   payload: newContent,
 });

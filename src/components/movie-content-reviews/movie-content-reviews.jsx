@@ -58,8 +58,8 @@ MovieContentReviews.propTypes = {
   comments: PropTypes.arrayOf(commentsProp).isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  comments: state.comments,
+const mapStateToProps = ({DATA}) => ({
+  comments: DATA.comments,
 });
 
 export {MovieContentReviews};

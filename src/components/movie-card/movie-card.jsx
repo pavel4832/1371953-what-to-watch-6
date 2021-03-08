@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import {moviesProp} from '../../utils/valid-props';
 import {Link} from 'react-router-dom';
 import {TIMEOUT_PREVIEW, AppRoute} from '/src/const';
-import {ActionCreator} from '../../store/action';
+import {changeGenre, getMovies, resetActiveMovie} from '../../store/action';
 
 const MovieCard = (props) => {
   const [isPlay, setIsPlay] = useState(false);
-  const {movie, renderPlayer, setFilter, getMoviesByFilter, resetActiveMovie, onCardClick} = props;
+  const {movie, renderPlayer, setFilter, getMoviesByFilter, resetMovie, onCardClick} = props;
   const {id, name, genre} = movie;
 
   let timer;
@@ -27,7 +27,7 @@ const MovieCard = (props) => {
         onCardClick(`${AppRoute.FILMS}/${id}`);
         setFilter(genre);
         getMoviesByFilter(genre);
-        resetActiveMovie();
+        resetMovie();
       }}>
 
       {renderPlayer(movie, isPlay)}
@@ -44,19 +44,19 @@ MovieCard.propTypes = {
   renderPlayer: PropTypes.func.isRequired,
   setFilter: PropTypes.func.isRequired,
   getMoviesByFilter: PropTypes.func.isRequired,
-  resetActiveMovie: PropTypes.func.isRequired,
+  resetMovie: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   setFilter(genre) {
-    dispatch(ActionCreator.changeGenre(genre));
+    dispatch(changeGenre(genre));
   },
   getMoviesByFilter(genre) {
-    dispatch(ActionCreator.getMovies(genre));
+    dispatch(getMovies(genre));
   },
-  resetActiveMovie() {
-    dispatch(ActionCreator.resetActiveMovie());
+  resetMovie() {
+    dispatch(resetActiveMovie());
   },
 });
 

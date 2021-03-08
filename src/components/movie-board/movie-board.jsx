@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../store/action';
+import {changeGenre} from '../../store/action';
 import PropTypes from 'prop-types';
 import MovieList from '../movie-list/movie-list';
 import Footer from '../footer/footer';
@@ -38,7 +38,7 @@ MovieBoard.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onFilterChoose(genre) {
-    dispatch(ActionCreator.changeGenre(genre));
+    dispatch(changeGenre(genre));
   },
 });
 

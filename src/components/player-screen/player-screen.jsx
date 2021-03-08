@@ -49,8 +49,8 @@ PlayerScreen.propTypes = {
   id: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  movies: state.movies,
+const mapStateToProps = ({DATA}) => ({
+  movies: DATA.movies,
 });
 
 export {PlayerScreen};

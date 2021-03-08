@@ -50,9 +50,9 @@ FilterList.propTypes = {
   getMoviesByFilter: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  movies: state.movies,
-  activeLink: state.genre,
+const mapStateToProps = ({DATA}) => ({
+  movies: DATA.movies,
+  activeLink: DATA.genre,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -48,12 +48,12 @@ MovieList.propTypes = {
   onCardClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  movies: state.filteredMovies,
-  myMovies: state.myMovieList,
-  activeMovie: state.activeMovie,
-  promoMovie: state.promoMovie,
-  renderedMovieCount: state.renderedMovieCount,
+const mapStateToProps = ({DATA}) => ({
+  movies: DATA.filteredMovies,
+  myMovies: DATA.myMovieList,
+  activeMovie: DATA.activeMovie,
+  promoMovie: DATA.promoMovie,
+  renderedMovieCount: DATA.renderedMovieCount,
 });
 
 export {MovieList};

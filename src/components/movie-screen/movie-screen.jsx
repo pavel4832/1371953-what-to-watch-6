@@ -37,8 +37,8 @@ MovieScreen.propTypes = {
   onCardClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  isActiveMovieLoaded: state.isActiveMovieLoaded,
+const mapStateToProps = ({DATA}) => ({
+  isActiveMovieLoaded: DATA.isActiveMovieLoaded,
 });
 
 const mapDispatchToProps = (dispatch) => ({

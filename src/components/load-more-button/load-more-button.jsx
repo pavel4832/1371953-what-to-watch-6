@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {ActionCreator} from '../../store/action';
+import {incrementStep} from '../../store/action';
 import {moviesProp} from "../../utils/valid-props";
 import {connect} from "react-redux";
 
@@ -31,15 +31,15 @@ LoadMoreButton.propTypes = {
   renderedMovieCount: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  movies: state.filteredMovies,
-  renderedMovieCount: state.renderedMovieCount,
+const mapStateToProps = ({DATA}) => ({
+  movies: DATA.filteredMovies,
+  renderedMovieCount: DATA.renderedMovieCount,
   setNewStep: PropTypes.func.isRequired,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   setNewStep() {
-    dispatch(ActionCreator.incrementStep());
+    dispatch(incrementStep());
   },
 });
 

@@ -1,3 +1,4 @@
+import {createAction} from '@reduxjs/toolkit';
 import {COUNT_CARD} from '/src/const';
 
 export const ActionType = {
@@ -20,79 +21,72 @@ export const ActionType = {
   SET_LOGIN_ERROR: `user/setLoginError`,
 };
 
-export const changeGenre = (genre) => ({
-  type: ActionType.CHANGE_GENRE,
-  payload: genre,
+export const changeGenre = createAction(ActionType.CHANGE_GENRE, (genre) => {
+  return {
+    payload: genre,
+  };
 });
 
-export const getMovies = () => ({
-  type: ActionType.GET_MOVIES,
+export const getMovies = createAction(ActionType.GET_MOVIES);
+
+export const getMyMovies = createAction(ActionType.GET_MY_MOVIES);
+
+export const resetApp = createAction(ActionType.RESET_APP);
+
+export const resetActiveMovie = createAction(ActionType.RESET_ACTIVE_MOVIE);
+
+export const changeContent = createAction(ActionType.CHANGE_CONTENT, (newContent) => {
+  return {
+    payload: newContent,
+  };
 });
 
-export const getMyMovies = () => ({
-  type: ActionType.GET_MY_MOVIES,
+export const incrementStep = createAction(ActionType.INCREMENT_STEP, () => {
+  return {
+    payload: COUNT_CARD.MAIN_PER_STEP,
+  };
 });
 
-export const resetApp = () => ({
-  type: ActionType.RESET_APP,
+export const loadMovies = createAction(ActionType.LOAD_MOVIES, (movies) => {
+  return {
+    payload: movies,
+  };
 });
 
-export const resetActiveMovie = () => ({
-  type: ActionType.RESET_ACTIVE_MOVIE
+export const loadPromoMovie = createAction(ActionType.LOAD_PROMO_MOVIE, (movie) => {
+  return {
+    payload: movie,
+  };
 });
 
-export const changeContent = (newContent) => ({
-  type: ActionType.CHANGE_CONTENT,
-  payload: newContent,
+export const loadActiveMovie = createAction(ActionType.LOAD_ACTIVE_MOVIE, (movie) => {
+  return {
+    payload: movie,
+  };
 });
 
-export const incrementStep = () => ({
-  type: ActionType.INCREMENT_STEP,
-  payload: COUNT_CARD.MAIN_PER_STEP,
+export const loadComments = createAction(ActionType.LOAD_COMMENTS, (comments) => {
+  return {
+    payload: comments,
+  };
 });
 
-export const loadMovies = (movies) => ({
-  type: ActionType.LOAD_MOVIES,
-  payload: movies,
+export const setData = createAction(ActionType.SET_DATA);
+
+export const setActive = createAction(ActionType.SET_ACTIVE);
+
+export const setContentReview = createAction(ActionType.SET_CONTENT_REVIEW);
+
+export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => {
+  return {
+    payload: status,
+  };
 });
 
-export const loadPromoMovie = (movie) => ({
-  type: ActionType.LOAD_PROMO_MOVIE,
-  payload: movie,
-});
+export const setLoginError = createAction(ActionType.SET_LOGIN_ERROR);
 
-export const loadActiveMovie = (movie) => ({
-  type: ActionType.LOAD_ACTIVE_MOVIE,
-  payload: movie,
-});
-
-export const loadComments = (comments) => ({
-  type: ActionType.LOAD_COMMENTS,
-  payload: comments,
-});
-
-export const setData = () => ({
-  type: ActionType.SET_DATA,
-});
-
-export const setActive = () => ({
-  type: ActionType.SET_ACTIVE,
-});
-
-export const setContentReview = () => ({
-  type: ActionType.SET_CONTENT_REVIEW,
-});
-
-export const requireAuthorization = (status) => ({
-  type: ActionType.REQUIRED_AUTHORIZATION,
-  payload: status,
-});
-
-export const setLoginError = () => ({
-  type: ActionType.SET_LOGIN_ERROR,
-});
-
-export const redirectToRoute = (url) => ({
-  type: ActionType.REDIRECT_TO_ROUTE,
-  payload: url,
+export const redirectToRoute = createAction(ActionType.REDIRECT_TO_ROUTE, (url) => {
+  return {
+    payload: url,
+  };
 });

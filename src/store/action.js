@@ -29,7 +29,7 @@ export const changeGenre = createAction(ActionType.CHANGE_GENRE, (genre) => {
 
 export const getMovies = createAction(ActionType.GET_MOVIES);
 
-export const getMyMovies = createAction(ActionType.GET_MY_MOVIES);
+export const getMyMoviesList = createAction(ActionType.GET_MY_MOVIES);
 
 export const resetApp = createAction(ActionType.RESET_APP);
 

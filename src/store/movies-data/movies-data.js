@@ -1,7 +1,8 @@
-import {ActionType} from '../action';
+import {changeContent, changeGenre, getMovies, getMyMoviesList, incrementStep, loadMovies, loadPromoMovie, loadActiveMovie, loadComments, resetActiveMovie, resetApp, setActive, setContentReview, setData} from '../action';
 import {adaptCommentToApp, adaptMoviesToApp} from '../../utils/adaptor';
 import {CONTENT_TYPE, COUNT_CARD, FILTER_TYPE} from '../../const';
 import {getMoviesByGenre, getMyMovies} from '../../utils/utils';
+import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
   movies: [],
@@ -17,101 +18,98 @@ const initialState = {
   isActiveMovieLoaded: false,
 };
 
-const moviesData = (state = initialState, action) => {
-  switch (action.type) {
-    case ActionType.CHANGE_CONTENT:
-      return {
-        ...state,
-        contentType: action.payload,
-      };
-
-    case ActionType.CHANGE_GENRE:
-      return {
-        ...state,
-        genre: action.payload,
-      };
-
-    case ActionType.GET_MOVIES:
-      return {
-        ...state,
-        filteredMovies: getMoviesByGenre(state.movies, state.genre),
-      };
-
-    case ActionType.GET_MY_MOVIES:
-      return {
-        ...state,
-        myMovieList: getMyMovies(state.movies),
-      };
-
-    case ActionType.INCREMENT_STEP:
-      return {
-        ...state,
-        renderedMovieCount: state.renderedMovieCount + action.payload,
-      };
-
-    case ActionType.LOAD_MOVIES:
-      return {
-        ...state,
-        movies: action.payload.map(adaptMoviesToApp),
-      };
-
-    case ActionType.LOAD_PROMO_MOVIE:
-      return {
-        ...state,
-        promoMovie: adaptMoviesToApp(action.payload),
-        activeMovie: adaptMoviesToApp(action.payload),
-      };
-
-    case ActionType.LOAD_ACTIVE_MOVIE:
-      return {
-        ...state,
-        activeMovie: adaptMoviesToApp(action.payload),
-      };
-
-    case ActionType.LOAD_COMMENTS:
-      return {
-        ...state,
-        comments: action.payload.map(adaptCommentToApp),
-      };
-
-    case ActionType.RESET_ACTIVE_MOVIE:
-      return {
-        ...state,
-        isActiveMovieLoaded: false,
-      };
-
-    case ActionType.RESET_APP:
-      return {
-        ...state,
-        genre: FILTER_TYPE.ALL_GENRE,
-        filteredMovies: [],
-        comments: [],
-        activeMovie: state.promoMovie,
-        contentType: CONTENT_TYPE.OVERVIEW,
-        renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
-        isActiveMovieLoaded: false,
-      };
-
-    case ActionType.SET_ACTIVE:
-      return {
-        ...state,
-        isActiveMovieLoaded: true,
-      };
-
-    case ActionType.SET_CONTENT_REVIEW:
-      return {
-        ...state,
-        contentType: CONTENT_TYPE.REVIEWS,
-      };
-
-    case ActionType.SET_DATA:
-      return {
-        ...state,
-        isDataLoaded: true,
-      };
-  }
-
-  return state;
-};
+const moviesData = createReducer(initialState, (builder) => {
+  builder.addCase(changeContent, (state, action) => {
+    return {
+      ...state,
+      contentType: action.payload,
+    };
+  });
+  builder.addCase(changeGenre, (state, action) => {
+    return {
+      ...state,
+      genre: action.payload,
+    };
+  });
+  builder.addCase(getMovies, (state) => {
+    return {
+      ...state,
+      filteredMovies: getMoviesByGenre(state.movies, state.genre),
+    };
+  });
+  builder.addCase(getMyMoviesList, (state) => {
+    return {
+      ...state,
+      myMovieList: getMyMovies(state.movies),
+    };
+  });
+  builder.addCase(incrementStep, (state, action) => {
+    return {
+      ...state,
+      renderedMovieCount: state.renderedMovieCount + action.payload,
+    };
+  });
+  builder.addCase(loadMovies, (state, action) => {
+    return {
+      ...state,
+      movies: action.payload.map(adaptMoviesToApp),
+    };
+  });
+  builder.addCase(loadPromoMovie, (state, action) => {
+    return {
+      ...state,
+      promoMovie: adaptMoviesToApp(action.payload),
+      activeMovie: adaptMoviesToApp(action.payload),
+    };
+  });
+  builder.addCase(loadActiveMovie, (state, action) => {
+    return {
+      ...state,
+      activeMovie: adaptMoviesToApp(action.payload),
+    };
+  });
+  builder.addCase(loadComments, (state, action) => {
+    return {
+      ...state,
+      comments: action.payload.map(adaptCommentToApp),
+    };
+  });
+  builder.addCase(resetActiveMovie, (state) => {
+    return {
+      ...state,
+      isActiveMovieLoaded: false,
+    };
+  });
+  builder.addCase(resetApp, (state) => {
+    return {
+      ...state,
+      genre: FILTER_TYPE.ALL_GENRE,
+      filteredMovies: [],
+      comments: [],
+      activeMovie: state.promoMovie,
+      contentType: CONTENT_TYPE.OVERVIEW,
+      renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
+      isActiveMovieLoaded: false,
+    };
+  });
+  builder.addCase(setActive, (state) => {
+    return {
+      ...state,
+      isActiveMovieLoaded: true,
+    };
+  });
+  builder.addCase(setContentReview, (state) => {
+    return {
+      ...state,
+      contentType: CONTENT_TYPE.REVIEWS,
+    };
+  });
+  builder.addCase(setData, (state) => {
+    return {
+      ...state,
+      isDataLoaded: true,
+    };
+  });
+});
 
 export {moviesData};

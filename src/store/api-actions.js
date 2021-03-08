@@ -1,4 +1,4 @@
-import {getMovies, getMyMovies, loadActiveMovie, loadComments, loadMovies, loadPromoMovie, setActive, setContentReview, setData, setLoginError, redirectToRoute, resetActiveMovie, requireAuthorization} from './action';
+import {getMovies, getMyMoviesList, loadActiveMovie, loadComments, loadMovies, loadPromoMovie, setActive, setContentReview, setData, setLoginError, redirectToRoute, resetActiveMovie, requireAuthorization} from './action';
 import {AuthorizationStatus, AppRoute, APIRoute} from '../const';
 
 export const fetchData = () => (dispatch, _getState, api) => {
@@ -9,7 +9,7 @@ export const fetchData = () => (dispatch, _getState, api) => {
     .then(({data}) => dispatch(loadPromoMovie(data))),
   ])
     .then(() => dispatch(getMovies()))
-    .then(() => dispatch(getMyMovies()))
+    .then(() => dispatch(getMyMoviesList()))
     .then(() => dispatch(setData()));
 };
 

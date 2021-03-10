@@ -1,23 +1,39 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import SignInErrorMessage from '../sign-in-error-message/sign-in-error-message';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {login} from '../../store/api-actions';
 
-const SingInScreen = (props) => {
-  const {onSubmit} = props;
+const SingInScreen = () => {
   const loginRef = useRef();
   const passwordRef = useRef();
+  const [isValidEmail, setValid] = useState(true);
+
+  const dispatch = useDispatch();
+
+  const handleButtonSubmitClick = (evt) => {
+    let stopSubmit = false;
+
+    if (loginRef.current.checkValidity() === false) {
+      setValid(false);
+      stopSubmit = true;
+    } else {
+      setValid(true);
+    }
+
+    if (stopSubmit) {
+      evt.preventDefault();
+    }
+  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    onSubmit({
+    dispatch(login({
       login: loginRef.current.value,
       password: passwordRef.current.value,
-    });
+    }));
   };
 
   return (
@@ -34,7 +50,7 @@ const SingInScreen = (props) => {
           className="sign-in__form"
           onSubmit={handleSubmit}
         >
-          <SignInErrorMessage />
+          <SignInErrorMessage isValidEmail={isValidEmail} />
 
           <div className="sign-in__fields">
             <div className="sign-in__field">
@@ -61,7 +77,13 @@ const SingInScreen = (props) => {
             </div>
           </div>
           <div className="sign-in__submit">
-            <button className="sign-in__btn" type="submit">Sign in</button>
+            <button
+              className="sign-in__btn"
+              type="submit"
+              onClick={handleButtonSubmitClick}
+            >
+              Sign in
+            </button>
           </div>
         </form>
       </div>
@@ -71,15 +93,4 @@ const SingInScreen = (props) => {
   );
 };
 
-SingInScreen.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(authData) {
-    dispatch(login(authData));
-  },
-});
-
-export {SingInScreen};
-export default connect(null, mapDispatchToProps)(SingInScreen);
+export default SingInScreen;

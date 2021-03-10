@@ -2,12 +2,11 @@ import React from 'react';
 import Header from '../header/header';
 import MovieTabs from '../movie-tabs/movie-tabs';
 import AddReviewButton from '../add-review-button/add-review-button';
-import {moviesProp} from '../../utils/valid-props';
-import {connect} from "react-redux";
+import {useSelector} from "react-redux";
 
-const MovieFull = (props) => {
-  const {movie} = props;
-  const {name, posterImage, backgroundImage, genre, released} = movie;
+const MovieFull = () => {
+  const {activeMovie} = useSelector((state) => state.DATA);
+  const {name, posterImage, backgroundImage, genre, released} = activeMovie;
 
   return (
     <section className="movie-card movie-card--full">
@@ -64,13 +63,4 @@ const MovieFull = (props) => {
   );
 };
 
-MovieFull.propTypes = {
-  movie: moviesProp,
-};
-
-const mapStateToProps = (state) => ({
-  movie: state.activeMovie,
-});
-
-export {MovieFull};
-export default connect(mapStateToProps, null)(MovieFull);
+export default MovieFull;

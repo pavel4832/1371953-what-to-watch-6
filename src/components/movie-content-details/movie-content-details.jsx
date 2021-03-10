@@ -1,11 +1,10 @@
 import React from 'react';
-import {moviesProp} from '../../utils/valid-props';
 import {getTimeFromMins} from '../../utils/utils';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 
-const MovieContentDetails = (props) => {
-  const {movie} = props;
-  const {director, genre, released, runTime, starring} = movie;
+const MovieContentDetails = () => {
+  const {activeMovie} = useSelector((state) => state.DATA);
+  const {director, genre, released, runTime, starring} = activeMovie;
 
   return (
     <div className="movie-card__text movie-card__row">
@@ -40,13 +39,4 @@ const MovieContentDetails = (props) => {
   );
 };
 
-MovieContentDetails.propTypes = {
-  movie: moviesProp,
-};
-
-const mapStateToProps = (state) => ({
-  movie: state.activeMovie,
-});
-
-export {MovieContentDetails};
-export default connect(mapStateToProps, null)(MovieContentDetails);
+export default MovieContentDetails;

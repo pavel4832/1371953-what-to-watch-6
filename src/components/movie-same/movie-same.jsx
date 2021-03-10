@@ -1,11 +1,8 @@
 import React from 'react';
 import MovieList from '../movie-list/movie-list';
 import Footer from '../footer/footer';
-import PropTypes from 'prop-types';
 
-
-const MovieSame = (props) => {
-  const {onCardClick} = props;
+const MovieSame = () => {
 
   return (
     <div className="page-content">
@@ -14,7 +11,6 @@ const MovieSame = (props) => {
 
         <MovieList
           isSame={true}
-          onCardClick={onCardClick}
           myList={false}
         />
       </section>
@@ -22,10 +18,6 @@ const MovieSame = (props) => {
       <Footer />
     </div>
   );
-};
-
-MovieSame.propTypes = {
-  onCardClick: PropTypes.func.isRequired,
 };
 
 export default MovieSame;

@@ -1,4 +1,4 @@
-import {FILTER_TYPE, EMAIL_REGEXP} from '../const';
+import {FILTER_TYPE} from '../const';
 
 export const getTimeFromMins = (mins) => {
   let hours = Math.trunc(mins / 60);
@@ -20,8 +20,4 @@ export const getMoviesByGenre = (movies, genre) => {
 
 export const getMyMovies = (movies) => {
   return movies.filter((movie) => movie.isFavorite === true);
-};
-
-export const validateEmail = (value) => {
-  return EMAIL_REGEXP.test(value);
 };

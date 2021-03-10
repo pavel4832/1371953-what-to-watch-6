@@ -1,84 +1,98 @@
+import {createAction} from '@reduxjs/toolkit';
 import {COUNT_CARD} from '/src/const';
 
 export const ActionType = {
+  CHANGE_CONTENT: `movies/changeContent`,
+  CHANGE_GENRE: `movies/changeGenre`,
+  GET_MOVIES: `movies/getMovies`,
+  GET_MY_MOVIES: `movies/getMyMovies`,
+  INCREMENT_STEP: `movies/incrementStep`,
   LOAD_MOVIES: `data/loadMovies`,
   LOAD_PROMO_MOVIE: `data/loadPromoMovie`,
   LOAD_ACTIVE_MOVIE: `data/loadActiveMovie`,
   LOAD_COMMENTS: `data/loadComments`,
-  SET_DATA: `data/setData`,
-  SET_ACTIVE: `data/setActive`,
-  CHANGE_GENRE: `films/changeGenre`,
-  GET_MOVIES: `films/getMovies`,
-  GET_MY_MOVIES: `films/getMyMovies`,
-  RESET_APP: `films/reset`,
-  RESET_ACTIVE_MOVIE: `films/resetActiveMovie`,
-  CHANGE_CONTENT: `films/changeContent`,
-  INCREMENT_STEP: `films/incrementStep`,
-  REDIRECT_TO_ROUTE: `films/redirectToRoute`,
-  SET_CONTENT_REVIEW: `films/setContentReview`,
+  REDIRECT_TO_ROUTE: `movies/redirectToRoute`,
+  RESET_APP: `movies/reset`,
+  RESET_ACTIVE_MOVIE: `movies/resetActiveMovie`,
+  RESET_STEP_COUNT: `movies/resetStepCount`,
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
+  SET_ACTIVE: `data/setActive`,
+  SET_CONTENT_OVERVIEW: `movies/setContentOverview`,
+  SET_CONTENT_REVIEW: `movies/setContentReview`,
+  SET_DATA: `data/setData`,
   SET_LOGIN_ERROR: `user/setLoginError`,
 };
 
-export const ActionCreator = {
-  changeGenre: (genre) => ({
-    type: ActionType.CHANGE_GENRE,
-    payload: genre,
-  }),
-  getMovies: () => ({
-    type: ActionType.GET_MOVIES,
-  }),
-  getMyMovies: () => ({
-    type: ActionType.GET_MY_MOVIES,
-  }),
-  resetApp: () => ({
-    type: ActionType.RESET_APP,
-  }),
-  resetActiveMovie: () => ({
-    type: ActionType.RESET_ACTIVE_MOVIE
-  }),
-  changeContent: (newContent) => ({
-    type: ActionType.CHANGE_CONTENT,
+export const getMovies = createAction(ActionType.GET_MOVIES);
+
+export const getMyMoviesList = createAction(ActionType.GET_MY_MOVIES);
+
+export const changeContent = createAction(ActionType.CHANGE_CONTENT, (newContent) => {
+  return {
     payload: newContent,
-  }),
-  incrementStep: () => ({
-    type: ActionType.INCREMENT_STEP,
+  };
+});
+
+export const changeGenre = createAction(ActionType.CHANGE_GENRE, (genre) => {
+  return {
+    payload: genre,
+  };
+});
+
+export const incrementStep = createAction(ActionType.INCREMENT_STEP, () => {
+  return {
     payload: COUNT_CARD.MAIN_PER_STEP,
-  }),
-  loadMovies: (movies) => ({
-    type: ActionType.LOAD_MOVIES,
+  };
+});
+
+export const loadMovies = createAction(ActionType.LOAD_MOVIES, (movies) => {
+  return {
     payload: movies,
-  }),
-  loadPromoMovie: (movie) => ({
-    type: ActionType.LOAD_PROMO_MOVIE,
+  };
+});
+
+export const loadPromoMovie = createAction(ActionType.LOAD_PROMO_MOVIE, (movie) => {
+  return {
     payload: movie,
-  }),
-  loadActiveMovie: (movie) => ({
-    type: ActionType.LOAD_ACTIVE_MOVIE,
+  };
+});
+
+export const loadActiveMovie = createAction(ActionType.LOAD_ACTIVE_MOVIE, (movie) => {
+  return {
     payload: movie,
-  }),
-  loadComments: (comments) => ({
-    type: ActionType.LOAD_COMMENTS,
+  };
+});
+
+export const loadComments = createAction(ActionType.LOAD_COMMENTS, (comments) => {
+  return {
     payload: comments,
-  }),
-  setData: () => ({
-    type: ActionType.SET_DATA,
-  }),
-  setActive: () => ({
-    type: ActionType.SET_ACTIVE,
-  }),
-  setContentReview: () => ({
-    type: ActionType.SET_CONTENT_REVIEW,
-  }),
-  requireAuthorization: (status) => ({
-    type: ActionType.REQUIRED_AUTHORIZATION,
-    payload: status,
-  }),
-  setLoginError: () => ({
-    type: ActionType.SET_LOGIN_ERROR,
-  }),
-  redirectToRoute: (url) => ({
-    type: ActionType.REDIRECT_TO_ROUTE,
+  };
+});
+
+export const redirectToRoute = createAction(ActionType.REDIRECT_TO_ROUTE, (url) => {
+  return {
     payload: url,
-  }),
-};
+  };
+});
+
+export const resetApp = createAction(ActionType.RESET_APP);
+
+export const resetActiveMovie = createAction(ActionType.RESET_ACTIVE_MOVIE);
+
+export const resetStepCount = createAction(ActionType.RESET_STEP_COUNT);
+
+export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => {
+  return {
+    payload: status,
+  };
+});
+
+export const setData = createAction(ActionType.SET_DATA);
+
+export const setActive = createAction(ActionType.SET_ACTIVE);
+
+export const setContentOverview = createAction(ActionType.SET_CONTENT_OVERVIEW);
+
+export const setContentReview = createAction(ActionType.SET_CONTENT_REVIEW);
+
+export const setLoginError = createAction(ActionType.SET_LOGIN_ERROR);

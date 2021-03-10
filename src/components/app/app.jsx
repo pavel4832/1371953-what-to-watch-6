@@ -10,17 +10,19 @@ import ErrorScreen from '../error-screen/error-screen';
 import PrivateRoute from '../private-route/private-route';
 import browserHistory from '../../browser-history';
 import LoadingScreen from '../loading-screen/loading-screen';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import {useSelector, useDispatch} from 'react-redux';
 import {fetchData} from '../../store/api-actions';
 import {APIRoute, AppRoute} from '../../const';
 
-const App = (props) => {
-  const {isDataLoaded, onLoadData} = props;
+const App = () => {
+  const {isDataLoaded} = useSelector((state) => state.DATA);
+
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     if (!isDataLoaded) {
-      onLoadData();
+      dispatch(fetchData());
     }
   }, [isDataLoaded]);
 
@@ -36,11 +38,7 @@ const App = (props) => {
         <Route
           exact
           path={AppRoute.ROOT}
-          render={({history}) => (
-            <MainScreen
-              onCardClick={(path) => history.push(path)}
-            />
-          )}
+          render={() => <MainScreen />}
         />
 
         <Route
@@ -52,20 +50,15 @@ const App = (props) => {
         <PrivateRoute
           exact
           path={AppRoute.MY_LIST}
-          render={({history}) => (
-            <MyListScreen
-              onCardClick={(path) => history.push(path)}
-            />
-          )}
+          render={() => <MyListScreen />}
         />
 
         <Route
           exact
           path={`${AppRoute.FILMS}/:id`}
-          render={({match, history}) => (
+          render={({match}) => (
             <MovieScreen
               id={Number(match.params.id)}
-              onCardClick={(path) => history.push(path)}
             />
           )}/>
 
@@ -96,20 +89,4 @@ const App = (props) => {
   );
 };
 
-App.propTypes = {
-  isDataLoaded: PropTypes.bool.isRequired,
-  onLoadData: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  isDataLoaded: state.isDataLoaded,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onLoadData() {
-    dispatch(fetchData());
-  },
-});
-
-export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

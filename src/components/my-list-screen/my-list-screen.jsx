@@ -1,11 +1,9 @@
 import React from 'react';
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import PropTypes from "prop-types";
 import MovieList from "../movie-list/movie-list";
 
-const MyListScreen = (props) => {
-  const {onCardClick} = props;
+const MyListScreen = () => {
 
   return (
     <div className="user-page">
@@ -19,7 +17,6 @@ const MyListScreen = (props) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <MovieList
-          onCardClick={onCardClick}
           myList={true}
           isSame={false}
         />
@@ -28,10 +25,6 @@ const MyListScreen = (props) => {
       <Footer />
     </div>
   );
-};
-
-MyListScreen.propTypes = {
-  onCardClick: PropTypes.func.isRequired,
 };
 
 export default MyListScreen;

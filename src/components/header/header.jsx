@@ -1,16 +1,21 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import PropTypes from "prop-types";
 import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 import UserBlock from "../user-block/user-block";
 import {Link} from 'react-router-dom';
-import {ActionCreator} from "../../store/action";
+import {getMovies, resetApp} from "../../store/action";
 import {AuthorizationStatus} from "../../const";
 
 const Header = (props) => {
-  const {authorizationStatus, headerTitle, isReview, pageType, reset, updateMovies} = props;
+  const {headerTitle, isReview, pageType} = props;
+  const {authorizationStatus} = useSelector((state) => state.USER);
+
   const loginClass = (authorizationStatus === AuthorizationStatus.AUTH) ? `movie-card__head` : ``;
   const titleClass = (headerTitle === ``) ? `none` : `block`;
+
+  const dispatch = useDispatch();
+
   let headerClass = ``;
   let isSignInPage = false;
 
@@ -31,8 +36,8 @@ const Header = (props) => {
           to="/"
           className="logo__link"
           onClick={() => {
-            reset();
-            updateMovies();
+            dispatch(resetApp());
+            dispatch(getMovies());
           }}
         >
           <span className="logo__letter logo__letter--1">W</span>
@@ -51,26 +56,9 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
   headerTitle: PropTypes.string.isRequired,
   isReview: PropTypes.bool.isRequired,
   pageType: PropTypes.string.isRequired,
-  reset: PropTypes.func.isRequired,
-  updateMovies: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: state.authorizationStatus,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  reset() {
-    dispatch(ActionCreator.resetApp());
-  },
-  updateMovies() {
-    dispatch(ActionCreator.getMovies());
-  },
-});
-
-export {Header};
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

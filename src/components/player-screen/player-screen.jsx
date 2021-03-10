@@ -1,11 +1,11 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {moviesProp} from "../../utils/valid-props";
-import PropTypes from "prop-types";
-import {getMovieById} from "../../utils/utils";
+import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
+import {getMovieById} from '../../utils/utils';
 
 const PlayerScreen = (props) => {
-  const {movies, id} = props;
+  const {id} = props;
+  const {movies} = useSelector((state) => state.DATA);
   const movieUrl = getMovieById(movies, id).videoLink;
 
   return (
@@ -45,13 +45,7 @@ const PlayerScreen = (props) => {
 };
 
 PlayerScreen.propTypes = {
-  movies: PropTypes.arrayOf(moviesProp).isRequired,
   id: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  movies: state.movies,
-});
-
-export {PlayerScreen};
-export default connect(mapStateToProps, null)(PlayerScreen);
+export default PlayerScreen;

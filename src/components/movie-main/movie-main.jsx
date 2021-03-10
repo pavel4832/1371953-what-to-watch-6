@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from '../header/header';
-import {moviesProp} from "/src/utils/valid-props";
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import {useSelector, useDispatch} from 'react-redux';
 import {AppRoute} from '../../const';
-import {getPromoMovie} from '../../store/movies-data/selectors';
+import {redirectToRoute} from '../../store/action';
 
-const MovieMain = (props) => {
-  const {movie, onCardClick} = props;
-  const {id, name, posterImage, backgroundImage, genre, released} = movie;
+const MovieMain = () => {
+  const {promoMovie} = useSelector((state) => state.DATA);
+  const {id, name, posterImage, backgroundImage, genre, released} = promoMovie;
+
+  const dispatch = useDispatch();
 
   return (
     <section className="movie-card">
@@ -29,7 +29,7 @@ const MovieMain = (props) => {
           <div
             className="movie-card__poster"
             onClick={() => {
-              onCardClick(`${AppRoute.FILMS}/${id}`);
+              dispatch(redirectToRoute(`${AppRoute.FILMS}/${id}`));
             }}>
             <img src={posterImage} alt={`${name} poster`} width="218" height="327"/>
           </div>
@@ -62,14 +62,4 @@ const MovieMain = (props) => {
   );
 };
 
-MovieMain.propTypes = {
-  movie: moviesProp,
-  onCardClick: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  movie: getPromoMovie(state),
-});
-
-export {MovieMain};
-export default connect(mapStateToProps, null)(MovieMain);
+export default MovieMain;

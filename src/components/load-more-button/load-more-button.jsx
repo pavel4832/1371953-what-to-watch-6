@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {incrementStep} from '../../store/action';
-import {moviesProp} from '../../utils/valid-props';
-import {connect} from 'react-redux';
-import {getFilteredMovies, getRenderedMovieCount} from '../../store/movies-data/selectors';
+import {useSelector, useDispatch} from 'react-redux';
 
-const LoadMoreButton = (props) => {
-  const {movies, renderedMovieCount, setNewStep} = props;
+
+const LoadMoreButton = () => {
+  const {movies, renderedMovieCount} = useSelector((state) => state.DATA);
+
+  const dispatch = useDispatch();
 
   if (movies.length > renderedMovieCount) {
     return (
@@ -16,7 +16,7 @@ const LoadMoreButton = (props) => {
           type="button"
           onClick={(evt) => {
             evt.preventDefault();
-            setNewStep();
+            dispatch(incrementStep());
           }}
         >
           Show more</button>
@@ -27,22 +27,4 @@ const LoadMoreButton = (props) => {
   }
 };
 
-LoadMoreButton.propTypes = {
-  movies: PropTypes.arrayOf(moviesProp).isRequired,
-  renderedMovieCount: PropTypes.number.isRequired,
-  setNewStep: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  movies: getFilteredMovies(state),
-  renderedMovieCount: getRenderedMovieCount(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setNewStep() {
-    dispatch(incrementStep());
-  },
-});
-
-export {LoadMoreButton};
-export default connect(mapStateToProps, mapDispatchToProps)(LoadMoreButton);
+export default LoadMoreButton;

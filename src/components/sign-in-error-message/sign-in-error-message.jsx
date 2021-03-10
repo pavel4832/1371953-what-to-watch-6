@@ -1,10 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
-import {getLoginErrorStatus} from '../../store/user/selectors';
 
 const SignInErrorMessage = (props) => {
-  const {isLoginError, isValidEmail} = props;
+  const {isValidEmail} = props;
+  const {isLoginError} = useSelector((state) => state.USER);
 
   const messageText = (!isValidEmail) ? `Please enter a valid email address` : `We can’t recognize this email\n and password combination. Please try again.`;
 
@@ -22,13 +22,7 @@ const SignInErrorMessage = (props) => {
 };
 
 SignInErrorMessage.propTypes = {
-  isLoginError: PropTypes.bool.isRequired,
   isValidEmail: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  isLoginError: getLoginErrorStatus(state),
-});
-
-export {SignInErrorMessage};
-export default connect(mapStateToProps, null)(SignInErrorMessage);
+export default SignInErrorMessage;

@@ -1,11 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {getMovies, resetApp} from '../../store/action';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import {useDispatch} from 'react-redux';
 
-const Footer = (props) => {
-  const {onResetApp, updateMovies} = props;
+const Footer = () => {
+  const dispatch = useDispatch();
 
   return (
     <footer className="page-footer">
@@ -14,8 +13,8 @@ const Footer = (props) => {
           to="/"
           className="logo__link logo__link--light"
           onClick={() => {
-            onResetApp();
-            updateMovies();
+            dispatch(resetApp());
+            dispatch(getMovies());
           }}
         >
           <span className="logo__letter logo__letter--1">W</span>
@@ -31,19 +30,4 @@ const Footer = (props) => {
   );
 };
 
-Footer.propTypes = {
-  onResetApp: PropTypes.func.isRequired,
-  updateMovies: PropTypes.func.isRequired,
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  onResetApp() {
-    dispatch(resetApp());
-  },
-  updateMovies() {
-    dispatch(getMovies());
-  },
-});
-
-export {Footer};
-export default connect(null, mapDispatchToProps)(Footer);
+export default Footer;

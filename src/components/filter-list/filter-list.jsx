@@ -34,7 +34,7 @@ const FilterList = () => {
               onClick={(evt) => {
                 evt.preventDefault();
                 dispatch(changeGenre(filter));
-                dispatch(getMovies(filter));
+                dispatch(getMovies());
               }}
             >
               {filter}

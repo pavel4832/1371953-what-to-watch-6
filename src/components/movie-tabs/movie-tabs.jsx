@@ -1,15 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import {useDispatch, useSelector} from 'react-redux';
 import {CONTENT_TYPE} from "../../const";
 import MovieContentOverview from '../movie-content-overview/movie-content-overview';
 import MovieContentDetails from '../movie-content-details/movie-content-details';
 import MovieContentReviews from '../movie-content-reviews/movie-content-reviews';
 import {changeContent} from '../../store/action';
-import {getContentType} from '../../store/movies-data/selectors';
 
-const MovieTabs = (props) => {
-  const {contentType, onChangeContent} = props;
+const MovieTabs = () => {
+  const {contentType} = useSelector((state) => state.DATA);
+
+  const dispatch = useDispatch();
 
   let overviewActiveLink = ``;
   let detailsActiveLink = ``;
@@ -62,7 +62,7 @@ const MovieTabs = (props) => {
               className="movie-nav__link"
               onClick={(evt) => {
                 evt.preventDefault();
-                onChangeContent(CONTENT_TYPE.OVERVIEW);
+                dispatch(changeContent(CONTENT_TYPE.OVERVIEW));
               }}
             >
               Overview</a>
@@ -73,7 +73,7 @@ const MovieTabs = (props) => {
               className="movie-nav__link"
               onClick={(evt) => {
                 evt.preventDefault();
-                onChangeContent(CONTENT_TYPE.DETAILS);
+                dispatch(changeContent(CONTENT_TYPE.DETAILS));
               }}
             >
               Details</a>
@@ -84,7 +84,7 @@ const MovieTabs = (props) => {
               className="movie-nav__link"
               onClick={(evt) => {
                 evt.preventDefault();
-                onChangeContent(CONTENT_TYPE.REVIEWS);
+                dispatch(changeContent(CONTENT_TYPE.REVIEWS));
               }}
             >
               Reviews</a>
@@ -97,20 +97,4 @@ const MovieTabs = (props) => {
   );
 };
 
-MovieTabs.propTypes = {
-  contentType: PropTypes.string.isRequired,
-  onChangeContent: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  contentType: getContentType(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onChangeContent(type) {
-    dispatch(changeContent(type));
-  },
-});
-
-export {MovieTabs};
-export default connect(mapStateToProps, mapDispatchToProps)(MovieTabs);
+export default MovieTabs;

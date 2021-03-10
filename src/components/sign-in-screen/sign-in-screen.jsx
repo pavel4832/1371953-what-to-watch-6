@@ -2,15 +2,15 @@ import React, {useRef, useState} from 'react';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import SignInErrorMessage from '../sign-in-error-message/sign-in-error-message';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {login} from '../../store/api-actions';
 
-const SingInScreen = (props) => {
-  const {onSubmit} = props;
+const SingInScreen = () => {
   const loginRef = useRef();
   const passwordRef = useRef();
   const [isValidEmail, setValid] = useState(true);
+
+  const dispatch = useDispatch();
 
   const handleButtonSubmitClick = (evt) => {
     let stopSubmit = false;
@@ -30,10 +30,10 @@ const SingInScreen = (props) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    onSubmit({
+    dispatch(login({
       login: loginRef.current.value,
       password: passwordRef.current.value,
-    });
+    }));
   };
 
   return (
@@ -93,15 +93,4 @@ const SingInScreen = (props) => {
   );
 };
 
-SingInScreen.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(authData) {
-    dispatch(login(authData));
-  },
-});
-
-export {SingInScreen};
-export default connect(null, mapDispatchToProps)(SingInScreen);
+export default SingInScreen;

@@ -1,11 +1,10 @@
 import React from 'react';
-import {moviesProp} from '../../utils/valid-props';
-import {connect} from 'react-redux';
-import {getActiveMovie} from '../../store/movies-data/selectors';
+import {useSelector} from 'react-redux';
 
-const MovieContentOverview = (props) => {
-  const {movie} = props;
-  const {rating, scoresCount, description, director, starring} = movie;
+const MovieContentOverview = () => {
+  const {activeMovie} = useSelector((state) => state.DATA);
+  const {rating, scoresCount, description, director, starring} = activeMovie;
+
   let ratingLevel = ``;
 
   if (rating >= 0 && rating < 3) {
@@ -39,13 +38,4 @@ const MovieContentOverview = (props) => {
   </React.Fragment>;
 };
 
-MovieContentOverview.propTypes = {
-  movie: moviesProp,
-};
-
-const mapStateToProps = (state) => ({
-  movie: getActiveMovie(state),
-});
-
-export {MovieContentOverview};
-export default connect(mapStateToProps, null)(MovieContentOverview);
+export default MovieContentOverview;

@@ -4,9 +4,9 @@ import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 const AddReviewButton = () => {
-  const {movie} = useSelector((state) => state.DATA);
+  const {activeMovie} = useSelector((state) => state.DATA);
   const {authorizationStatus} = useSelector((state) => state.USER);
-  const {id} = movie;
+  const {id} = activeMovie;
 
   if (authorizationStatus === AuthorizationStatus.AUTH) {
     return (

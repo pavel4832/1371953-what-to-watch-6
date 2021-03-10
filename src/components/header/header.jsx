@@ -1,17 +1,21 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import PropTypes from "prop-types";
 import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 import UserBlock from "../user-block/user-block";
 import {Link} from 'react-router-dom';
 import {getMovies, resetApp} from "../../store/action";
 import {AuthorizationStatus} from "../../const";
-import {getAuthorizationStatus} from '../../store/user/selectors';
 
 const Header = (props) => {
-  const {authorizationStatus, headerTitle, isReview, pageType, onResetApp, updateMovies} = props;
+  const {headerTitle, isReview, pageType} = props;
+  const {authorizationStatus} = useSelector((state) => state.USER);
+
   const loginClass = (authorizationStatus === AuthorizationStatus.AUTH) ? `movie-card__head` : ``;
   const titleClass = (headerTitle === ``) ? `none` : `block`;
+
+  const dispatch = useDispatch();
+
   let headerClass = ``;
   let isSignInPage = false;
 
@@ -32,8 +36,8 @@ const Header = (props) => {
           to="/"
           className="logo__link"
           onClick={() => {
-            onResetApp();
-            updateMovies();
+            dispatch(resetApp());
+            dispatch(getMovies());
           }}
         >
           <span className="logo__letter logo__letter--1">W</span>
@@ -52,26 +56,9 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
   headerTitle: PropTypes.string.isRequired,
   isReview: PropTypes.bool.isRequired,
   pageType: PropTypes.string.isRequired,
-  onResetApp: PropTypes.func.isRequired,
-  updateMovies: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onResetApp() {
-    dispatch(resetApp());
-  },
-  updateMovies() {
-    dispatch(getMovies());
-  },
-});
-
-export {Header};
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

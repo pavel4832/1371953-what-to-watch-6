@@ -38,11 +38,7 @@ const App = () => {
         <Route
           exact
           path={AppRoute.ROOT}
-          render={({history}) => (
-            <MainScreen
-              onCardClick={(path) => history.push(path)}
-            />
-          )}
+          render={() => <MainScreen />}
         />
 
         <Route
@@ -54,20 +50,15 @@ const App = () => {
         <PrivateRoute
           exact
           path={AppRoute.MY_LIST}
-          render={({history}) => (
-            <MyListScreen
-              onCardClick={(path) => history.push(path)}
-            />
-          )}
+          render={() => <MyListScreen />}
         />
 
         <Route
           exact
           path={`${AppRoute.FILMS}/:id`}
-          render={({match, history}) => (
+          render={({match}) => (
             <MovieScreen
               id={Number(match.params.id)}
-              onCardClick={(path) => history.push(path)}
             />
           )}/>
 

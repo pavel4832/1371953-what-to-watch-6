@@ -1,18 +1,20 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import MovieFull from '../movie-full/movie-full';
 import MovieSame from '../movie-same/movie-same';
 import {fetchMovieData} from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
-import {getActiveMovieLoadStatus} from '../../store/movies-data/selectors';
 
 const MovieScreen = (props) => {
-  const {id, getActiveMovie, isActiveMovieLoaded, onCardClick} = props;
+  const {id} = props;
+  const {isActiveMovieLoaded} = useSelector((state) => state.DATA);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!isActiveMovieLoaded) {
-      getActiveMovie(id);
+      dispatch(fetchMovieData(id));
     }
   }, [isActiveMovieLoaded]);
 
@@ -25,28 +27,12 @@ const MovieScreen = (props) => {
   return <React.Fragment>
     <MovieFull />
 
-    <MovieSame
-      onCardClick={onCardClick}
-    />
+    <MovieSame />
   </React.Fragment>;
 };
 
 MovieScreen.propTypes = {
   id: PropTypes.number.isRequired,
-  getActiveMovie: PropTypes.func.isRequired,
-  isActiveMovieLoaded: PropTypes.bool.isRequired,
-  onCardClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  isActiveMovieLoaded: getActiveMovieLoadStatus(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getActiveMovie(id) {
-    dispatch(fetchMovieData(id));
-  },
-});
-
-export {MovieScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(MovieScreen);
+export default MovieScreen;

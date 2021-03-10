@@ -4,11 +4,11 @@ import {useSelector, useDispatch} from 'react-redux';
 
 
 const LoadMoreButton = () => {
-  const {movies, renderedMovieCount} = useSelector((state) => state.DATA);
+  const {filteredMovies, renderedMovieCount} = useSelector((state) => state.DATA);
 
   const dispatch = useDispatch();
 
-  if (movies.length > renderedMovieCount) {
+  if (filteredMovies.length > renderedMovieCount) {
     return (
       <div className="catalog__more">
         <button

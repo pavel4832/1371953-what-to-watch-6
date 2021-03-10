@@ -1,4 +1,4 @@
-import {changeContent, changeGenre, getMovies, getMyMoviesList, incrementStep, loadMovies, loadPromoMovie, loadActiveMovie, loadComments, resetActiveMovie, resetApp, setActive, setContentReview, setData} from '../action';
+import {changeContent, changeGenre, getMovies, getMyMoviesList, incrementStep, loadMovies, loadPromoMovie, loadActiveMovie, loadComments, resetActiveMovie, resetApp, resetStepCount, setActive, setContentOverview, setContentReview, setData} from '../action';
 import {adaptCommentToApp, adaptMoviesToApp} from '../../utils/adaptor';
 import {CONTENT_TYPE, COUNT_CARD, FILTER_TYPE} from '../../const';
 import {getMoviesByGenre, getMyMovies} from '../../utils/utils';
@@ -92,10 +92,22 @@ const moviesData = createReducer(initialState, (builder) => {
       isActiveMovieLoaded: false,
     };
   });
+  builder.addCase(resetStepCount, (state) => {
+    return {
+      ...state,
+      renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
+    };
+  });
   builder.addCase(setActive, (state) => {
     return {
       ...state,
       isActiveMovieLoaded: true,
+    };
+  });
+  builder.addCase(setContentOverview, (state) => {
+    return {
+      ...state,
+      contentType: CONTENT_TYPE.OVERVIEW,
     };
   });
   builder.addCase(setContentReview, (state) => {

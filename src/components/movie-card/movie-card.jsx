@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {moviesProp} from '../../utils/valid-props';
 import {Link} from 'react-router-dom';
 import {TIMEOUT_PREVIEW, AppRoute} from '/src/const';
-import {changeGenre, getMovies, redirectToRoute, resetActiveMovie} from '../../store/action';
+import {changeGenre, getMovies, redirectToRoute, resetActiveMovie, setContentOverview} from '../../store/action';
 
 const MovieCard = (props) => {
   const [isPlay, setIsPlay] = useState(false);
@@ -30,6 +30,7 @@ const MovieCard = (props) => {
         dispatch(changeGenre(genre));
         dispatch(getMovies());
         dispatch(resetActiveMovie());
+        dispatch(setContentOverview());
       }}>
 
       {renderPlayer(movie, isPlay)}

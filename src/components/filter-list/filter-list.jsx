@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {MAX_FILTERS} from "../../const";
-import {changeGenre, getMovies} from "../../store/action";
+import {changeGenre, getMovies, resetStepCount} from "../../store/action";
 
 
 const FilterList = () => {
@@ -35,6 +35,7 @@ const FilterList = () => {
                 evt.preventDefault();
                 dispatch(changeGenre(filter));
                 dispatch(getMovies());
+                dispatch(resetStepCount());
               }}
             >
               {filter}

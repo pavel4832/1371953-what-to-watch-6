@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import VideoPlayer from '../../components/video-player/video-player';
-import {POSTER_SIZE} from "../../const";
 
 const withActivePlayer = (Component) => {
   class WithActivePlayer extends PureComponent {
@@ -11,15 +10,15 @@ const withActivePlayer = (Component) => {
     render() {
       return <Component
         {...this.props}
-        renderPlayer={(movie, isPlay) => {
+        renderPlayer={(moviePoster, movieUrl, isPlay, width, height, isMuted) => {
           return (
             <VideoPlayer
               isPlaying={isPlay}
-              src={movie.previewVideoLink}
-              poster={movie.posterImage}
-              isMuted={true}
-              width={POSTER_SIZE.WIDTH}
-              height={POSTER_SIZE.HEIGHT}
+              src={movieUrl}
+              poster={moviePoster}
+              isMuted={isMuted}
+              width={width}
+              height={height}
             />
           );
         }}

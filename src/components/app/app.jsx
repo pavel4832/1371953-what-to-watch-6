@@ -72,7 +72,7 @@ const App = () => {
 
         <Route
           exact
-          path={AppRoute.PLAYER}
+          path={`${AppRoute.PLAYER}/:id`}
           render={({match}) => (
             <PlayerScreen
               id={Number(match.params.id)}

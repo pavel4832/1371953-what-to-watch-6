@@ -3,13 +3,14 @@ import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import {moviesProp} from '../../utils/valid-props';
 import {Link} from 'react-router-dom';
-import {TIMEOUT_PREVIEW, AppRoute} from '/src/const';
+import {TIMEOUT_PREVIEW, AppRoute, POSTER_SIZE} from '/src/const';
 import {changeGenre, getMovies, redirectToRoute, resetActiveMovie, setContentOverview} from '../../store/action';
 
 const MovieCard = (props) => {
   const [isPlay, setIsPlay] = useState(false);
   const {movie, renderPlayer} = props;
-  const {id, name, genre} = movie;
+  const {id, name, genre, previewImage, previewVideoLink} = movie;
+  const isMuted = true;
 
   const dispatch = useDispatch();
 
@@ -33,7 +34,9 @@ const MovieCard = (props) => {
         dispatch(setContentOverview());
       }}>
 
-      {renderPlayer(movie, isPlay)}
+      <div className="small-movie-card__image">
+        {renderPlayer(previewImage, previewVideoLink, isPlay, POSTER_SIZE.WIDTH, POSTER_SIZE.HEIGHT, isMuted)}
+      </div>
 
       <h3 className="small-movie-card__title">
         <Link to={`${AppRoute.FILMS}/${id}`} className="small-movie-card__link">{name}</Link>

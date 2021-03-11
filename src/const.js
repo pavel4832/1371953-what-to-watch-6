@@ -17,6 +17,16 @@ export const POSTER_SIZE = {
   HEIGHT: `175`
 };
 
+export const FULL_SCREEN_SIZE = {
+  WIDTH: `100%`,
+  HEIGHT: `100%`
+};
+
+export const SMALL_SCREEN_SIZE = {
+  WIDTH: `50%`,
+  HEIGHT: `50%`
+};
+
 export const COUNT_CARD = {
   SAME: 4,
   MAIN_PER_STEP: 8,
@@ -48,7 +58,7 @@ export const AppRoute = {
   LOGIN: `/login`,
   MY_LIST: `/mylist`,
   FILMS: `/films`,
-  PLAYER: `/player/:id`,
+  PLAYER: `/player`,
 };
 
 export const APIRoute = {

@@ -16,16 +16,14 @@ const VideoPlayer = ({isPlaying, src, poster, isMuted, width, height}) => {
   }, [isPlaying]);
 
   return (
-    <div className="small-movie-card__image">
-      <video
-        src={src}
-        ref={videoRef}
-        muted={isMuted}
-        poster={poster}
-        width={width}
-        height={height}
-      />
-    </div>
+    <video
+      src={src}
+      ref={videoRef}
+      muted={isMuted}
+      poster={poster}
+      width={width}
+      height={height}
+    />
   );
 };
 

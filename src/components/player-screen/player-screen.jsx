@@ -7,7 +7,7 @@ import {AppRoute, FULL_SCREEN_SIZE, SMALL_SCREEN_SIZE} from '../../const';
 import PlayerButtonPlay from '../player-button-play/player-button-play';
 import ProgressTogglerTimer from '../progress-toggler-timer/progress-toggler-timer';
 
-let hasFullScreen = false;
+let hasFullScreen = true;
 
 const PlayerScreen = (props) => {
   const {id} = props;
@@ -20,7 +20,7 @@ const PlayerScreen = (props) => {
   const [isPlay, setIsPlay] = useState(false);
   const [inProgress, setProgress] = useState(0);
   const [inTime, setTimer] = useState(formatTime(0, false));
-  const [inSize, setSize] = useState(SMALL_SCREEN_SIZE);
+  const [inSize, setSize] = useState(FULL_SCREEN_SIZE);
 
   const videoRef = useRef();
 

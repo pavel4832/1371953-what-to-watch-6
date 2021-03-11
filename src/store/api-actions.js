@@ -40,6 +40,12 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
     })
 );
 
+export const logout = () => (dispatch, _getState, api) => (
+  api.get(APIRoute.LOG_OUT)
+    .then(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
+    .catch(() => {})
+);
+
 export const postComment = (id, {rating, comment}) => (dispatch, _getState, api) => (
   api.post(`${APIRoute.COMMENTS}/${id}`, {rating, comment})
     .then(() => dispatch(resetActiveMovie()))

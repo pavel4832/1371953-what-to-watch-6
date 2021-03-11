@@ -66,7 +66,8 @@ export const APIRoute = {
   PROMO: `/films/promo`,
   COMMENTS: `/comments`,
   LOGIN: `/login`,
-  ERROR: `/error`
+  ERROR: `/error`,
+  LOG_OUT: `/logout`
 };
 
 export const COMMENT_LENGTH = {

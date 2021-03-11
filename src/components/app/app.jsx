@@ -19,7 +19,6 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     if (!isDataLoaded) {
       dispatch(fetchData());

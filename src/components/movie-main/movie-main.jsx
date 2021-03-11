@@ -1,14 +1,29 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Header from '../header/header';
+import MyListButton from '../my-list-button/my-list-button';
 import {useSelector, useDispatch} from 'react-redux';
 import {AppRoute} from '../../const';
 import {redirectToRoute} from '../../store/action';
+import {fetchPromoMovie} from '../../store/api-actions';
+import LoadingScreen from '../loading-screen/loading-screen';
 
 const MovieMain = () => {
-  const {promoMovie} = useSelector((state) => state.DATA);
+  const {promoMovie, isPromoMovieLoaded} = useSelector((state) => state.DATA);
   const {id, name, posterImage, backgroundImage, genre, released} = promoMovie;
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isPromoMovieLoaded) {
+      dispatch(fetchPromoMovie());
+    }
+  }, [isPromoMovieLoaded]);
+
+  if (!isPromoMovieLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return (
     <section className="movie-card">
@@ -53,12 +68,8 @@ const MovieMain = () => {
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
-                <span>My list</span>
-              </button>
+
+              <MyListButton movie={promoMovie} />
             </div>
           </div>
         </div>

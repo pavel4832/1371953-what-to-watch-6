@@ -5,6 +5,7 @@ import AddReviewButton from '../add-review-button/add-review-button';
 import {useDispatch, useSelector} from "react-redux";
 import {redirectToRoute} from '../../store/action';
 import {AppRoute} from '../../const';
+import MyListButton from "../my-list-button/my-list-button";
 
 const MovieFull = () => {
   const {activeMovie} = useSelector((state) => state.DATA);
@@ -47,12 +48,7 @@ const MovieFull = () => {
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
-                <span>My list</span>
-              </button>
+              <MyListButton movie={activeMovie} />
               <AddReviewButton />
             </div>
           </div>

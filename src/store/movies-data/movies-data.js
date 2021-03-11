@@ -1,7 +1,27 @@
-import {changeContent, changeGenre, getMovies, getMyMoviesList, incrementStep, loadMovies, loadPromoMovie, loadActiveMovie, loadComments, resetActiveMovie, resetApp, resetStepCount, setActive, setContentOverview, setContentReview, setData} from '../action';
+import {
+  changeContent,
+  changeGenre,
+  getMovies,
+  incrementStep,
+  loadMovies,
+  loadPromoMovie,
+  loadActiveMovie,
+  loadComments,
+  loadMyMovieList,
+  resetActiveMovie,
+  resetApp,
+  resetPromoMovie,
+  resetStepCount,
+  setActive,
+  setContentOverview,
+  setContentReview,
+  setData,
+  setMyMoviesLoaded,
+  setPromo,
+} from '../action';
 import {adaptCommentToApp, adaptMoviesToApp} from '../../utils/adaptor';
 import {CONTENT_TYPE, COUNT_CARD, FILTER_TYPE} from '../../const';
-import {getMoviesByGenre, getMyMovies} from '../../utils/utils';
+import {getMoviesByGenre} from '../../utils/utils';
 import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
@@ -16,6 +36,8 @@ const initialState = {
   renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
   isDataLoaded: false,
   isActiveMovieLoaded: false,
+  isPromoMovieLoaded: false,
+  isMyMoviesLoaded: false,
 };
 
 const moviesData = createReducer(initialState, (builder) => {
@@ -35,12 +57,6 @@ const moviesData = createReducer(initialState, (builder) => {
     return {
       ...state,
       filteredMovies: getMoviesByGenre(state.movies, state.genre),
-    };
-  });
-  builder.addCase(getMyMoviesList, (state) => {
-    return {
-      ...state,
-      myMovieList: getMyMovies(state.movies),
     };
   });
   builder.addCase(incrementStep, (state, action) => {
@@ -74,10 +90,22 @@ const moviesData = createReducer(initialState, (builder) => {
       comments: action.payload.map(adaptCommentToApp),
     };
   });
+  builder.addCase(loadMyMovieList, (state, action) => {
+    return {
+      ...state,
+      myMovieList: action.payload.map(adaptMoviesToApp),
+    };
+  });
   builder.addCase(resetActiveMovie, (state) => {
     return {
       ...state,
       isActiveMovieLoaded: false,
+    };
+  });
+  builder.addCase(resetPromoMovie, (state) => {
+    return {
+      ...state,
+      isPromoMovieLoaded: false,
     };
   });
   builder.addCase(resetApp, (state) => {
@@ -120,6 +148,18 @@ const moviesData = createReducer(initialState, (builder) => {
     return {
       ...state,
       isDataLoaded: true,
+    };
+  });
+  builder.addCase(setMyMoviesLoaded, (state) => {
+    return {
+      ...state,
+      isMyMoviesLoaded: true,
+    };
+  });
+  builder.addCase(setPromo, (state) => {
+    return {
+      ...state,
+      isPromoMovieLoaded: true,
     };
   });
 });

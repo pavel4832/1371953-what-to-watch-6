@@ -1,16 +1,36 @@
-import {getMovies, getMyMoviesList, loadActiveMovie, loadComments, loadMovies, loadPromoMovie, setActive, setContentReview, setData, setLoginError, redirectToRoute, resetActiveMovie, requireAuthorization} from './action';
+import {
+  getMovies,
+  loadActiveMovie,
+  loadComments,
+  loadMovies,
+  loadMyMovieList,
+  loadPromoMovie,
+  setActive,
+  setContentReview,
+  setData,
+  setLoginError,
+  setMyMoviesLoaded,
+  setPromo,
+  redirectToRoute,
+  resetActiveMovie,
+  resetPromoMovie,
+  requireAuthorization
+} from './action';
 import {AuthorizationStatus, AppRoute, APIRoute} from '../const';
 
 export const fetchData = () => (dispatch, _getState, api) => {
-  Promise.all([
-    api.get(APIRoute.FILMS)
-      .then(({data}) => dispatch(loadMovies(data))),
-    api.get(APIRoute.PROMO)
-    .then(({data}) => dispatch(loadPromoMovie(data))),
-  ])
+  api.get(APIRoute.FILMS)
+    .then(({data}) => dispatch(loadMovies(data)))
     .then(() => dispatch(getMovies()))
-    .then(() => dispatch(getMyMoviesList()))
-    .then(() => dispatch(setData()));
+    .then(() => dispatch(setData()))
+    .catch(() => dispatch(redirectToRoute(APIRoute.ERROR)));
+};
+
+export const fetchPromoMovie = () => (dispatch, _getState, api) => {
+  api.get(APIRoute.PROMO)
+    .then(({data}) => dispatch(loadPromoMovie(data)))
+    .then(() => dispatch(setPromo()))
+    .catch(() => dispatch(redirectToRoute(APIRoute.ERROR)));
 };
 
 export const fetchMovieData = (id) => (dispatch, _getState, api) => {
@@ -21,6 +41,13 @@ export const fetchMovieData = (id) => (dispatch, _getState, api) => {
       .then(({data}) => dispatch(loadComments(data)))
   ])
     .then(() => dispatch(setActive()))
+    .catch(() => dispatch(redirectToRoute(APIRoute.ERROR)));
+};
+
+export const fetchMyMovieList = () => (dispatch, _getState, api) => {
+  api.get(APIRoute.MY_LIST)
+    .then(({data}) => dispatch(loadMyMovieList(data)))
+    .then(() => dispatch(setMyMoviesLoaded()))
     .catch(() => dispatch(redirectToRoute(APIRoute.ERROR)));
 };
 
@@ -49,6 +76,14 @@ export const logout = () => (dispatch, _getState, api) => (
 export const postComment = (id, {rating, comment}) => (dispatch, _getState, api) => (
   api.post(`${APIRoute.COMMENTS}/${id}`, {rating, comment})
     .then(() => dispatch(resetActiveMovie()))
+    .then(() => dispatch(setContentReview()))
+    .then(() => dispatch(redirectToRoute(`${AppRoute.FILMS}/${id}`)))
+);
+
+export const addToMyList = (id, status) => (dispatch, _getState, api) => (
+  api.post(`${APIRoute.MY_LIST}/${id}/${status}`)
+    .then(() => dispatch(resetActiveMovie()))
+    .then(() => dispatch(resetPromoMovie()))
     .then(() => dispatch(setContentReview()))
     .then(() => dispatch(redirectToRoute(`${AppRoute.FILMS}/${id}`)))
 );

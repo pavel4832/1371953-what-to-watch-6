@@ -1,29 +1,15 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Header from '../header/header';
 import MyListButton from '../my-list-button/my-list-button';
 import {useSelector, useDispatch} from 'react-redux';
 import {AppRoute} from '../../const';
 import {redirectToRoute} from '../../store/action';
-import {fetchPromoMovie} from '../../store/api-actions';
-import LoadingScreen from '../loading-screen/loading-screen';
 
 const MovieMain = () => {
-  const {promoMovie, isPromoMovieLoaded} = useSelector((state) => state.DATA);
+  const {promoMovie} = useSelector((state) => state.DATA);
   const {id, name, posterImage, backgroundImage, genre, released} = promoMovie;
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!isPromoMovieLoaded) {
-      dispatch(fetchPromoMovie());
-    }
-  }, [isPromoMovieLoaded]);
-
-  if (!isPromoMovieLoaded) {
-    return (
-      <LoadingScreen />
-    );
-  }
 
   return (
     <section className="movie-card">

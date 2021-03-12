@@ -10,14 +10,12 @@ import {
   loadMyMovieList,
   resetActiveMovie,
   resetApp,
-  resetPromoMovie,
   resetStepCount,
   setActive,
   setContentOverview,
   setContentReview,
   setData,
   setMyMoviesLoaded,
-  setPromo,
 } from '../action';
 import {adaptCommentToApp, adaptMoviesToApp} from '../../utils/adaptor';
 import {CONTENT_TYPE, COUNT_CARD, FILTER_TYPE} from '../../const';
@@ -36,7 +34,6 @@ const initialState = {
   renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
   isDataLoaded: false,
   isActiveMovieLoaded: false,
-  isPromoMovieLoaded: false,
   isMyMoviesLoaded: false,
 };
 
@@ -102,22 +99,16 @@ const moviesData = createReducer(initialState, (builder) => {
       isActiveMovieLoaded: false,
     };
   });
-  builder.addCase(resetPromoMovie, (state) => {
-    return {
-      ...state,
-      isPromoMovieLoaded: false,
-    };
-  });
   builder.addCase(resetApp, (state) => {
     return {
       ...state,
       genre: FILTER_TYPE.ALL_GENRE,
-      filteredMovies: [],
-      comments: [],
       activeMovie: state.promoMovie,
       contentType: CONTENT_TYPE.OVERVIEW,
       renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
+      isDataLoaded: false,
       isActiveMovieLoaded: false,
+      isMyMoviesLoaded: false,
     };
   });
   builder.addCase(resetStepCount, (state) => {
@@ -154,12 +145,6 @@ const moviesData = createReducer(initialState, (builder) => {
     return {
       ...state,
       isMyMoviesLoaded: true,
-    };
-  });
-  builder.addCase(setPromo, (state) => {
-    return {
-      ...state,
-      isPromoMovieLoaded: true,
     };
   });
 });

@@ -86,8 +86,6 @@ export const resetApp = createAction(ActionType.RESET_APP);
 
 export const resetActiveMovie = createAction(ActionType.RESET_ACTIVE_MOVIE);
 
-export const resetPromoMovie = createAction(ActionType.RESET_PROMO_MOVIE);
-
 export const resetStepCount = createAction(ActionType.RESET_STEP_COUNT);
 
 export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => {
@@ -107,5 +105,3 @@ export const setContentReview = createAction(ActionType.SET_CONTENT_REVIEW);
 export const setLoginError = createAction(ActionType.SET_LOGIN_ERROR);
 
 export const setMyMoviesLoaded = createAction(ActionType.SET_MY_MOVIES_LOADED);
-
-export const setPromo = createAction(ActionType.SET_PROMO);

@@ -18,6 +18,27 @@ export const getMoviesByGenre = (movies, genre) => {
   return movies.filter((movie) => movie.genre === genre);
 };
 
-export const getMyMovies = (movies) => {
-  return movies.filter((movie) => movie.isFavorite === true);
+const getNumber = (number) => {
+  if (number.toString().length === 1) {
+    return number.toString().padStart(2, `0`);
+  }
+
+  return number.toString();
+};
+
+export const formatTime = (time, hours) => {
+  if (hours) {
+    const h = getNumber(Math.floor(time / 3600));
+    time = time - h * 3600;
+
+    const m = getNumber(Math.floor(time / 60));
+    const s = getNumber(Math.floor(time % 60));
+
+    return h + `:` + m + `:` + s;
+  } else {
+    const m = getNumber(Math.floor(time / 60));
+    const s = getNumber(Math.floor(time % 60));
+
+    return m + `:` + s;
+  }
 };

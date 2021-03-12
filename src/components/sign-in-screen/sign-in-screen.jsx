@@ -12,7 +12,7 @@ const SingInScreen = () => {
 
   const dispatch = useDispatch();
 
-  const handleButtonSubmitClick = (evt) => {
+  const onButtonSubmitClickHandler = (evt) => {
     let stopSubmit = false;
 
     if (loginRef.current.checkValidity() === false) {
@@ -80,7 +80,7 @@ const SingInScreen = () => {
             <button
               className="sign-in__btn"
               type="submit"
-              onClick={handleButtonSubmitClick}
+              onClick={onButtonSubmitClickHandler}
             >
               Sign in
             </button>

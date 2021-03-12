@@ -5,15 +5,16 @@ export const ActionType = {
   CHANGE_CONTENT: `movies/changeContent`,
   CHANGE_GENRE: `movies/changeGenre`,
   GET_MOVIES: `movies/getMovies`,
-  GET_MY_MOVIES: `movies/getMyMovies`,
   INCREMENT_STEP: `movies/incrementStep`,
   LOAD_MOVIES: `data/loadMovies`,
   LOAD_PROMO_MOVIE: `data/loadPromoMovie`,
   LOAD_ACTIVE_MOVIE: `data/loadActiveMovie`,
   LOAD_COMMENTS: `data/loadComments`,
+  LOAD_MY_MOVIES: `movies/loadMyMovies`,
   REDIRECT_TO_ROUTE: `movies/redirectToRoute`,
   RESET_APP: `movies/reset`,
   RESET_ACTIVE_MOVIE: `movies/resetActiveMovie`,
+  RESET_PROMO_MOVIE: `movies/resetPromoMovie`,
   RESET_STEP_COUNT: `movies/resetStepCount`,
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
   SET_ACTIVE: `data/setActive`,
@@ -21,11 +22,11 @@ export const ActionType = {
   SET_CONTENT_REVIEW: `movies/setContentReview`,
   SET_DATA: `data/setData`,
   SET_LOGIN_ERROR: `user/setLoginError`,
+  SET_MY_MOVIES_LOADED: `data/setMyLoaded`,
+  SET_PROMO: `data/setPromo`,
 };
 
 export const getMovies = createAction(ActionType.GET_MOVIES);
-
-export const getMyMoviesList = createAction(ActionType.GET_MY_MOVIES);
 
 export const changeContent = createAction(ActionType.CHANGE_CONTENT, (newContent) => {
   return {
@@ -69,6 +70,12 @@ export const loadComments = createAction(ActionType.LOAD_COMMENTS, (comments) =>
   };
 });
 
+export const loadMyMovieList = createAction(ActionType.LOAD_MY_MOVIES, (movies) => {
+  return {
+    payload: movies,
+  };
+});
+
 export const redirectToRoute = createAction(ActionType.REDIRECT_TO_ROUTE, (url) => {
   return {
     payload: url,
@@ -96,3 +103,5 @@ export const setContentOverview = createAction(ActionType.SET_CONTENT_OVERVIEW);
 export const setContentReview = createAction(ActionType.SET_CONTENT_REVIEW);
 
 export const setLoginError = createAction(ActionType.SET_LOGIN_ERROR);
+
+export const setMyMoviesLoaded = createAction(ActionType.SET_MY_MOVIES_LOADED);

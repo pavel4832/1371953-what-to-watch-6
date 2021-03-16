@@ -35,7 +35,7 @@ describe(`Action creators work correctly`, () => {
     expect(getMovies()).toEqual(expectedAction);
   });
 
-  it(`Action creator for changeContent returns action with undefined payload`, () => {
+  it(`Action creator for changeContent returns action with content payload`, () => {
     const expectedAction = {
       type: ActionType.CHANGE_CONTENT,
       payload: CONTENT_TYPE.OVERVIEW,
@@ -46,7 +46,7 @@ describe(`Action creators work correctly`, () => {
     expect(changeContent(content)).toEqual(expectedAction);
   });
 
-  it(`Action creator for changeGenre returns action with undefined payload`, () => {
+  it(`Action creator for changeGenre returns action with genre payload`, () => {
     const expectedAction = {
       type: ActionType.CHANGE_GENRE,
       payload: FILTER_TYPE.ALL_GENRE,
@@ -57,7 +57,7 @@ describe(`Action creators work correctly`, () => {
     expect(changeGenre(genre)).toEqual(expectedAction);
   });
 
-  it(`Action creator for incrementStep returns action with undefined payload`, () => {
+  it(`Action creator for incrementStep returns action with step payload`, () => {
     const expectedAction = {
       type: ActionType.INCREMENT_STEP,
       payload: COUNT_CARD.MAIN_PER_STEP,
@@ -66,7 +66,7 @@ describe(`Action creators work correctly`, () => {
     expect(incrementStep()).toEqual(expectedAction);
   });
 
-  it(`Action creator for loadMovies returns action with undefined payload`, () => {
+  it(`Action creator for loadMovies returns action with movies payload`, () => {
     const expectedAction = {
       type: ActionType.LOAD_MOVIES,
       payload: MOVIES,
@@ -75,7 +75,7 @@ describe(`Action creators work correctly`, () => {
     expect(loadMovies(MOVIES)).toEqual(expectedAction);
   });
 
-  it(`Action creator for loadPromoMovie returns action with undefined payload`, () => {
+  it(`Action creator for loadPromoMovie returns action with movie payload`, () => {
     const expectedAction = {
       type: ActionType.LOAD_PROMO_MOVIE,
       payload: MOVIE,
@@ -84,7 +84,7 @@ describe(`Action creators work correctly`, () => {
     expect(loadPromoMovie(MOVIE)).toEqual(expectedAction);
   });
 
-  it(`Action creator for loadActiveMovie returns action with undefined payload`, () => {
+  it(`Action creator for loadActiveMovie returns action with movie payload`, () => {
     const expectedAction = {
       type: ActionType.LOAD_ACTIVE_MOVIE,
       payload: MOVIE,
@@ -93,7 +93,7 @@ describe(`Action creators work correctly`, () => {
     expect(loadActiveMovie(MOVIE)).toEqual(expectedAction);
   });
 
-  it(`Action creator for loadComments returns action with undefined payload`, () => {
+  it(`Action creator for loadComments returns action with comments payload`, () => {
     const expectedAction = {
       type: ActionType.LOAD_COMMENTS,
       payload: COMMENTS,
@@ -102,7 +102,7 @@ describe(`Action creators work correctly`, () => {
     expect(loadComments(COMMENTS)).toEqual(expectedAction);
   });
 
-  it(`Action creator for loadMyMovieList returns action with undefined payload`, () => {
+  it(`Action creator for loadMyMovieList returns action with movies payload`, () => {
     const expectedAction = {
       type: ActionType.LOAD_MY_MOVIES,
       payload: MOVIES,
@@ -111,7 +111,7 @@ describe(`Action creators work correctly`, () => {
     expect(loadMyMovieList(MOVIES)).toEqual(expectedAction);
   });
 
-  it(`Action creator for redirectToRoute returns action with undefined payload`, () => {
+  it(`Action creator for redirectToRoute returns action with url payload`, () => {
     const expectedAction = {
       type: ActionType.REDIRECT_TO_ROUTE,
       payload: `/login`
@@ -146,7 +146,7 @@ describe(`Action creators work correctly`, () => {
     expect(resetStepCount()).toEqual(expectedAction);
   });
 
-  it(`Action creator for requireAuthorization returns action with undefined payload`, () => {
+  it(`Action creator for requireAuthorization returns action with status payload`, () => {
     const expectedAction = {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: AuthorizationStatus.NO_AUTH

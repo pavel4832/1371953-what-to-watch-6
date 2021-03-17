@@ -71,6 +71,16 @@ describe(`Async operation work correctly`, () => {
           type: ActionType.REDIRECT_TO_ROUTE,
           payload: AppRoute.ROOT,
         });
+      })
+      .catch(() => {
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.SET_LOGIN_ERROR,
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.REDIRECT_TO_ROUTE,
+          payload: AppRoute.ROOT,
+        });
       });
   });
 

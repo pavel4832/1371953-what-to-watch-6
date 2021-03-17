@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should FilterList render correctly 1`] = `
+<div>
+  <ul
+    class="catalog__genres-list"
+  >
+    <li
+      class="catalog__genres-item catalog__genres-item--active"
+    >
+      <a
+        class="catalog__genres-link"
+        href="#"
+      >
+        All genre
+      </a>
+    </li>
+    <li
+      class="catalog__genres-item "
+    >
+      <a
+        class="catalog__genres-link"
+        href="#"
+      >
+        Comedies
+      </a>
+    </li>
+    <li
+      class="catalog__genres-item "
+    >
+      <a
+        class="catalog__genres-link"
+        href="#"
+      >
+        Dramas
+      </a>
+    </li>
+    <li
+      class="catalog__genres-item "
+    >
+      <a
+        class="catalog__genres-link"
+        href="#"
+      >
+        Sci-Fi
+      </a>
+    </li>
+    <li
+      class="catalog__genres-item "
+    >
+      <a
+        class="catalog__genres-link"
+        href="#"
+      >
+        Thrillers
+      </a>
+    </li>
+  </ul>
+</div>
+`;

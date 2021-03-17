@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should LoadingScreen render correctly 1`] = `
+<div>
+  <div
+    id="page-preloader"
+  >
+    <span
+      class="spinner"
+    />
+  </div>
+</div>
+`;

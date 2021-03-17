@@ -17,7 +17,7 @@ import {
 } from './action';
 import {AuthorizationStatus, AppRoute, APIRoute} from '../const';
 
-export const fetchData = () => (dispatch, _getState, api) => {
+export const fetchData = () => (dispatch, _getState, api) => (
   Promise.all([
     api.get(APIRoute.FILMS)
       .then(({data}) => dispatch(loadMovies(data))),
@@ -26,10 +26,10 @@ export const fetchData = () => (dispatch, _getState, api) => {
   ])
     .then(() => dispatch(getMovies()))
     .then(() => dispatch(setData()))
-    .catch(() => dispatch(redirectToRoute(APIRoute.ERROR)));
-};
+    .catch(() => dispatch(redirectToRoute(APIRoute.ERROR)))
+);
 
-export const fetchMovieData = (id) => (dispatch, _getState, api) => {
+export const fetchMovieData = (id) => (dispatch, _getState, api) => (
   Promise.all([
     api.get(`${APIRoute.FILMS}/${id}`)
       .then(({data}) => dispatch(loadActiveMovie(data))),
@@ -37,20 +37,19 @@ export const fetchMovieData = (id) => (dispatch, _getState, api) => {
       .then(({data}) => dispatch(loadComments(data)))
   ])
     .then(() => dispatch(setActive()))
-    .catch(() => dispatch(redirectToRoute(APIRoute.ERROR)));
-};
+    .catch(() => dispatch(redirectToRoute(APIRoute.ERROR)))
+);
 
-export const fetchMyMovieList = () => (dispatch, _getState, api) => {
+export const fetchMyMovieList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.MY_LIST)
     .then(({data}) => dispatch(loadMyMovieList(data)))
     .then(() => dispatch(setMyMoviesLoaded()))
-    .catch(() => dispatch(redirectToRoute(APIRoute.ERROR)));
-};
+    .catch(() => dispatch(redirectToRoute(APIRoute.ERROR)))
+);
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-    .catch(() => {})
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
@@ -66,7 +65,6 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
 export const logout = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOG_OUT)
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
-    .catch(() => {})
 );
 
 export const postComment = (id, {rating, comment}) => (dispatch, _getState, api) => (

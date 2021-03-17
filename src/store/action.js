@@ -1,5 +1,5 @@
 import {createAction} from '@reduxjs/toolkit';
-import {COUNT_CARD} from '/src/const';
+import {COUNT_CARD} from '../const';
 
 export const ActionType = {
   CHANGE_CONTENT: `movies/changeContent`,

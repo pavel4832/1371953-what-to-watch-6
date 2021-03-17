@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Header render correctly 1`] = `
+<div>
+  <header
+    class="page-header movie-card__head user-page__head"
+  >
+    <div
+      class="logo"
+    >
+      <a
+        class="logo__link"
+        href="/"
+      >
+        <span
+          class="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          class="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          class="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    
+    <h1
+      class="page-title user-page__title"
+      style="display: none;"
+    />
+    <div
+      class="user-block"
+    >
+      <div
+        class="user-block__avatar"
+      >
+        <a
+          href="/mylist"
+        >
+          <img
+            alt="User avatar"
+            height="63"
+            src="img/avatar.jpg"
+            width="63"
+          />
+        </a>
+      </div>
+      <a
+        class="user-block__link"
+        href="/"
+      >
+        Log out
+      </a>
+    </div>
+  </header>
+</div>
+`;

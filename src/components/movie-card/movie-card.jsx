@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import {moviesProp} from '../../utils/valid-props';
 import {Link} from 'react-router-dom';
-import {TIMEOUT_PREVIEW, AppRoute, POSTER_SIZE} from '/src/const';
+import {TIMEOUT_PREVIEW, AppRoute, POSTER_SIZE} from '../../const';
 import {changeGenre, getMovies, redirectToRoute, resetActiveMovie, setContentOverview} from '../../store/action';
 
 const MovieCard = (props) => {

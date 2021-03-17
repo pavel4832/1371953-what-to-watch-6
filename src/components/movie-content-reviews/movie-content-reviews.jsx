@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import {COLUMN_QUANTITY, PRECISION_RATING} from '/src/const';
+import {COLUMN_QUANTITY, PRECISION_RATING} from '../../const';
 import {useSelector} from 'react-redux';
 
 const MovieContentReviews = () => {

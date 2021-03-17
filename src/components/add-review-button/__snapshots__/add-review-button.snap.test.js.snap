@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should NotFoundScreen render correctly 1`] = `
+exports[`Should AddReviewButton render correctly 1`] = `
 <div>
   <a
     class="btn movie-card__button"

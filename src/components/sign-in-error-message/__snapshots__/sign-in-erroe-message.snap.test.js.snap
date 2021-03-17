@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should SignInErrorMessage render correctly 1`] = `
+<div>
+  <div
+    class="sign-in__message"
+  >
+    <p
+      style="white-space: pre-line;"
+    >
+      We can’t recognize this email
+ and password combination. Please try again.
+    </p>
+  </div>
+</div>
+`;

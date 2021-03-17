@@ -3,19 +3,18 @@ import {Provider} from 'react-redux';
 import {render} from '@testing-library/react';
 import {Router} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
-import AddReviewButton from './add-review-button';
+import AddReviewForm from './add-review-form';
 import configureStore from 'redux-mock-store';
-import MOCK_STORE from '../../mock/mock-store';
 
 const mockStore = configureStore({});
 
-it(`Should AddReviewButton render correctly`, () => {
-  const store = mockStore(MOCK_STORE);
+it(`Should AddReviewForm render correctly`, () => {
+  const id = 1;
   const history = createMemoryHistory();
   const {container} = render(
-      <Provider store={store}>
+      <Provider store={mockStore({})}>
         <Router history={history}>
-          <AddReviewButton />
+          <AddReviewForm id={id} />
         </Router>
       </Provider>
   );

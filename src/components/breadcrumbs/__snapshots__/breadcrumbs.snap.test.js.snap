@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Breadcrumbs render correctly 1`] = `
+<div>
+  <nav
+    class="breadcrumbs"
+  >
+    <ul
+      class="breadcrumbs__list"
+    >
+      <li
+        class="breadcrumbs__item"
+      >
+        <a
+          class="breadcrumbs__link"
+          href="movie-page.html"
+        >
+          The Grand Budapest Hotel
+        </a>
+      </li>
+      <li
+        class="breadcrumbs__item"
+      >
+        <a
+          class="breadcrumbs__link"
+          href="/films/:id/review"
+        >
+          Add review
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

@@ -15,9 +15,9 @@ export default {
     genre: FILTER_TYPE.ALL_GENRE,
     contentType: CONTENT_TYPE.OVERVIEW,
     renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
-    isDataLoaded: false,
-    isActiveMovieLoaded: false,
-    isMyMoviesLoaded: false,
+    isDataLoaded: true,
+    isActiveMovieLoaded: true,
+    isMyMoviesLoaded: true,
   },
   USER: {
     authorizationStatus: AuthorizationStatus.AUTH,

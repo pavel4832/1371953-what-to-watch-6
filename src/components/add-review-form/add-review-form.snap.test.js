@@ -1,7 +1,8 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import {render} from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import {Router} from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
 import {createMemoryHistory} from 'history';
 import AddReviewForm from './add-review-form';
 import configureStore from 'redux-mock-store';
@@ -19,4 +20,8 @@ it(`Should AddReviewForm render correctly`, () => {
       </Provider>
   );
   expect(container).toMatchSnapshot();
+
+  userEvent.type(screen.getByTestId(`comment`), `HTML Academy`);
+
+  expect(screen.getByDisplayValue(/HTML Academy/i)).toBeInTheDocument();
 });

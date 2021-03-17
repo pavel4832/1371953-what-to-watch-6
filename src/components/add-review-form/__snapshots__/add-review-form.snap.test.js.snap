@@ -17,6 +17,7 @@ exports[`Should AddReviewForm render correctly 1`] = `
         >
           <input
             class="rating__input"
+            data-testid="rating"
             id="star-1"
             name="rating"
             type="radio"
@@ -31,6 +32,7 @@ exports[`Should AddReviewForm render correctly 1`] = `
           </label>
           <input
             class="rating__input"
+            data-testid="rating"
             id="star-2"
             name="rating"
             type="radio"
@@ -45,6 +47,7 @@ exports[`Should AddReviewForm render correctly 1`] = `
           </label>
           <input
             class="rating__input"
+            data-testid="rating"
             id="star-3"
             name="rating"
             type="radio"
@@ -59,6 +62,7 @@ exports[`Should AddReviewForm render correctly 1`] = `
           </label>
           <input
             class="rating__input"
+            data-testid="rating"
             id="star-4"
             name="rating"
             type="radio"
@@ -73,6 +77,7 @@ exports[`Should AddReviewForm render correctly 1`] = `
           </label>
           <input
             class="rating__input"
+            data-testid="rating"
             id="star-5"
             name="rating"
             type="radio"
@@ -87,6 +92,7 @@ exports[`Should AddReviewForm render correctly 1`] = `
           </label>
           <input
             class="rating__input"
+            data-testid="rating"
             id="star-6"
             name="rating"
             type="radio"
@@ -101,6 +107,7 @@ exports[`Should AddReviewForm render correctly 1`] = `
           </label>
           <input
             class="rating__input"
+            data-testid="rating"
             id="star-7"
             name="rating"
             type="radio"
@@ -115,6 +122,7 @@ exports[`Should AddReviewForm render correctly 1`] = `
           </label>
           <input
             class="rating__input"
+            data-testid="rating"
             id="star-8"
             name="rating"
             type="radio"
@@ -129,6 +137,7 @@ exports[`Should AddReviewForm render correctly 1`] = `
           </label>
           <input
             class="rating__input"
+            data-testid="rating"
             id="star-9"
             name="rating"
             type="radio"
@@ -144,6 +153,7 @@ exports[`Should AddReviewForm render correctly 1`] = `
           <input
             checked=""
             class="rating__input"
+            data-testid="rating"
             id="star-10"
             name="rating"
             type="radio"
@@ -163,6 +173,7 @@ exports[`Should AddReviewForm render correctly 1`] = `
       >
         <textarea
           class="add-review__textarea"
+          data-testid="comment"
           id="review-text"
           maxlength="400"
           minlength="50"

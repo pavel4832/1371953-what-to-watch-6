@@ -43,7 +43,9 @@ const AddReviewForm = (props) => {
                   checked={userFormRating === index + 1}
                   onChange={() => {
                     setUserFormRating(index + 1);
-                  }}/>
+                  }}
+                  data-testid="rating"
+                />
                 <label className="rating__label" htmlFor={`star-${rating}`}>Rating {rating}</label>
               </React.Fragment>
             ))}
@@ -59,6 +61,7 @@ const AddReviewForm = (props) => {
             minLength="50"
             maxLength="400"
             onChange={handleTextChange}
+            data-testid="comment"
           >
             {userFormText}
           </textarea>

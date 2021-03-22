@@ -1,19 +1,16 @@
 import React from 'react';
 import {moviesProp} from '../../utils/valid-props';
-import {useDispatch} from 'react-redux';
-import {addToMyList} from '../../store/api-actions';
+import PropTypes from "prop-types";
 
 const MyListButton = (props) => {
-  const {movie} = props;
-  const {id, isFavorite} = movie;
-
-  const dispatch = useDispatch();
+  const {movie, onMyButtonClickHandler} = props;
+  const {isFavorite} = movie;
 
   const buttonImage = () => {
     if (!isFavorite) {
       return (
         <svg viewBox="0 0 19 20" width="19" height="20">
-          <use xlinkHref="#add"></use>
+          <use xlinkHref="#add" data-testid="add"></use>
         </svg>
       );
     } else {
@@ -23,11 +20,6 @@ const MyListButton = (props) => {
         </svg>
       );
     }
-  };
-
-  const onMyButtonClickHandler = () => {
-    const status = (isFavorite) ? 0 : 1;
-    dispatch(addToMyList(id, status));
   };
 
   return (
@@ -44,6 +36,7 @@ const MyListButton = (props) => {
 
 MyListButton.propTypes = {
   movie: moviesProp,
+  onMyButtonClickHandler: PropTypes.func.isRequired,
 };
 
 export default MyListButton;

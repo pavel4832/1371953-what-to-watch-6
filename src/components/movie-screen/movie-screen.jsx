@@ -5,6 +5,8 @@ import MovieFull from '../movie-full/movie-full';
 import MovieSame from '../movie-same/movie-same';
 import {fetchMovieData} from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
+import {redirectToRoute} from '../../store/action';
+import {AppRoute} from '../../const';
 
 const MovieScreen = (props) => {
   const {id} = props;
@@ -25,7 +27,11 @@ const MovieScreen = (props) => {
   }
 
   return <React.Fragment>
-    <MovieFull />
+    <MovieFull
+      onPlayButtonClick={() => {
+        dispatch(redirectToRoute(`${AppRoute.PLAYER}/${id}`));
+      }}
+    />
 
     <MovieSame />
   </React.Fragment>;

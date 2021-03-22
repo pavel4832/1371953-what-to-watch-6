@@ -108,6 +108,7 @@ exports[`Should MovieScreen render correctly 1`] = `
           >
             <button
               class="btn btn--play movie-card__button"
+              data-testid="play-button"
               type="button"
             >
               <svg
@@ -133,6 +134,7 @@ exports[`Should MovieScreen render correctly 1`] = `
                 width="19"
               >
                 <use
+                  data-testid="add"
                   xlink:href="#add"
                 />
               </svg>
@@ -278,12 +280,7 @@ exports[`Should MovieScreen render correctly 1`] = `
           <div
             class="small-movie-card__image"
           >
-            <video
-              height="175"
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-              width="280"
-            />
+            This is mock VideoPlayer
           </div>
           <h3
             class="small-movie-card__title"
@@ -302,12 +299,7 @@ exports[`Should MovieScreen render correctly 1`] = `
           <div
             class="small-movie-card__image"
           >
-            <video
-              height="175"
-              poster="img/bohemian-rhapsody.jpg"
-              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-              width="280"
-            />
+            This is mock VideoPlayer
           </div>
           <h3
             class="small-movie-card__title"
@@ -326,12 +318,7 @@ exports[`Should MovieScreen render correctly 1`] = `
           <div
             class="small-movie-card__image"
           >
-            <video
-              height="175"
-              poster="img/macbeth.jpg"
-              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-              width="280"
-            />
+            This is mock VideoPlayer
           </div>
           <h3
             class="small-movie-card__title"
@@ -350,12 +337,7 @@ exports[`Should MovieScreen render correctly 1`] = `
           <div
             class="small-movie-card__image"
           >
-            <video
-              height="175"
-              poster="img/aviator.jpg"
-              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-              width="280"
-            />
+            This is mock VideoPlayer
           </div>
           <h3
             class="small-movie-card__title"

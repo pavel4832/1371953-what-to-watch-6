@@ -118,6 +118,7 @@ exports[`Should MovieMain render correctly 1`] = `
           >
             <button
               class="btn btn--play movie-card__button"
+              data-testid="play-button"
               type="button"
             >
               <svg
@@ -143,6 +144,7 @@ exports[`Should MovieMain render correctly 1`] = `
                 width="19"
               >
                 <use
+                  data-testid="add"
                   xlink:href="#add"
                 />
               </svg>

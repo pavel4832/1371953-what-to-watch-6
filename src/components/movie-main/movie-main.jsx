@@ -4,10 +4,13 @@ import MyListButton from '../my-list-button/my-list-button';
 import {useSelector, useDispatch} from 'react-redux';
 import {AppRoute} from '../../const';
 import {redirectToRoute} from '../../store/action';
+import {addToMyList} from '../../store/api-actions';
+import PropTypes from "prop-types";
 
-const MovieMain = () => {
+const MovieMain = (props) => {
+  const {onPlayButtonClick} = props;
   const {promoMovie} = useSelector((state) => state.DATA);
-  const {id, name, posterImage, backgroundImage, genre, released} = promoMovie;
+  const {id, name, posterImage, backgroundImage, genre, released, isFavorite} = promoMovie;
 
   const dispatch = useDispatch();
 
@@ -46,22 +49,32 @@ const MovieMain = () => {
               <button
                 className="btn btn--play movie-card__button"
                 type="button"
-                onClick={() => {
-                  dispatch(redirectToRoute(`${AppRoute.PLAYER}/${id}`));
-                }}>
+                onClick={onPlayButtonClick}
+                data-testid="play-button"
+              >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
                 </svg>
                 <span>Play</span>
               </button>
 
-              <MyListButton movie={promoMovie} />
+              <MyListButton
+                movie={promoMovie}
+                onMyButtonClickHandler = {() => {
+                  const status = (isFavorite) ? 0 : 1;
+                  dispatch(addToMyList(id, status));
+                }}
+              />
             </div>
           </div>
         </div>
       </div>
     </section>
   );
+};
+
+MovieMain.propTypes = {
+  onPlayButtonClick: PropTypes.func.isRequired,
 };
 
 export default MovieMain;

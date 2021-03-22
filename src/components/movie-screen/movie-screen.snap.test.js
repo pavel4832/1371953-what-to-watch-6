@@ -19,6 +19,17 @@ jest.mock(`react-redux`, () => ({
 
 jest.spyOn(redux, `useSelector`);
 
+jest.mock(`../../components/video-player/video-player`, () => {
+  const mockVideoPlayer = () => <>This is mock VideoPlayer</>;
+  mockVideoPlayer.displayName = `MockVideoPlayer`;
+  return {
+    __esModule: true,
+    default: () => {
+      return mockVideoPlayer();
+    }
+  };
+});
+
 it(`Should MovieScreen render correctly`, () => {
   const history = createMemoryHistory();
   const id = 1;

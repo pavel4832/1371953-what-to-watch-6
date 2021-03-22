@@ -9,6 +9,17 @@ import MOCK_STORE from '../../mock/mock-store';
 
 const mockStore = configureStore({});
 
+jest.mock(`../../components/video-player/video-player`, () => {
+  const mockVideoPlayer = () => <>This is mock VideoPlayer</>;
+  mockVideoPlayer.displayName = `MockVideoPlayer`;
+  return {
+    __esModule: true,
+    default: () => {
+      return mockVideoPlayer();
+    }
+  };
+});
+
 it(`Should MovieList render correctly`, () => {
   const store = mockStore(MOCK_STORE);
   const history = createMemoryHistory();

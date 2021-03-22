@@ -1,13 +1,23 @@
 import React from 'react';
-import {Provider} from 'react-redux';
 import {render} from '@testing-library/react';
 import {Router} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
-import MovieSame from './movie-same';
+import * as redux from 'react-redux';
 import configureStore from 'redux-mock-store';
+import MyListScreen from './my-list-screen';
 import MOCK_STORE from '../../mock/mock-store';
+import {Provider} from "react-redux";
 
 const mockStore = configureStore({});
+const store = mockStore(MOCK_STORE);
+
+const mockDispatch = jest.fn();
+jest.mock(`react-redux`, () => ({
+  ...jest.requireActual(`react-redux`),
+  useDispatch: () => mockDispatch,
+}));
+
+jest.spyOn(redux, `useSelector`);
 
 jest.mock(`../../components/video-player/video-player`, () => {
   const mockVideoPlayer = () => <>This is mock VideoPlayer</>;
@@ -20,13 +30,13 @@ jest.mock(`../../components/video-player/video-player`, () => {
   };
 });
 
-it(`Should MovieSame render correctly`, () => {
-  const store = mockStore(MOCK_STORE);
+it(`Should MyListScreen render correctly`, () => {
   const history = createMemoryHistory();
+
   const {container} = render(
       <Provider store={store}>
         <Router history={history}>
-          <MovieSame />
+          <MyListScreen />
         </Router>
       </Provider>
   );

@@ -16,6 +16,20 @@ jest.mock(`react-redux`, () => ({
   useDispatch: () => mockDispatch,
 }));
 
+jest.mock(`../../components/video-player/video-player`, () => {
+  const mockVideoPlayer = () => <>This is mock VideoPlayer</>;
+  mockVideoPlayer.displayName = `MockVideoPlayer`;
+  return {
+    __esModule: true,
+    default: () => {
+      return mockVideoPlayer();
+    }
+  };
+});
+
+window.HTMLMediaElement.prototype.play = () => {};
+window.HTMLMediaElement.prototype.pause = () => {};
+
 describe(`Test routing`, () => {
   jest.spyOn(redux, `useSelector`);
 

@@ -3,13 +3,14 @@ import Header from '../header/header';
 import MovieTabs from '../movie-tabs/movie-tabs';
 import AddReviewButton from '../add-review-button/add-review-button';
 import {useDispatch, useSelector} from "react-redux";
-import {redirectToRoute} from '../../store/action';
-import {AppRoute} from '../../const';
-import MyListButton from "../my-list-button/my-list-button";
+import MyListButton from '../my-list-button/my-list-button';
+import {addToMyList} from '../../store/api-actions';
+import PropTypes from "prop-types";
 
-const MovieFull = () => {
+const MovieFull = (props) => {
+  const {onPlayButtonClick} = props;
   const {activeMovie} = useSelector((state) => state.DATA);
-  const {id, name, posterImage, backgroundImage, genre, released} = activeMovie;
+  const {id, name, posterImage, backgroundImage, genre, released, isFavorite} = activeMovie;
 
   const dispatch = useDispatch();
 
@@ -40,15 +41,21 @@ const MovieFull = () => {
               <button
                 className="btn btn--play movie-card__button"
                 type="button"
-                onClick={() => {
-                  dispatch(redirectToRoute(`${AppRoute.PLAYER}/${id}`));
-                }}>
+                onClick={onPlayButtonClick}
+                data-testid="play-button"
+              >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
                 </svg>
                 <span>Play</span>
               </button>
-              <MyListButton movie={activeMovie} />
+              <MyListButton
+                movie={activeMovie}
+                onMyButtonClickHandler = {() => {
+                  const status = (isFavorite) ? 0 : 1;
+                  dispatch(addToMyList(id, status));
+                }}
+              />
               <AddReviewButton />
             </div>
           </div>
@@ -66,6 +73,10 @@ const MovieFull = () => {
       </div>
     </section>
   );
+};
+
+MovieFull.propTypes = {
+  onPlayButtonClick: PropTypes.func.isRequired,
 };
 
 export default MovieFull;

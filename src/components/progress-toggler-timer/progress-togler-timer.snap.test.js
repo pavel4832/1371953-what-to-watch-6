@@ -2,20 +2,24 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {render} from '@testing-library/react';
 import {Router} from 'react-router-dom';
-import {createMemoryHistory} from 'history';
-import MyListButton from './my-list-button';
-import configureStore from 'redux-mock-store';
-import {adaptMoviesToApp} from "../../utils/adaptor";
-import MOVIE from '../../mock/movie';
+import ProgressTogglerTimer from './progress-toggler-timer';
+import configureStore from "redux-mock-store";
+import {createMemoryHistory} from "history";
 
 const mockStore = configureStore({});
 
-it(`Should MyListButton render correctly`, () => {
+it(`Should ProgressTogglerTimer render correctly`, () => {
   const history = createMemoryHistory();
+  const progress = 0;
+  const timer = `01:01`;
+
   const {container} = render(
       <Provider store={mockStore({})}>
         <Router history={history}>
-          <MyListButton movie={adaptMoviesToApp(MOVIE)} onMyButtonClickHandler={jest.fn()} />
+          <ProgressTogglerTimer
+            progress={progress}
+            timer={timer}
+            onProgressClickHandler={jest.fn()} />
         </Router>
       </Provider>
   );

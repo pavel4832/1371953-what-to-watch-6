@@ -1,21 +1,34 @@
 import React from 'react';
-import {Provider} from 'react-redux';
 import {render} from '@testing-library/react';
 import {Router} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
-import MyListButton from './my-list-button';
+import * as redux from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {adaptMoviesToApp} from "../../utils/adaptor";
+import MovieCard from './movie-card';
+import {Provider} from "react-redux";
 import MOVIE from '../../mock/movie';
+import {adaptMoviesToApp} from '../../utils/adaptor';
 
 const mockStore = configureStore({});
 
-it(`Should MyListButton render correctly`, () => {
+const mockDispatch = jest.fn();
+jest.mock(`react-redux`, () => ({
+  ...jest.requireActual(`react-redux`),
+  useDispatch: () => mockDispatch,
+}));
+
+jest.spyOn(redux, `useSelector`);
+
+it(`Should MovieCard render correctly`, () => {
   const history = createMemoryHistory();
+
   const {container} = render(
       <Provider store={mockStore({})}>
         <Router history={history}>
-          <MyListButton movie={adaptMoviesToApp(MOVIE)} onMyButtonClickHandler={jest.fn()} />
+          <MovieCard
+            movie={adaptMoviesToApp(MOVIE)}
+            renderPlayer={jest.fn()}
+          />
         </Router>
       </Provider>
   );

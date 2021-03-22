@@ -5,7 +5,7 @@ import AddReviewButton from '../add-review-button/add-review-button';
 import {useDispatch, useSelector} from "react-redux";
 import MyListButton from '../my-list-button/my-list-button';
 import {addToMyList} from '../../store/api-actions';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const MovieFull = (props) => {
   const {onPlayButtonClick} = props;

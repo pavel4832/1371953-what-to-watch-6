@@ -19,14 +19,3 @@ export const moviesProp = PropTypes.shape({
   released: PropTypes.number.isRequired,
   isFavorite: PropTypes.bool.isRequired
 }).isRequired;
-
-export const commentsProp = PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired
-  }).isRequired,
-  rating: PropTypes.number.isRequired,
-  commentText: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired
-}).isRequired;

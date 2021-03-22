@@ -13,7 +13,7 @@ exports[`Should Breadcrumbs render correctly 1`] = `
       >
         <a
           class="breadcrumbs__link"
-          href="movie-page.html"
+          href="/films/1"
         >
           The Grand Budapest Hotel
         </a>
@@ -23,7 +23,7 @@ exports[`Should Breadcrumbs render correctly 1`] = `
       >
         <a
           class="breadcrumbs__link"
-          href="/films/:id/review"
+          href="#"
         >
           Add review
         </a>

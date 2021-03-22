@@ -12,6 +12,7 @@ const mockStore = configureStore({});
 it(`Should AddReviewForm render correctly`, () => {
   const id = 1;
   const history = createMemoryHistory();
+
   const {container} = render(
       <Provider store={mockStore({})}>
         <Router history={history}>
@@ -19,6 +20,7 @@ it(`Should AddReviewForm render correctly`, () => {
         </Router>
       </Provider>
   );
+
   expect(container).toMatchSnapshot();
 
   userEvent.type(screen.getByTestId(`comment`), `HTML Academy`);

@@ -12,6 +12,7 @@ const mockStore = configureStore({});
 it(`Should AddReviewButton render correctly`, () => {
   const store = mockStore(MOCK_STORE);
   const history = createMemoryHistory();
+
   const {container} = render(
       <Provider store={store}>
         <Router history={history}>
@@ -19,5 +20,6 @@ it(`Should AddReviewButton render correctly`, () => {
         </Router>
       </Provider>
   );
+
   expect(container).toMatchSnapshot();
 });

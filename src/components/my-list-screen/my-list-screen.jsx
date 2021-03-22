@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-import Header from "../header/header";
-import Footer from "../footer/footer";
-import MovieList from "../movie-list/movie-list";
-import {fetchMyMovieList} from "../../store/api-actions";
-import LoadingScreen from "../loading-screen/loading-screen";
-import {useDispatch, useSelector} from "react-redux";
+import Header from '../header/header';
+import Footer from '../footer/footer';
+import MovieList from '../movie-list/movie-list';
+import {fetchMyMovieList} from '../../store/api-actions';
+import LoadingScreen from '../loading-screen/loading-screen';
+import {useDispatch, useSelector} from 'react-redux';
 
 const MyListScreen = () => {
   const {isMyMoviesLoaded} = useSelector((state) => state.DATA);

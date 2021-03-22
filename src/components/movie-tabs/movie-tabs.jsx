@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {CONTENT_TYPE} from "../../const";
+import {CONTENT_TYPE} from '../../const';
 import MovieContentOverview from '../movie-content-overview/movie-content-overview';
 import MovieContentDetails from '../movie-content-details/movie-content-details';
 import MovieContentReviews from '../movie-content-reviews/movie-content-reviews';

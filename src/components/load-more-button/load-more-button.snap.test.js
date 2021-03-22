@@ -14,6 +14,7 @@ it(`Should LoadMoreButton render correctly`, () => {
     DATA: {filteredMovies: MOVIES, renderedMovieCount: 8},
   });
   const history = createMemoryHistory();
+
   const {container} = render(
       <Provider store={store}>
         <Router history={history}>
@@ -21,5 +22,6 @@ it(`Should LoadMoreButton render correctly`, () => {
         </Router>
       </Provider>
   );
+
   expect(container).toMatchSnapshot();
 });

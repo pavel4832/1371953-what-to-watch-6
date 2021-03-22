@@ -23,6 +23,7 @@ it(`Should SingInScreen render correctly`, () => {
         </Router>
       </Provider>
   );
+
   expect(container).toMatchSnapshot();
 
   expect(screen.getByLabelText(/Email address/i)).toBeInTheDocument();

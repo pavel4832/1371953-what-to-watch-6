@@ -59,7 +59,7 @@ exports[`Should AddReviewScreen render correctly 1`] = `
             >
               <a
                 class="breadcrumbs__link"
-                href="movie-page.html"
+                href="/films/1"
               >
                 The Grand Budapest Hotel
               </a>
@@ -69,7 +69,7 @@ exports[`Should AddReviewScreen render correctly 1`] = `
             >
               <a
                 class="breadcrumbs__link"
-                href="/films/:id/review"
+                href="#"
               >
                 Add review
               </a>
@@ -109,10 +109,10 @@ exports[`Should AddReviewScreen render correctly 1`] = `
         class="movie-card__poster movie-card__poster--small"
       >
         <img
-          alt="The Grand Budapest Hotel poster"
-          height="327"
+          alt="The Grand Budapest Hotel-poster"
+          height="198"
           src="img/the-grand-budapest-hotel-poster.jpg"
-          width="218"
+          width="132"
         />
       </div>
     </div>

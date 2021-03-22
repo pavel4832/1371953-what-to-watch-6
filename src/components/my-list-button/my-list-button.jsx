@@ -1,6 +1,6 @@
 import React from 'react';
 import {moviesProp} from '../../utils/valid-props';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const MyListButton = (props) => {
   const {movie, onMyButtonClickHandler} = props;

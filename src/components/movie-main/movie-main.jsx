@@ -5,7 +5,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {AppRoute} from '../../const';
 import {redirectToRoute} from '../../store/action';
 import {addToMyList} from '../../store/api-actions';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const MovieMain = (props) => {
   const {onPlayButtonClick} = props;

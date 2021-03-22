@@ -5,7 +5,7 @@ import {Router} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
 import MyListButton from './my-list-button';
 import configureStore from 'redux-mock-store';
-import {adaptMoviesToApp} from "../../utils/adaptor";
+import {adaptMoviesToApp} from '../../utils/adaptor';
 import MOVIE from '../../mock/movie';
 import userEvent from '@testing-library/user-event';
 import {APIRoute} from '../../const';
@@ -13,6 +13,7 @@ import {APIRoute} from '../../const';
 const mockStore = configureStore({});
 
 const mockDispatch = jest.fn();
+
 jest.mock(`react-redux`, () => ({
   ...jest.requireActual(`react-redux`),
   useDispatch: () => mockDispatch,

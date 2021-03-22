@@ -6,12 +6,13 @@ import * as redux from 'react-redux';
 import configureStore from 'redux-mock-store';
 import PlayerScreen from './player-screen';
 import MOCK_STORE from '../../mock/mock-store';
-import {Provider} from "react-redux";
+import {Provider} from 'react-redux';
 
 const mockStore = configureStore({});
 const store = mockStore(MOCK_STORE);
 
 const mockDispatch = jest.fn();
+
 jest.mock(`react-redux`, () => ({
   ...jest.requireActual(`react-redux`),
   useDispatch: () => mockDispatch,
@@ -33,5 +34,6 @@ it(`Should PlayerScreen render correctly`, () => {
         </Router>
       </Provider>
   );
+
   expect(container).toMatchSnapshot();
 });

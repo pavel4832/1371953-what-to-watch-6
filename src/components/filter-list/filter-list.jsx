@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {MAX_FILTERS} from "../../const";
-import {changeGenre, getMovies, resetStepCount} from "../../store/action";
+import {MAX_FILTERS} from '../../const';
+import {changeGenre, getMovies, resetStepCount} from '../../store/action';
 
 
 const FilterList = () => {

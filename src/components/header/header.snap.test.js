@@ -5,15 +5,14 @@ import {Router} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
 import Header from './header';
 import configureStore from 'redux-mock-store';
-import {AuthorizationStatus} from "../../const";
+import MOCK_STORE from '../../mock/mock-store';
 
 const mockStore = configureStore({});
 
 it(`Should Header render correctly`, () => {
-  const store = mockStore({
-    USER: {authorizationStatus: AuthorizationStatus.AUTH}
-  });
+  const store = mockStore(MOCK_STORE);
   const history = createMemoryHistory();
+
   const {container} = render(
       <Provider store={store}>
         <Router history={history}>
@@ -21,5 +20,6 @@ it(`Should Header render correctly`, () => {
         </Router>
       </Provider>
   );
+
   expect(container).toMatchSnapshot();
 });

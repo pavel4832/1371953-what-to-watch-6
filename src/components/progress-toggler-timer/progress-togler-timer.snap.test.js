@@ -3,8 +3,8 @@ import {Provider} from 'react-redux';
 import {render} from '@testing-library/react';
 import {Router} from 'react-router-dom';
 import ProgressTogglerTimer from './progress-toggler-timer';
-import configureStore from "redux-mock-store";
-import {createMemoryHistory} from "history";
+import configureStore from 'redux-mock-store';
+import {createMemoryHistory} from 'history';
 
 const mockStore = configureStore({});
 
@@ -23,5 +23,6 @@ it(`Should ProgressTogglerTimer render correctly`, () => {
         </Router>
       </Provider>
   );
+
   expect(container).toMatchSnapshot();
 });

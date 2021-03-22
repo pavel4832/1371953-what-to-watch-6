@@ -10,6 +10,7 @@ const mockStore = configureStore({});
 
 it(`Should PlayerButtonPlay render correctly`, () => {
   const history = createMemoryHistory();
+
   const {container} = render(
       <Provider store={mockStore({})}>
         <Router history={history}>
@@ -17,5 +18,6 @@ it(`Should PlayerButtonPlay render correctly`, () => {
         </Router>
       </Provider>
   );
+
   expect(container).toMatchSnapshot();
 });

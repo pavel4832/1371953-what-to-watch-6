@@ -6,8 +6,8 @@ import {createMemoryHistory} from 'history';
 import MovieMain from './movie-main';
 import configureStore from 'redux-mock-store';
 import MOCK_STORE from '../../mock/mock-store';
-import {AppRoute} from "../../const";
-import userEvent from "@testing-library/user-event";
+import {AppRoute} from '../../const';
+import userEvent from '@testing-library/user-event';
 
 const mockStore = configureStore({});
 

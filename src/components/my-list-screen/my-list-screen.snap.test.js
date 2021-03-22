@@ -6,7 +6,7 @@ import * as redux from 'react-redux';
 import configureStore from 'redux-mock-store';
 import MyListScreen from './my-list-screen';
 import MOCK_STORE from '../../mock/mock-store';
-import {Provider} from "react-redux";
+import {Provider} from 'react-redux';
 
 const mockStore = configureStore({});
 const store = mockStore(MOCK_STORE);
@@ -40,5 +40,6 @@ it(`Should MyListScreen render correctly`, () => {
         </Router>
       </Provider>
   );
+
   expect(container).toMatchSnapshot();
 });

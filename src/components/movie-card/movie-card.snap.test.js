@@ -32,5 +32,6 @@ it(`Should MovieCard render correctly`, () => {
         </Router>
       </Provider>
   );
+
   expect(container).toMatchSnapshot();
 });

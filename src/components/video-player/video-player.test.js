@@ -10,6 +10,7 @@ window.HTMLMediaElement.prototype.pause = () => {};
 describe(`Test VideoPlayer`, () => {
   it(`VideoPlayer should be render correctly`, () => {
     const mockPath = `mock-path`;
+
     const {container} = render(
         <VideoPlayer
           isPlaying={true}
@@ -26,6 +27,7 @@ describe(`Test VideoPlayer`, () => {
 
   it(`VideoPlayer should play movie when data is loaded`, () => {
     const mockPath = `mock-path`;
+
     const {container} = render(
         <VideoPlayer
           isPlaying={true}

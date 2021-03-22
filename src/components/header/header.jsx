@@ -1,11 +1,11 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import PropTypes from "prop-types";
-import Breadcrumbs from "../breadcrumbs/breadcrumbs";
-import UserBlock from "../user-block/user-block";
+import PropTypes from 'prop-types';
+import Breadcrumbs from '../breadcrumbs/breadcrumbs';
+import UserBlock from '../user-block/user-block';
 import {Link} from 'react-router-dom';
-import {getMovies, resetApp} from "../../store/action";
-import {AuthorizationStatus} from "../../const";
+import {getMovies, resetApp} from '../../store/action';
+import {AuthorizationStatus} from '../../const';
 
 const Header = (props) => {
   const {headerTitle, isReview, pageType} = props;

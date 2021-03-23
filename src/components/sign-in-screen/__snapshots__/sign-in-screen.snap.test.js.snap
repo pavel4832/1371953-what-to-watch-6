@@ -66,7 +66,6 @@ exports[`Should SingInScreen render correctly 1`] = `
           >
             <input
               class="sign-in__input"
-              data-testid="login"
               id="user-email"
               name="user-email"
               placeholder="Email address"
@@ -84,7 +83,6 @@ exports[`Should SingInScreen render correctly 1`] = `
           >
             <input
               class="sign-in__input"
-              data-testid="password"
               id="user-password"
               name="user-password"
               placeholder="Password"

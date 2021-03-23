@@ -12,7 +12,8 @@ describe(`Reducer 'user' should work correctly`, () => {
     expect(user(undefined, {}))
       .toEqual({
         authorizationStatus: AuthorizationStatus.NO_AUTH,
-        isLoginError: false
+        isLoginError: false,
+        user: {}
       });
   });
 

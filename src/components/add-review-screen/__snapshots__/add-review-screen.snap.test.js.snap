@@ -67,12 +67,11 @@ exports[`Should AddReviewScreen render correctly 1`] = `
             <li
               class="breadcrumbs__item"
             >
-              <a
+              <span
                 class="breadcrumbs__link"
-                href="#"
               >
                 Add review
-              </a>
+              </span>
             </li>
           </ul>
         </nav>
@@ -92,7 +91,7 @@ exports[`Should AddReviewScreen render correctly 1`] = `
               <img
                 alt="User avatar"
                 height="63"
-                src="img/avatar.jpg"
+                src="img/1.png"
                 width="63"
               />
             </a>
@@ -131,7 +130,6 @@ exports[`Should AddReviewScreen render correctly 1`] = `
           >
             <input
               class="rating__input"
-              data-testid="rating"
               id="star-1"
               name="rating"
               type="radio"
@@ -146,7 +144,6 @@ exports[`Should AddReviewScreen render correctly 1`] = `
             </label>
             <input
               class="rating__input"
-              data-testid="rating"
               id="star-2"
               name="rating"
               type="radio"
@@ -161,7 +158,6 @@ exports[`Should AddReviewScreen render correctly 1`] = `
             </label>
             <input
               class="rating__input"
-              data-testid="rating"
               id="star-3"
               name="rating"
               type="radio"
@@ -176,7 +172,6 @@ exports[`Should AddReviewScreen render correctly 1`] = `
             </label>
             <input
               class="rating__input"
-              data-testid="rating"
               id="star-4"
               name="rating"
               type="radio"
@@ -191,7 +186,6 @@ exports[`Should AddReviewScreen render correctly 1`] = `
             </label>
             <input
               class="rating__input"
-              data-testid="rating"
               id="star-5"
               name="rating"
               type="radio"
@@ -206,7 +200,6 @@ exports[`Should AddReviewScreen render correctly 1`] = `
             </label>
             <input
               class="rating__input"
-              data-testid="rating"
               id="star-6"
               name="rating"
               type="radio"
@@ -221,7 +214,6 @@ exports[`Should AddReviewScreen render correctly 1`] = `
             </label>
             <input
               class="rating__input"
-              data-testid="rating"
               id="star-7"
               name="rating"
               type="radio"
@@ -236,7 +228,6 @@ exports[`Should AddReviewScreen render correctly 1`] = `
             </label>
             <input
               class="rating__input"
-              data-testid="rating"
               id="star-8"
               name="rating"
               type="radio"
@@ -251,7 +242,6 @@ exports[`Should AddReviewScreen render correctly 1`] = `
             </label>
             <input
               class="rating__input"
-              data-testid="rating"
               id="star-9"
               name="rating"
               type="radio"
@@ -267,7 +257,6 @@ exports[`Should AddReviewScreen render correctly 1`] = `
             <input
               checked=""
               class="rating__input"
-              data-testid="rating"
               id="star-10"
               name="rating"
               type="radio"
@@ -287,7 +276,6 @@ exports[`Should AddReviewScreen render correctly 1`] = `
         >
           <textarea
             class="add-review__textarea"
-            data-testid="comment"
             id="review-text"
             maxlength="400"
             minlength="50"

@@ -26,11 +26,14 @@ it(`Should SingInScreen render correctly`, () => {
 
   expect(container).toMatchSnapshot();
 
+  const loginElement = container.querySelector(`#user-email`);
+  const passwordElement = container.querySelector(`#user-password`);
+
   expect(screen.getByLabelText(/Email address/i)).toBeInTheDocument();
   expect(screen.getByLabelText(/Password/i)).toBeInTheDocument();
 
-  userEvent.type(screen.getByTestId(`login`), `keks@keks.ru`);
-  userEvent.type(screen.getByTestId(`password`), `123456`);
+  userEvent.type(loginElement, `keks@keks.ru`);
+  userEvent.type(passwordElement, `123456`);
 
   expect(screen.getByDisplayValue(/keks@keks.ru/i)).toBeInTheDocument();
   expect(screen.getByDisplayValue(/123456/i)).toBeInTheDocument();

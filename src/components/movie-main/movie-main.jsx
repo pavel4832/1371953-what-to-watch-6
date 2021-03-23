@@ -2,8 +2,8 @@ import React from 'react';
 import Header from '../header/header';
 import MyListButton from '../my-list-button/my-list-button';
 import {useSelector, useDispatch} from 'react-redux';
-import {AppRoute} from '../../const';
-import {redirectToRoute} from '../../store/action';
+import {AppRoute, FAVORITE_STATUS} from '../../const';
+import {redirectToRoute} from '../../store/actions';
 import {addToMyList} from '../../store/api-actions';
 import PropTypes from 'prop-types';
 
@@ -61,7 +61,7 @@ const MovieMain = (props) => {
               <MyListButton
                 movie={promoMovie}
                 onMyButtonClickHandler = {() => {
-                  const status = (isFavorite) ? 0 : 1;
+                  const status = (isFavorite) ? FAVORITE_STATUS.NO_ADD : FAVORITE_STATUS.ADD_TO;
                   dispatch(addToMyList(id, status));
                 }}
               />

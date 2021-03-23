@@ -1,5 +1,6 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
+import {RATING_LEVEL} from '../../const';
 
 const MovieContentOverview = () => {
   const {activeMovie} = useSelector((state) => state.DATA);
@@ -8,15 +9,15 @@ const MovieContentOverview = () => {
   let ratingLevel = ``;
 
   if (rating >= 0 && rating < 3) {
-    ratingLevel = `Bad`;
+    ratingLevel = RATING_LEVEL.BAD;
   } else if (rating >= 3 && rating < 5) {
-    ratingLevel = `Normal`;
+    ratingLevel = RATING_LEVEL.NORMAL;
   } else if (rating >= 5 && rating < 8) {
-    ratingLevel = `Good`;
+    ratingLevel = RATING_LEVEL.GOOD;
   } else if (rating >= 8 && rating < 10) {
-    ratingLevel = `Very good`;
+    ratingLevel = RATING_LEVEL.VERY_GOOD;
   } else {
-    ratingLevel = `Awesome`;
+    ratingLevel = RATING_LEVEL.AWESOME;
   }
 
   return <React.Fragment>

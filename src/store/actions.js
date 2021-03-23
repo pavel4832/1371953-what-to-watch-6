@@ -22,6 +22,7 @@ export const ActionType = {
   SET_CONTENT_REVIEW: `movies/setContentReview`,
   SET_DATA: `data/setData`,
   SET_LOGIN_ERROR: `user/setLoginError`,
+  SET_LOGIN_INFO: `user/setLoginInfo`,
   SET_MY_MOVIES_LOADED: `data/setMyLoaded`,
   SET_PROMO: `data/setPromo`,
 };
@@ -103,5 +104,11 @@ export const setContentOverview = createAction(ActionType.SET_CONTENT_OVERVIEW);
 export const setContentReview = createAction(ActionType.SET_CONTENT_REVIEW);
 
 export const setLoginError = createAction(ActionType.SET_LOGIN_ERROR);
+
+export const setLoginInfo = createAction(ActionType.SET_LOGIN_INFO, (user) => {
+  return {
+    payload: user,
+  };
+});
 
 export const setMyMoviesLoaded = createAction(ActionType.SET_MY_MOVIES_LOADED);

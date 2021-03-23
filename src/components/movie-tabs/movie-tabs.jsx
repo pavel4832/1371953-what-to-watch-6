@@ -4,7 +4,7 @@ import {CONTENT_TYPE} from '../../const';
 import MovieContentOverview from '../movie-content-overview/movie-content-overview';
 import MovieContentDetails from '../movie-content-details/movie-content-details';
 import MovieContentReviews from '../movie-content-reviews/movie-content-reviews';
-import {changeContent} from '../../store/action';
+import {changeContent} from '../../store/actions';
 
 const MovieTabs = () => {
   const {contentType} = useSelector((state) => state.DATA);

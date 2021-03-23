@@ -1,7 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
 import {createAPI} from '../../services/api';
 import {user} from './user';
-import {ActionType} from '../action';
+import {ActionType} from '../actions';
 import {checkAuth, login, logout} from '../api-actions';
 import {APIRoute, AppRoute, AuthorizationStatus} from '../../const';
 
@@ -40,8 +40,14 @@ describe(`Async operation work correctly`, () => {
 
     return checkAuthLoader(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
+
         expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.SET_LOGIN_INFO,
+          payload: [{fake: true}],
+        });
+
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.REQUIRED_AUTHORIZATION,
           payload: AuthorizationStatus.AUTH,
         });
@@ -60,23 +66,30 @@ describe(`Async operation work correctly`, () => {
 
     return loginLoader(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(3);
 
         expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.SET_LOGIN_INFO,
+          payload: [{fake: true}],
+        });
+
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.REQUIRED_AUTHORIZATION,
           payload: AuthorizationStatus.AUTH,
         });
 
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
+        expect(dispatch).toHaveBeenNthCalledWith(3, {
           type: ActionType.REDIRECT_TO_ROUTE,
           payload: AppRoute.ROOT,
         });
       })
       .catch(() => {
         expect(dispatch).toHaveBeenCalledTimes(2);
+
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.SET_LOGIN_ERROR,
         });
+
         expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.REDIRECT_TO_ROUTE,
           payload: AppRoute.ROOT,

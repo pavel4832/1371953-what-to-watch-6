@@ -23,7 +23,9 @@ it(`Should AddReviewForm render correctly`, () => {
 
   expect(container).toMatchSnapshot();
 
-  userEvent.type(screen.getByTestId(`comment`), `HTML Academy`);
+  const textAreaElement = container.querySelector(`#review-text`);
+
+  userEvent.type(textAreaElement, `HTML Academy`);
 
   expect(screen.getByDisplayValue(/HTML Academy/i)).toBeInTheDocument();
 });

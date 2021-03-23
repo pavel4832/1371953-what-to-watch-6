@@ -1,7 +1,7 @@
 import React from 'react';
 import MovieMain from '../movie-main/movie-main';
 import MovieBoard from '../movie-board/movie-board';
-import {redirectToRoute} from '../../store/action';
+import {redirectToRoute} from '../../store/actions';
 import {AppRoute} from '../../const';
 import {useDispatch, useSelector} from 'react-redux';
 

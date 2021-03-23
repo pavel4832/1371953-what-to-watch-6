@@ -62,7 +62,7 @@ exports[`Should MovieContentReviews render correctly 1`] = `
             </cite>
             <time
               class="review__date"
-              datetime="2016-12-24"
+              datetime="2015-11-18"
             >
               November 18, 2015
             </time>
@@ -95,7 +95,7 @@ exports[`Should MovieContentReviews render correctly 1`] = `
             </cite>
             <time
               class="review__date"
-              datetime="2016-12-24"
+              datetime="2015-11-18"
             >
               November 18, 2015
             </time>

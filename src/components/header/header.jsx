@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import UserBlock from '../user-block/user-block';
 import {Link} from 'react-router-dom';
-import {getMovies, resetApp} from '../../store/action';
-import {AuthorizationStatus} from '../../const';
+import {getMovies, resetApp} from '../../store/actions';
+import {AuthorizationStatus, PAGE_TYPE} from '../../const';
 
 const Header = (props) => {
   const {headerTitle, isReview, pageType} = props;
@@ -17,17 +17,35 @@ const Header = (props) => {
   const dispatch = useDispatch();
 
   let headerClass = ``;
-  let isSignInPage = false;
 
   switch (pageType) {
-    case `login`:
+    case PAGE_TYPE.LOGIN:
       headerClass = `user-page__head`;
-      isSignInPage = true;
       break;
-    case `user` :
+    case PAGE_TYPE.USER:
       headerClass = `user-page__head`;
       break;
   }
+
+  const BreadCrumbsElement = () => {
+    if (isReview) {
+      return (
+        <Breadcrumbs />
+      );
+    } else {
+      return ``;
+    }
+  };
+
+  const UserBlockElement = () => {
+    if (pageType === PAGE_TYPE.LOGIN) {
+      return ``;
+    }
+
+    return (
+      <UserBlock />
+    );
+  };
 
   return (
     <header className={`page-header ${loginClass} ${headerClass}`}>
@@ -46,11 +64,11 @@ const Header = (props) => {
         </Link>
       </div>
 
-      <Breadcrumbs isReview={isReview} />
+      <BreadCrumbsElement />
 
       <h1 className="page-title user-page__title" style={{display: `${titleClass}`}}>{headerTitle}</h1>
 
-      <UserBlock isSignInPage={isSignInPage} />
+      <UserBlockElement />
     </header>
   );
 };

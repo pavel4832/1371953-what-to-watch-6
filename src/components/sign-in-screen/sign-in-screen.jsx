@@ -4,6 +4,7 @@ import Footer from '../footer/footer';
 import SignInErrorMessage from '../sign-in-error-message/sign-in-error-message';
 import {useDispatch} from 'react-redux';
 import {login} from '../../store/api-actions';
+import {PAGE_TYPE} from '../../const';
 
 const SingInScreen = () => {
   const loginRef = useRef();
@@ -41,7 +42,7 @@ const SingInScreen = () => {
       <Header
         headerTitle={`Sign in`}
         isReview={false}
-        pageType={`login`}
+        pageType={PAGE_TYPE.LOGIN}
       />
 
       <div className="sign-in user-page__content">
@@ -61,7 +62,6 @@ const SingInScreen = () => {
                 placeholder="Email address"
                 name="user-email"
                 id="user-email"
-                data-testid="login"
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
@@ -73,7 +73,7 @@ const SingInScreen = () => {
                 placeholder="Password"
                 name="user-password"
                 id="user-password"
-                data-testid="password"
+                required={true}
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
             </div>

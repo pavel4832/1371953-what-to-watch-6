@@ -1,5 +1,5 @@
 import React from 'react';
-import {incrementStep} from '../../store/action';
+import {incrementStep} from '../../store/actions';
 import {useSelector, useDispatch} from 'react-redux';
 
 

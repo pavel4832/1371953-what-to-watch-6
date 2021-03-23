@@ -1,19 +1,5 @@
 import {moviesData} from './movies-data';
-import {
-  ActionType,
-  getMovies,
-  changeContent,
-  changeGenre,
-  incrementStep,
-  resetApp,
-  resetActiveMovie,
-  resetStepCount,
-  setData,
-  setActive,
-  setContentOverview,
-  setContentReview,
-  setMyMoviesLoaded,
-} from '../action';
+import * as actions from '../actions';
 import {APIRoute, AppRoute, CONTENT_TYPE, COUNT_CARD, FILTER_TYPE} from '../../const';
 import MOVIES from '../../mock/movies';
 import MOVIE from '../../mock/movie';
@@ -61,7 +47,7 @@ describe(`Reducers work correctly`, () => {
   });
 
   it(`Reducer should change current content type by a given value`, () => {
-    expect(moviesData(state, changeContent(CONTENT_TYPE.REVIEWS)))
+    expect(moviesData(state, actions.changeContent(CONTENT_TYPE.REVIEWS)))
       .toEqual({
         ...state,
         contentType: CONTENT_TYPE.REVIEWS
@@ -69,7 +55,7 @@ describe(`Reducers work correctly`, () => {
   });
 
   it(`Reducer should change current genre by a given value`, () => {
-    expect(moviesData(state, changeGenre(FILTER_TYPE.COMEDIES)))
+    expect(moviesData(state, actions.changeGenre(FILTER_TYPE.COMEDIES)))
       .toEqual({
         ...state,
         genre: FILTER_TYPE.COMEDIES
@@ -77,7 +63,7 @@ describe(`Reducers work correctly`, () => {
   });
 
   it(`Reducer should change current filtered movies by a given genre value`, () => {
-    expect(moviesData(state, getMovies()))
+    expect(moviesData(state, actions.getMovies()))
       .toEqual({
         ...state,
         filteredMovies: getMoviesByGenre(state.movies, state.genre),
@@ -85,14 +71,14 @@ describe(`Reducers work correctly`, () => {
   });
 
   it(`Reducer should increment current step by a given value`, () => {
-    expect(moviesData(state, incrementStep()))
+    expect(moviesData(state, actions.incrementStep()))
       .toEqual({
         ...state,
         renderedMovieCount: COUNT_CARD.MAIN_PER_STEP + COUNT_CARD.MAIN_PER_STEP
       });
 
     const nonIncrementStepAction = {
-      type: ActionType.INCREMENT_STEP,
+      type: actions.ActionType.INCREMENT_STEP,
       payload: 0,
     };
 
@@ -105,7 +91,7 @@ describe(`Reducers work correctly`, () => {
 
   it(`Reducer should update movies by load movies`, () => {
     const loadMovies = {
-      type: ActionType.LOAD_MOVIES,
+      type: actions.ActionType.LOAD_MOVIES,
       payload: MOVIES
     };
 
@@ -118,7 +104,7 @@ describe(`Reducers work correctly`, () => {
 
   it(`Reducer should update promo movie by load movie`, () => {
     const loadPromoMovie = {
-      type: ActionType.LOAD_PROMO_MOVIE,
+      type: actions.ActionType.LOAD_PROMO_MOVIE,
       payload: MOVIE
     };
 
@@ -132,7 +118,7 @@ describe(`Reducers work correctly`, () => {
 
   it(`Reducer should update active movie by load movie`, () => {
     const loadActiveMovie = {
-      type: ActionType.LOAD_ACTIVE_MOVIE,
+      type: actions.ActionType.LOAD_ACTIVE_MOVIE,
       payload: MOVIE
     };
 
@@ -145,7 +131,7 @@ describe(`Reducers work correctly`, () => {
 
   it(`Reducer should update comments by load data`, () => {
     const loadComments = {
-      type: ActionType.LOAD_COMMENTS,
+      type: actions.ActionType.LOAD_COMMENTS,
       payload: COMMENTS
     };
 
@@ -158,7 +144,7 @@ describe(`Reducers work correctly`, () => {
 
   it(`Reducer should update favorite list by load data`, () => {
     const loadMyMovieList = {
-      type: ActionType.LOAD_MY_MOVIES,
+      type: actions.ActionType.LOAD_MY_MOVIES,
       payload: MOVIES
     };
 
@@ -170,7 +156,7 @@ describe(`Reducers work correctly`, () => {
   });
 
   it(`Reducer should return false for flag active movie loaded`, () => {
-    expect(moviesData(state, resetActiveMovie))
+    expect(moviesData(state, actions.resetActiveMovie))
       .toEqual({
         ...state,
         isActiveMovieLoaded: false,
@@ -178,7 +164,7 @@ describe(`Reducers work correctly`, () => {
   });
 
   it(`Reducer should return true for flag active movie loaded`, () => {
-    expect(moviesData(state, setActive))
+    expect(moviesData(state, actions.setActive))
       .toEqual({
         ...state,
         isActiveMovieLoaded: true,
@@ -199,7 +185,7 @@ describe(`Reducers work correctly`, () => {
       isDataLoaded: true,
       isActiveMovieLoaded: true,
       isMyMoviesLoaded: true
-    }, resetApp))
+    }, actions.resetApp))
       .toEqual({
         ...state,
         genre: FILTER_TYPE.ALL_GENRE,
@@ -213,7 +199,7 @@ describe(`Reducers work correctly`, () => {
   });
 
   it(`Reducer should return default for step counter`, () => {
-    expect(moviesData(state, resetStepCount))
+    expect(moviesData(state, actions.resetStepCount))
       .toEqual({
         ...state,
         renderedMovieCount: COUNT_CARD.MAIN_PER_STEP,
@@ -221,7 +207,7 @@ describe(`Reducers work correctly`, () => {
   });
 
   it(`Reducer should return default for content type`, () => {
-    expect(moviesData(state, setContentOverview))
+    expect(moviesData(state, actions.setContentOverview))
       .toEqual({
         ...state,
         contentType: CONTENT_TYPE.OVERVIEW,
@@ -229,7 +215,7 @@ describe(`Reducers work correctly`, () => {
   });
 
   it(`Reducer should return review type for content type`, () => {
-    expect(moviesData(state, setContentReview))
+    expect(moviesData(state, actions.setContentReview))
       .toEqual({
         ...state,
         contentType: CONTENT_TYPE.REVIEWS,
@@ -237,7 +223,7 @@ describe(`Reducers work correctly`, () => {
   });
 
   it(`Reducer should return true for flag movies data loaded`, () => {
-    expect(moviesData(state, setData))
+    expect(moviesData(state, actions.setData))
       .toEqual({
         ...state,
         isDataLoaded: true,
@@ -245,7 +231,7 @@ describe(`Reducers work correctly`, () => {
   });
 
   it(`Reducer should return true for flag favorite movies list loaded`, () => {
-    expect(moviesData(state, setMyMoviesLoaded))
+    expect(moviesData(state, actions.setMyMoviesLoaded))
       .toEqual({
         ...state,
         isMyMoviesLoaded: true,
@@ -269,18 +255,18 @@ describe(`Async operation work correctly`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(4);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.LOAD_MOVIES,
+          type: actions.ActionType.LOAD_MOVIES,
           payload: [{fake: true}],
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
-          type: ActionType.LOAD_PROMO_MOVIE,
+          type: actions.ActionType.LOAD_PROMO_MOVIE,
           payload: [{fake: true}],
         });
         expect(dispatch).toHaveBeenNthCalledWith(3, {
-          type: ActionType.GET_MOVIES,
+          type: actions.ActionType.GET_MOVIES,
         });
         expect(dispatch).toHaveBeenNthCalledWith(4, {
-          type: ActionType.SET_DATA,
+          type: actions.ActionType.SET_DATA,
         });
       });
   });
@@ -301,15 +287,15 @@ describe(`Async operation work correctly`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(3);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.LOAD_ACTIVE_MOVIE,
+          type: actions.ActionType.LOAD_ACTIVE_MOVIE,
           payload: [{fake: true}],
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
-          type: ActionType.LOAD_COMMENTS,
+          type: actions.ActionType.LOAD_COMMENTS,
           payload: [{fake: true}],
         });
         expect(dispatch).toHaveBeenNthCalledWith(3, {
-          type: ActionType.SET_ACTIVE,
+          type: actions.ActionType.SET_ACTIVE,
         });
       });
   });
@@ -327,17 +313,17 @@ describe(`Async operation work correctly`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.LOAD_MY_MOVIES,
+          type: actions.ActionType.LOAD_MY_MOVIES,
           payload: [{fake: true}],
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
-          type: ActionType.SET_MY_MOVIES_LOADED,
+          type: actions.ActionType.SET_MY_MOVIES_LOADED,
         });
       })
       .catch(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.REDIRECT_TO_ROUTE,
+          type: actions.ActionType.REDIRECT_TO_ROUTE,
           payload: AppRoute.ROOT,
         });
       });
@@ -359,15 +345,15 @@ describe(`Async operation work correctly`, () => {
         expect(dispatch).toHaveBeenCalledTimes(3);
 
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.RESET_ACTIVE_MOVIE,
+          type: actions.ActionType.RESET_ACTIVE_MOVIE,
         });
 
         expect(dispatch).toHaveBeenNthCalledWith(2, {
-          type: ActionType.SET_CONTENT_REVIEW,
+          type: actions.ActionType.SET_CONTENT_REVIEW,
         });
 
         expect(dispatch).toHaveBeenNthCalledWith(3, {
-          type: ActionType.REDIRECT_TO_ROUTE,
+          type: actions.ActionType.REDIRECT_TO_ROUTE,
           payload: `${AppRoute.FILMS}/${id}`,
         });
       });
@@ -386,14 +372,19 @@ describe(`Async operation work correctly`, () => {
 
     return favoriteLoader(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(1);
 
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.RESET_APP,
+          type: actions.ActionType.REDIRECT_TO_ROUTE,
+          payload: AppRoute.MY_LIST,
         });
+      })
+      .catch(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
 
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
-          type: ActionType.SET_CONTENT_REVIEW,
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: actions.ActionType.REDIRECT_TO_ROUTE,
+          payload: AppRoute.MY_LIST,
         });
       });
   });

@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import {COLUMN_QUANTITY, PRECISION_RATING} from '../../const';
+import {COLUMN_QUANTITY, PRECISION_RATING, TIME_FORMAT} from '../../const';
 import {useSelector} from 'react-redux';
 
 const MovieContentReviews = () => {
@@ -20,7 +20,12 @@ const MovieContentReviews = () => {
 
                 <footer className="review__details">
                   <cite className="review__author">{comment.user.name}</cite>
-                  <time className="review__date" dateTime="2016-12-24">{dayjs(comment.date).format(`MMMM D, YYYY`)}</time>
+                  <time
+                    className="review__date"
+                    dateTime={dayjs(comment.date).format(TIME_FORMAT.ATTRIBUTE)}
+                  >
+                    {dayjs(comment.date).format(TIME_FORMAT.TEXT)}
+                  </time>
                 </footer>
               </blockquote>
 

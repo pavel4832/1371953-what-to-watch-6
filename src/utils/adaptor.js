@@ -41,3 +41,17 @@ export const adaptCommentToApp = (comment) => {
 
   return adaptedComment;
 };
+
+export const adaptUserToApp = (data) => {
+  const adaptedUser = Object.assign(
+      {},
+      data,
+      {
+        avatarUrl: data.avatar_url
+      }
+  );
+
+  delete adaptedUser.avatar_url;
+
+  return adaptedUser;
+};

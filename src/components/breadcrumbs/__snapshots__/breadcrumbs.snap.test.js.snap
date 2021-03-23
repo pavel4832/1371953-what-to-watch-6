@@ -21,12 +21,11 @@ exports[`Should Breadcrumbs render correctly 1`] = `
       <li
         class="breadcrumbs__item"
       >
-        <a
+        <span
           class="breadcrumbs__link"
-          href="#"
         >
           Add review
-        </a>
+        </span>
       </li>
     </ul>
   </nav>

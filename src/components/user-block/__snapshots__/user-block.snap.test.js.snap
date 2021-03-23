@@ -14,7 +14,7 @@ exports[`Should UserBlock render correctly 1`] = `
         <img
           alt="User avatar"
           height="63"
-          src="img/avatar.jpg"
+          src="img/1.png"
           width="63"
         />
       </a>

@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getMovieById, formatTime} from '../../utils/utils';
-import {redirectToRoute} from '../../store/action';
+import {redirectToRoute} from '../../store/actions';
 import {AppRoute, FULL_SCREEN_SIZE, SMALL_SCREEN_SIZE} from '../../const';
 import PlayerButtonPlay from '../player-button-play/player-button-play';
 import ProgressTogglerTimer from '../progress-toggler-timer/progress-toggler-timer';
@@ -28,7 +28,7 @@ const PlayerScreen = (props) => {
 
   let hasHours = false;
 
-  const VideoClass = (hasFullScreen) ? `player__video` : ``;
+  const videoClass = (hasFullScreen) ? `player__video` : ``;
 
   useEffect(() => {
     if (isPlay) {
@@ -85,7 +85,7 @@ const PlayerScreen = (props) => {
       <video
         src={videoLink}
         ref={videoRef}
-        className={`${VideoClass}`}
+        className={videoClass}
         muted={isMuted}
         poster={backgroundImage}
         width={inSize.WIDTH}

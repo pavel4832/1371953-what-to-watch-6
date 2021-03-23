@@ -5,6 +5,7 @@ import MovieList from '../movie-list/movie-list';
 import {fetchMyMovieList} from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
 import {useDispatch, useSelector} from 'react-redux';
+import {PAGE_TYPE} from '../../const';
 
 const MyListScreen = () => {
   const {isMyMoviesLoaded} = useSelector((state) => state.DATA);
@@ -26,7 +27,7 @@ const MyListScreen = () => {
       <Header
         headerTitle={`My list`}
         isReview={false}
-        pageType={`user`}
+        pageType={PAGE_TYPE.USER}
       />
 
       <section className="catalog">

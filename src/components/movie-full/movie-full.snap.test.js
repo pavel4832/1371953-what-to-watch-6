@@ -16,7 +16,9 @@ it(`Should MovieFull render correctly`, () => {
   const {container} = render(
       <Provider store={store}>
         <Router history={history}>
-          <MovieFull />
+          <MovieFull
+            onPlayButtonClick={jest.fn()}
+          />
         </Router>
       </Provider>
   );

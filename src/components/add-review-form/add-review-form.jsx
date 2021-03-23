@@ -44,7 +44,6 @@ const AddReviewForm = (props) => {
                   onChange={() => {
                     setUserFormRating(index + 1);
                   }}
-                  data-testid="rating"
                 />
                 <label className="rating__label" htmlFor={`star-${rating}`}>Rating {rating}</label>
               </React.Fragment>
@@ -55,13 +54,13 @@ const AddReviewForm = (props) => {
         <div className="add-review__text">
           <textarea
             className="add-review__textarea"
-            name="review-text" id="review-text"
+            name="review-text"
+            id="review-text"
             placeholder="Review text"
             value={userFormText}
             minLength="50"
             maxLength="400"
             onChange={handleTextChange}
-            data-testid="comment"
           >
             {userFormText}
           </textarea>

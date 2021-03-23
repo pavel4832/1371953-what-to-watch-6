@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {getMovies, resetApp} from '../../store/action';
+import {getMovies, resetApp} from '../../store/actions';
 import {useDispatch} from 'react-redux';
 
 const Footer = () => {

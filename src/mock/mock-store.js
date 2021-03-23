@@ -1,7 +1,8 @@
 import MOVIES from './movies';
-import {adaptCommentToApp, adaptMoviesToApp} from '../utils/adaptor';
+import {adaptCommentToApp, adaptMoviesToApp, adaptUserToApp} from '../utils/adaptor';
 import COMMENT from './comments';
 import MOVIE from './movie';
+import USER from './user';
 import {AuthorizationStatus, CONTENT_TYPE, COUNT_CARD, FILTER_TYPE} from '../const';
 
 export default {
@@ -22,5 +23,6 @@ export default {
   USER: {
     authorizationStatus: AuthorizationStatus.AUTH,
     isLoginError: true,
+    user: adaptUserToApp(USER)
   }
 };

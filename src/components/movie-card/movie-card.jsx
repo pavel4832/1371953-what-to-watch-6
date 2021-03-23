@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {moviesProp} from '../../utils/valid-props';
 import {Link} from 'react-router-dom';
 import {TIMEOUT_PREVIEW, AppRoute, POSTER_SIZE} from '../../const';
-import {changeGenre, getMovies, redirectToRoute, resetActiveMovie, setContentOverview} from '../../store/action';
+import {changeGenre, getMovies, redirectToRoute, resetActiveMovie, setContentOverview} from '../../store/actions';
 
 const MovieCard = (props) => {
   const [isPlay, setIsPlay] = useState(false);

@@ -88,6 +88,7 @@ exports[`Should SingInScreen render correctly 1`] = `
               id="user-password"
               name="user-password"
               placeholder="Password"
+              required=""
               type="password"
             />
             <label

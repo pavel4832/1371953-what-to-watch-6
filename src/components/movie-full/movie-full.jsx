@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import MyListButton from '../my-list-button/my-list-button';
 import {addToMyList} from '../../store/api-actions';
 import PropTypes from 'prop-types';
+import {FAVORITE_STATUS} from '../../const';
 
 const MovieFull = (props) => {
   const {onPlayButtonClick} = props;
@@ -52,7 +53,7 @@ const MovieFull = (props) => {
               <MyListButton
                 movie={activeMovie}
                 onMyButtonClickHandler = {() => {
-                  const status = (isFavorite) ? 0 : 1;
+                  const status = (isFavorite) ? FAVORITE_STATUS.NO_ADD : FAVORITE_STATUS.ADD_TO;
                   dispatch(addToMyList(id, status));
                 }}
               />

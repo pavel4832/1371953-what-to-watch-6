@@ -5,7 +5,7 @@ import MovieFull from '../movie-full/movie-full';
 import MovieSame from '../movie-same/movie-same';
 import {fetchMovieData} from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
-import {redirectToRoute} from '../../store/action';
+import {redirectToRoute} from '../../store/actions';
 import {AppRoute} from '../../const';
 
 const MovieScreen = (props) => {

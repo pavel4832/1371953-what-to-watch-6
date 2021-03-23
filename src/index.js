@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import {Router as BrowserRouter} from 'react-router-dom';
 import App from './components/app/app';
 import rootReducer from './store/root-reducer';
-import {requireAuthorization} from './store/action';
+import {requireAuthorization} from './store/actions';
 import {checkAuth} from './store/api-actions';
 import {AuthorizationStatus} from './const';
 import {redirect} from './store/middlewares/redirect';

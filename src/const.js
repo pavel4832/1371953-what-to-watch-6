@@ -58,11 +58,6 @@ export const FILTER_TYPE = {
   THRILLERS: `Thrillers`
 };
 
-export const FULL_SCREEN_SIZE = {
-  WIDTH: `100%`,
-  HEIGHT: `100%`
-};
-
 export const MAX_FILTERS = 9;
 
 export const PAGE_TYPE = {
@@ -87,9 +82,9 @@ export const RATING_LEVEL = {
 
 export const RATING_STARS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-export const SMALL_SCREEN_SIZE = {
-  WIDTH: `50%`,
-  HEIGHT: `50%`
+export const SCREEN_SIZE = {
+  WIDTH: `100%`,
+  HEIGHT: `100%`
 };
 
 export const TIME_FORMAT = {

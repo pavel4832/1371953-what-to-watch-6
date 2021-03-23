@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getMovieById, formatTime} from '../../utils/utils';
 import {redirectToRoute} from '../../store/actions';
-import {AppRoute, FULL_SCREEN_SIZE, SMALL_SCREEN_SIZE} from '../../const';
+import {AppRoute, SCREEN_SIZE} from '../../const';
 import PlayerButtonPlay from '../player-button-play/player-button-play';
 import ProgressTogglerTimer from '../progress-toggler-timer/progress-toggler-timer';
 
@@ -20,7 +20,6 @@ const PlayerScreen = (props) => {
   const [isPlay, setIsPlay] = useState(false);
   const [inProgress, setProgress] = useState(0);
   const [inTime, setTimer] = useState(formatTime(0, false));
-  const [inSize, setSize] = useState(FULL_SCREEN_SIZE);
 
   const videoRef = useRef();
 
@@ -71,12 +70,10 @@ const PlayerScreen = (props) => {
   };
 
   const onFullButtonClickHandler = () => {
-    if (!hasFullScreen) {
-      setSize(FULL_SCREEN_SIZE);
-      hasFullScreen = true;
-    } else {
-      setSize(SMALL_SCREEN_SIZE);
-      hasFullScreen = false;
+    const videoElement = document.querySelector(`video`);
+
+    if (videoElement.requestFullscreen) {
+      videoElement.requestFullscreen();
     }
   };
 
@@ -88,8 +85,8 @@ const PlayerScreen = (props) => {
         className={videoClass}
         muted={isMuted}
         poster={backgroundImage}
-        width={inSize.WIDTH}
-        height={inSize.HEIGHT}
+        width={SCREEN_SIZE.WIDTH}
+        height={SCREEN_SIZE.HEIGHT}
         onCanPlay={onCanPlayHandler}
         onTimeUpdate={onTimeUpdateHandler}
         onClick={onPlayButtonClickHandler}
